@@ -1,0 +1,18 @@
+.banniere {
+    background-image: url("banniere.jpg");
+    width: 100%;
+    height: 561px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.des {
+    padding-top: 10%;
+    color: white;
+    font-size: 3.2em;
+}
+
+.chercher {
+    padding-left: 34%;
+}

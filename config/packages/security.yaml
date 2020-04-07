@@ -1,12 +1,9 @@
 security:
-<<<<<<< HEAD
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    providers:
-        users_in_memory: { memory: null }
-=======
     encoders:
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -15,18 +12,15 @@ security:
             entity:
                 class: App\Entity\User
                 property: username
->>>>>>> 56d241e569eb1f4a0aebaf4a5383de995ca47fa7
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
-<<<<<<< HEAD
-            provider: users_in_memory
-=======
             provider: app_user_provider
->>>>>>> 56d241e569eb1f4a0aebaf4a5383de995ca47fa7
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
