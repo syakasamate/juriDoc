@@ -37,10 +37,10 @@
                 </li>
                 {% else %}
                 <li class="nav-item {% if login is defined %} active {%  endif %}">
-                    <a class="nav-link" href="{{path('login_form')}}"><i class="fas fa-lock"></i>Connexion</a>
+                    <a class="nav-link" href="{{path('login')}}"><i class="fas fa-lock"></i>Connexion</a>
                 </li>
                 <li class="nav-item {% if  connection is defined %}active{% endif %}">
-                    <a class="nav-link" href="{{path('connection')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
+                    <a class="nav-link" href="{{path('inscription')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
                 </li>
                 {% endif %}
             </ul>
