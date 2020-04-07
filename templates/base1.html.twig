@@ -16,15 +16,15 @@
 
 <body>
     <!--   Navbar Menu   -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg  fixed-top navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-        <a class="navbar-brand" href="#">JuriDoc</a>
+        <a class="navbar-brand navbar-fixed-top" href="#">JuriDoc</a>
 
         <div class="collapse navbar-collapse" class="float-right" id="navbarTogglerDemo03">
 
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav navbar-fixed-top ml-auto">
 
                 <li class="nav-item {% if Home is defined %}active{% endif %}">
                     <a class="nav-link" href="{{path('home')}}"><i class="fas fa-home"></i>Accueil</a>
