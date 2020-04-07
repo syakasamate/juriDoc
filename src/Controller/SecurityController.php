@@ -11,9 +11,10 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="login_form")
      */
+
+     
     public function login(AuthenticationUtils $authenticationUtils){
         $error = $authenticationUtils->getLastAuthenticationError();
-         
         return $this->render('security/login.html.twig',[
             'error' => $error,
             'login' => true,
@@ -25,7 +26,7 @@ class SecurityController extends AbstractController
      */
     public function logout(){
 
-    }
+ }
       /**
      * @Route("/", name="acceuil")
      */
