@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+<<<<<<< HEAD
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
@@ -9,4 +10,88 @@
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+=======
+
+        <meta charset="UTF-8">
+
+        {% block header %}
+            <header id="header" class="bck1 border-bottom">
+                <div class="container">
+                    <h1>{% if title is defined %}{{title}}{% else %}<i class="fas fa-home"></i>Accueil{% endif %}</h1>
+                </div>
+            </header>
+        {% endblock %}        {% block stylesheets %}
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        {% endblock %}
+                <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+    <body>
+        {% block body %}
+        {% block nav %}
+            <nav id="main-nav" class="container navbar navbar-expand-lg navbar-light bg-light border rounded mb-3">
+                <ul class="navbar-nav">
+                    <li class="nav-item {% if Home is defined %}active{% endif %}">
+                        <a class="nav-link" href="{{path('acceuil')}}"><i class="fas fa-home"></i>Accueil</a>
+                    </li>  
+                   
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if  app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item {% if login is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('login_form')}}"><i class="fas fa-lock"></i>Connexion</a>
+                        </li>
+                        <li class="nav-item {% if  connection is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('connection')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endblock %}
+
+        {% block flash %}
+            {% for flash_message in app.session.flashbag.get('success') %}
+                <div class="container alert alert-success" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('info') %}
+                <div class="container alert alert-info" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('warning') %}
+                <div class="container alert alert-warning" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('danger') %}
+                <div class="container alert alert-danger" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        {% endblock %}
+        {% endblock %}
+       
+    {% block javascripts %} 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     {% endblock %}
+    </body>
+         <div class="container">
+        <div class="row">
+      
+     {% block contente %}
+              {% endblock %}
+                </div>
+              </div>
+
+>>>>>>> 56d241e569eb1f4a0aebaf4a5383de995ca47fa7
 </html>
