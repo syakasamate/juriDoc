@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block contente %}
+
+<form action="{{ path('login_form') }}" method="post">
+<div class="form-group">
+  <label for=""></label>
+  <input type="text" name="_username"  class="form-control" placeholder="Adresse Email...." >
+</div>
+<div class="form-group">
+  <label for=""></label>
+   <input    type="password" name="_password" id="" class="form-control" placeholder="password..." >
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-success"> connection</button>
+</div>
+</form>
+{% if error %}
+        <div class="alert alert-danger">
+            <ul class="list-unstyled mb-0">
+                <li><span class="initialism form-error-icon badge badge-danger">Mot de Pass ou Email non valide</span>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
