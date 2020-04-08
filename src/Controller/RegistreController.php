@@ -16,6 +16,7 @@ class RegistreController extends AbstractController
     /**
      * @Route("/registre", name="connection")
      */
+    
     public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder )
     {
             $user = new User();

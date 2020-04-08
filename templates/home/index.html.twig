@@ -108,7 +108,7 @@
 <div class="container">
     <div class="contact">
         <h2 class="text-center mt-5 text-bold">CONTACT</h2>
-        <form>
+        <form action="{{path('contact.add')}}" method="post">
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
                     <div class="mt-3">
@@ -117,7 +117,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">@</div>
                             </div>
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Prenom et Nom...">
+                            <input type="text" class="form-control" name="nomComplet" id="inlineFormInputGroup" placeholder="Prenom et Nom...">
                         </div>
                     </div>
                     <div class="mt-3">
@@ -126,7 +126,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">@</div>
                             </div>
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email.">
+                            <input type="text"   class="form-control" name="username" id="inlineFormInputGroup" placeholder="Email.">
                         </div>
                     </div>
                     <div class="mt-3">
@@ -135,19 +135,22 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">@</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Numero de Telephone....">
+                            <input type="number" class="form-control" name="telephone" id="inlineFormInputGroup" placeholder="Numero de Telephone....">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="input-group mt-3">
-                        <textarea class="form-control " style="height: 150px;"></textarea>
+                        <textarea class="form-control " name="message" style="height: 150px;"></textarea>
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-5"> <a href="#" class="btn btn-success">VOIR PLUS</a></p>
 
-        </form>
+                <input name="" id="" class="btn btn-primary" type="submit" value="envoyer">
+             </form>
+
+            <p class="text-center mt-5"> <a href="#" classs="btn btn-success">VOIR PLUS</a></p>
+
     </div>
 </div>
 

@@ -29,9 +29,13 @@
                 <li class="nav-item {% if Home is defined %}active{% endif %}">
                     <a class="nav-link" href="{{path('home')}}"><i class="fas fa-home"></i>Accueil</a>
                 </li>
-
+</ul>
 
                 {% if app.user %}
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{path('contact.add')}}"><i class="fas fa-sign-out-alt"></i>contact</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                 </li>
