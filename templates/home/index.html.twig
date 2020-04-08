@@ -1,4 +1,4 @@
-{% extends 'base1.html.twig' %} {% block body %}
+{% extends 'base.html.twig' %} {% block body %}
 <div class="banniere">
     <h1 class="des text-center">LES DOCUMENTS JURIQUES À PORTÉE DE MAIN</h1>
 
@@ -105,10 +105,10 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container" id="contact">
     <div class="contact">
         <h2 class="text-center mt-5 text-bold">CONTACT</h2>
-        <form action="{{path('contact.add')}}" method="post">
+        <form action="{{path('contact.add')}}"  method="post">
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
                     <div class="mt-3">

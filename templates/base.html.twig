@@ -1,116 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> {% block stylesheets %} {% endblock %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
 
-        {% block header %}
-            <header id="header" class="bck1 border-bottom">
-                <div class="container">
-                    <h1>{% if title is defined %}{{title}}{% else %}<i class="fas fa-home"></i>Accueil{% endif %}</h1>
-                </div>
-            </header>
-        {% endblock %}        {% block stylesheets %}
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-                     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        {% endblock %}
-                <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+<body>
+    <!--   Navbar Menu   -->
+    <nav class="navbar navbar-expand-lg  fixed-top navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <a class="navbar-brand navbar-fixed-top" href="#">JuriDoc</a>
 
-    </head>
-    <body>
-        {% block body %}
-        {% block nav %}
-            <nav id="main-nav" class="container navbar navbar-expand-lg navbar-light bg-light border rounded mb-3">
-                <ul class="navbar-nav">
-                    <li class="nav-item {% if Home is defined %}active{% endif %}">
-                        <a class="nav-link" href="{{path('acceuil')}}"><i class="fas fa-home"></i>Accueil</a>
-                    </li>
-                    {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item {% if addservice is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('admin.service.add')}}">Ajout service</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item {% if sowservice is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('admin.service.show')}}">Liste service</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item {% if addspecialite is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('admin.specialite.addSp')}}">Ajout specialite</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item {% if sowspecialite  is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('admin.specialite.show')}}">Liste specialite</a>
-                        </li>
-                    {% endif %}
-                   {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item {% if addmedecin is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('admin.Medecin.addM')}}">Ajout medecin</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item {% if sowmedecin is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('admin.medecin.show')}}">Liste medecin</a>
-                        </li>
-                    
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    {% if  app.user %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item {% if login is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('login')}}"><i class="fas fa-lock"></i>Connexion</a>
-                        </li>
-                        <li class="nav-item {% if  connection is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('inscription')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </nav>
-        {% endblock %}
+        <div class="collapse navbar-collapse" class="float-right" id="navbarTogglerDemo03">
 
-        {% block flash %}
-            {% for flash_message in app.session.flashbag.get('success') %}
-                <div class="container alert alert-success" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('info') %}
-                <div class="container alert alert-info" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('warning') %}
-                <div class="container alert alert-warning" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('danger') %}
-                <div class="container alert alert-danger" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-        {% endblock %}
-        {% endblock %}
-       
-         {% block javascripts %} 
-       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-     {% endblock %}
-    </body>
-         <div class="container">
-        <div class="row">
-      
-     {% block contente %}
-              {% endblock %}
-                </div>
-              </div>
+            <ul class="navbar-nav navbar-fixed-top ml-auto">
+
+                <li class="nav-item {% if Home is defined %}active{% endif %}">
+                    <a class="nav-link" href="{{path('home')}}"><i class="fas fa-home"></i>Accueil</a>
+                </li>
+
+                {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact"><i class="fas fa-sign-out-alt"></i>Contact</a>
+                </li>
+                 {% if app.user.role =="ROLE_ADMIN" %}
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{path('dashbord')}}"><i class="fas fa-sign-out-alt"></i>DashBord</a>
+                </li>
+                 {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item {% if login is defined %} active {%  endif %}">
+                    <a class="nav-link" href="{{path('login')}}"><i class="fas fa-lock"></i>Connexion</a>
+                </li>
+                <li class="nav-item {% if  connection is defined %}active{% endif %}">
+                    <a class="nav-link" href="{{path('inscription')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+    {% block body %} {% endblock %} {% block footer %}
+    <div class="footer">
+
+    </div>
+    {% endblock %} {% block javascripts %}{% endblock %}
+
+</body>
 
 </html>

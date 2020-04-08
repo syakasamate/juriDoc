@@ -1,4 +1,4 @@
-{% extends 'base1.html.twig' %} {% block body %}
+{% extends 'base.html.twig' %} {% block body %}
 
 <div class="container e pt-5 mt-5">
     {% for message in app.flashes("success") %}
@@ -6,7 +6,7 @@
         {{ message }}
     </div>
     {% endfor %}
-    <form class="container  pt-5  mt-5" action="{{ path('login') }}" method="post">
+    <form class="container" action="{{ path('login') }}" method="post">
         <div class="form-group r mt-5">
             <label for=""></label>
             <input type="text" name="_username" class="form-control" placeholder="Adresse Email....">

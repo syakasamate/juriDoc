@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *@UniqueEntity(
 * fields={"email"},
  * 
- *     message="ce eamil est dejas utiliser.")
+ *     message=" Email est deja utiliser.")
  */
 
 class User implements UserInterface
@@ -49,6 +49,11 @@ class User implements UserInterface
    */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
     
     public function getId(): ?int
     {
@@ -82,8 +87,10 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-
-     return['ROLE_USER'];
+      if($this->role==null){
+          return["ROLE_USER"];
+      }
+     return[$this->role];
 
     }
 
@@ -124,6 +131,18 @@ class User implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

@@ -26,8 +26,9 @@ class RegistreController extends AbstractController
     if ($form->isSubmitted() && $form->isValid()) {
          $hsh=$encoder->encodePassword($user,$user->getPassword());
          $user->setPassword(($hsh));
+         $user->setRole(("ROLE_USER"));
          $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($user);
+          $entityManager->persist($user);
          $entityManager->flush();
          $this->addFlash("success","Inscription validée-vous pouvez vous-connectez");
          return $this->redirectToRoute('login');
