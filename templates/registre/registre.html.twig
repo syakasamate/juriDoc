@@ -1,11 +1,7 @@
-{% extends 'base.html.twig' %}
-
-{% block contente %}
-  {{ form_start(form) }}
-  {{form_row(form.username,{'label':'Nom d\'utilisateur','attr':{'placeholder':'Entrer votre non d\'utilisateur'}})}}
-  {{form_row(form.password,{'label':'Mot de Passe','attr':{'placeholder':'Entrer votre mot de pass'}})}}
-  {{form_row(form.confirm_password,{'label':'Confirmation du mot de passe','attr':{'placeholder':
-  'Répéter votre mot de passe'}})}}
-  <input name="" id="" class="btn btn-success" type="submit" value="Inscription">
-  {{ form_end(form)}}
+{% extends 'base1.html.twig' %} {% block body %}
+<div class="container e pt-5 mt-5">
+    {{ form_start(form) }}{{ form_row(form.email)}} {{form_row(form.username,{'label':'Nom d\'utilisateur','attr':{'placeholder':'Entrer votre nom d\'utilisateur'}})}} {{form_row(form.password,{'label':'Mot de Passe','attr':{'placeholder':'Entrer votre mot
+    de passe'}})}} {{form_row(form.confirm_password,{'label':'Confirmation du mot de passe','attr':{'placeholder': 'Répéter votre mot de passe'}})}} {{ form_end(form)}}
+    <input name="" id="" class="btn btn-success" type="submit" value="Inscription">
+</div>
 {% endblock %}

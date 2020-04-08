@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class RegistreController extends AbstractController
 {
     /**
-     * @Route("/registre", name="connection")
+     * @Route("/registre", name="inscription")
      */
     
     public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder )
@@ -29,6 +29,8 @@ class RegistreController extends AbstractController
          $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
          $entityManager->flush();
+         $this->addFlash("success","Inscription validée-vous pouvez vous-connectez");
+         return $this->redirectToRoute('login');
 
     }
         return $this->render('registre/registre.html.twig', [
