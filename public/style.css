@@ -7,6 +7,10 @@
     background-position: center;
 }
 
+body {
+    background-color: gainsboro!important;
+}
+
 .des {
     padding-top: 10%;
     color: white;
