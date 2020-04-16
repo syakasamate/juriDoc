@@ -3,21 +3,21 @@
     <h1 class="des text-center">LES DOCUMENTS JURIQUES À PORTÉE DE MAIN</h1>
 
     <div class="container">
-        <form>
+        <form action="{{path('recherche')}}" method='post'>
 
             <div class="row mt-5">
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-group">
                         <div>
-                            <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control mr-sm-6" name="search" type="search" placeholder="Search" aria-label="Search">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 ">
                     <div class="form-group">
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                        <select class="custom-select mr-sm-5" id="inlineFormCustomSelect">
-                        <option selected>Toutes Les Categories</options>
+                        <select name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
+                        <option value='' selected>Toutes Les Categories</options>
                         {% for cat in categories %}
                         <option value="{{ cat.id }}">{{ cat.libelle }}</option>
                         {% endfor %}

@@ -21,11 +21,6 @@ class Document
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $libelle;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $description;
 
     /**
@@ -34,13 +29,13 @@ class Document
     private $fichier;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Categorie", mappedBy="document")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="docs")
      */
-    private $documents;
+    private $categorie;
 
     public function __construct()
     {
-        $this->documents = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -48,17 +43,7 @@ class Document
         return $this->id;
     }
 
-    public function getLibelle(): ?string
-    {
-        return $this->libelle;
-    }
-
-    public function setLibelle(string $libelle): self
-    {
-        $this->libelle = $libelle;
-
-        return $this;
-    }
+    
 
     public function getDescription(): ?string
     {
@@ -84,33 +69,16 @@ class Document
         return $this;
     }
 
-    /**
-     * @return Collection|Categorie[]
-     */
-    public function getDocuments(): Collection
+   
+
+    public function getCategorie(): ?Categorie
     {
-        return $this->documents;
+        return $this->categorie;
     }
 
-    public function addDocument(Categorie $document): self
+    public function setCategorie(?Categorie $categorie): self
     {
-        if (!$this->documents->contains($document)) {
-            $this->documents[] = $document;
-            $document->setDocument($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDocument(Categorie $document): self
-    {
-        if ($this->documents->contains($document)) {
-            $this->documents->removeElement($document);
-            // set the owning side to null (unless already changed)
-            if ($document->getDocument() === $this) {
-                $document->setDocument(null);
-            }
-        }
+        $this->categorie = $categorie;
 
         return $this;
     }

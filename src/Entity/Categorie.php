@@ -24,18 +24,14 @@ class Categorie
     private $libelle;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Document", inversedBy="documents")
+     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="categorie")
      */
-    private $document;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\SousCategorie", mappedBy="categorie")
-     */
-    private $categories;
+    private $docs;
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+       
+        $this->docs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -55,43 +51,32 @@ class Categorie
         return $this;
     }
 
-    public function getDocument(): ?Document
-    {
-        return $this->document;
-    }
-
-    public function setDocument(?Document $document): self
-    {
-        $this->document = $document;
-
-        return $this;
-    }
-
+  
     /**
-     * @return Collection|SousCategorie[]
+     * @return Collection|Document[]
      */
-    public function getCategories(): Collection
+    public function getDocs(): Collection
     {
-        return $this->categories;
+        return $this->docs;
     }
 
-    public function addCategory(SousCategorie $category): self
+    public function addDoc(Document $doc): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->setCategorie($this);
+        if (!$this->docs->contains($doc)) {
+            $this->docs[] = $doc;
+            $doc->setCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeCategory(SousCategorie $category): self
+    public function removeDoc(Document $doc): self
     {
-        if ($this->categories->contains($category)) {
-            $this->categories->removeElement($category);
+        if ($this->docs->contains($doc)) {
+            $this->docs->removeElement($doc);
             // set the owning side to null (unless already changed)
-            if ($category->getCategorie() === $this) {
-                $category->setCategorie(null);
+            if ($doc->getCategorie() === $this) {
+                $doc->setCategorie(null);
             }
         }
 
