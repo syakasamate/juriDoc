@@ -37,11 +37,8 @@ hr {
 }
 
 .nav {
-    padding-top: 1%;
-    width: 100%;
+    padding-top: 4%;
     margin: 0 auto;
-    position: sticky;
-    top: 10px;
 }
 
 .nav ul {
@@ -50,7 +47,7 @@ hr {
 
 .nav ul li {
     float: left;
-    width: 25%;
+    width: 100%;
     text-align: center;
 }
 
@@ -69,14 +66,15 @@ hr {
 }
 
 .nav a:hover {
-    color: orange;
-    border-bottom: 2px solid gold;
+    color: rgb(27, 202, 65);
+    border-bottom: 2px solid rgb(11, 211, 44);
 }
 
 .sous {
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: white;
+    width: 100%;
 }
 
 .nav>ul li:hover .sous {
@@ -106,16 +104,14 @@ hr {
 
 .sous {
     display: none;
-    box-shadow: 0px 1px 2px #CCC;
     background-color: white;
-    position: absolute;
-    width: 100%;
+    position: fixed;
+    width: 15%;
     z-index: 1000;
 }
 
 .nav ul li {
     float: left;
-    width: 70%;
     text-align: center;
     position: relative;
 }
