@@ -1,1 +1,8 @@
-<p>Vous etes connecte en tant que admin</p>
+{% extends 'admin.html.twig' %} {% block body %}
+<div class="mt-5 pt5">
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div> {% endblock %}

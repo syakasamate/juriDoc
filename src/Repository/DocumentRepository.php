@@ -19,6 +19,31 @@ class DocumentRepository extends ServiceEntityRepository
         parent::__construct($registry, Document::class);
     }
 
+
+
+    public function searchDoc($s,$c)
+    {
+        if(!empty($c) || $c !=''){
+            
+            return $this->createQueryBuilder('d')
+            ->Where('d.description LIKE :val ')
+            //->andWhere(':cat MEMBER OF d.categories')
+            ->andWhere('d.categorie = :cat ')
+            ->setParameter('val', '%'.$s.'%')
+            ->setParameter('cat', $c)
+            ->getQuery()
+            ->getResult()
+        ;
+    }else{
+        return $this->createQueryBuilder('d')
+        ->Where('d.description LIKE :val ')
+        //->andWhere(':cat MEMBER OF d.categories')
+        ->setParameter('val', '%'.$s.'%')
+        ->getQuery()
+        ->getResult()
+    ;
+}
+    }
     // /**
     //  * @return Document[] Returns an array of Document objects
     //  */
