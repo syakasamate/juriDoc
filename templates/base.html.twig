@@ -17,7 +17,7 @@
 
 </head>
 <div class="bg-light bord ">
-        <a class="navbar-brand navbar-fixed-top  " href="#">JuriDoc</a>
+        <a class="navbar-brand navbar-fixed-top col-sm-4  " href="#">JuriDoc</a>
        <ul class="nav bg-light" style="float:right">
   
                 {% if app.user %}
@@ -45,8 +45,7 @@
 </div>
 
 
-   
-
+   <div id="navbar">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand col-sm-4 " ></a>
 
@@ -140,12 +139,25 @@
    
   </div>
 </nav>
-    
+    </div>
 
 
+  <script>
+        window.onscroll = function() {
+            myFunction()
+        };
 
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
 
-
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
 
     {% block body %} {% endblock %}
      {% block footer %}
