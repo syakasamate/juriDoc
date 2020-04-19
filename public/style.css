@@ -1,117 +1,53 @@
-.banniere {
-    background-image: url("banniere.jpg");
-    width: 100%;
-    height: 561px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-
-body {
-    background-color: gainsboro!important;
-}
-
-.des {
-    padding-top: 10%;
-    color: white;
-    font-size: 3.2em;
-}
-
-.chercher {
-    padding-left: 34%;
-}
-
-.footer {
-    margin-top: 100px;
-    background-color: black;
-    width: 100%;
-    height: 400px;
-}
-
-.footer-copyright {
-    background-color: black;
-}
-
-hr {
-    background-color: blue;
-}
-
-.nav {
-    padding-top: 4%;
-    margin: 0 auto;
-}
-
-.nav ul {
-    list-style-type: none;
-}
-
-.nav ul li {
-    float: left;
-    width: 100%;
-    text-align: center;
-}
-
-.nav ul::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.nav a {
-    display: block;
-    text-decoration: none;
-    color: black;
-    border-bottom: 2px solid transparent;
-    padding: 10px 10px;
-}
-
-.nav a:hover {
-    color: rgb(27, 202, 65);
-    border-bottom: 2px solid rgb(11, 211, 44);
-}
-
-.sous {
-    display: none;
-    box-shadow: 0px 1px 2px #CCC;
-    background-color: white;
-    width: 100%;
-}
-
-.nav>ul li:hover .sous {
-    display: block;
-}
-
-.sous li {
-    float: none;
-    width: 100%;
-    text-align: left;
-}
-
-.sous a {
-    padding: 10px;
-    border-bottom: none;
-}
-
-.sous a:hover {
-    border-bottom: none;
-    background-color: RGBa(200, 200, 200, 0.1);
-}
-
-.deroulant>a::after {
-    content: "*";
-    font-size: 12px;
-}
-
-.sous {
-    display: none;
-    background-color: white;
-    position: fixed;
-    width: 15%;
-    z-index: 1000;
-}
-
-.nav ul li {
-    float: left;
-    text-align: center;
-    position: relative;
-}
+    .banniere {
+        background-image: url("banniere.jpg");
+        width: 100%;
+        height: 561px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    
+    body {
+        background-color: gainsboro!important;
+    }
+    
+    .des {
+        padding-top: 10%;
+        color: white;
+        font-size: 3.2em;
+    }
+    
+    .chercher {
+        padding-left: 34%;
+    }
+    
+    .footer {
+        margin-top: 100px;
+        background-color: black;
+        width: 100%;
+        height: 400px;
+    }
+    
+    .footer-copyright {
+        background-color: black;
+    }
+    
+    hr {
+        background-color: blue;
+    }
+    
+    @media (min-width: 990px) {
+        .dropdown:hover>.dropdown-menu {
+            display: block;
+            border-bottom: 2px solid gold;
+        }
+        .dropdown-menu {
+            background: blue;
+        }
+    }
+    
+    .bord {
+        border-bottom: 1px solid rgb(160, 160, 160);
+        border-top: 1px solid rgb(160, 160, 160);
+        padding: 2px;
+    }
