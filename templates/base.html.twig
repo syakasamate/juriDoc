@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<meta name="viewport" content="initial-scale=1.0" />
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
@@ -12,51 +13,155 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> {% block stylesheets %} {% endblock %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
-
-<body>
-
-    <!--   Navbar Menu   -->
-    <nav class="navbar navbar-expand-lg  fixed-top navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-        <a class="navbar-brand navbar-fixed-top" href="#">JuriDoc</a>
-        <div class="collapse navbar-collapse" class="float-right" id="navbarTogglerDemo03">
-
-            <ul class="navbar-nav navbar-fixed-top ml-auto">
-
-                <li class="nav-item {% if Home is defined %}active{% endif %}">
-                    <a class="nav-link" href="{{path('home')}}"><i class="fas fa-home"></i>Accueil</a>
-                </li>
-
+<div class="bg-light bord ">
+        <a class="navbar-brand navbar-fixed-top j" href="#">JuriDoc</a>
+       <ul class="nav bg-light" style="float:right">
+  
                 {% if app.user %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact"><i class="fas fa-sign-out-alt"></i>Contact</a>
+                    <a class="nav-link text-dark cont" href="#contact"><i class="fas fa-user-plus"></i>Contact</a>
                 </li>
                  {% if app.user.role =="ROLE_ADMIN" %}
                  <li class="nav-item">
-                    <a class="nav-link" href="{{path('dashbord')}}"><i class="fas fa-sign-out-alt"></i>DashBord</a>
+                    <a class="nav-link text-dark dash" href="{{path('dashbord')}}"><i class="fas fa-table"></i>DashBord</a>
                 </li>
                  {% endif %}
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+                    <a class="nav-link text-dark dec"  href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                 </li>
                 {% else %}
-                <li class="nav-item {% if login is defined %} active {%  endif %}">
-                    <a class="nav-link" href="{{path('login')}}"><i class="fas fa-lock"></i>Connexion</a>
+                <li class="nav-item  con {% if login is defined %} active {%  endif %}">
+                    <a class="nav-link text-dark" href="{{path('login')}}"><i class="far fa-user-circle"></i>Connexion</a>
                 </li>
-                <li class="nav-item {% if  connection is defined %}active{% endif %}">
-                    <a class="nav-link" href="{{path('inscription')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
+                <li class="nav-item ins {% if  connection is defined %}active{% endif %}">
+                    <a class="nav-link text-dark" href="{{path('inscription')}}"><i class="far fa-registered"></i>Inscription</a>
                 </li>
                 {% endif %}
-            </ul>
+</ul>
+</div>
 
-        </div>
-    </nav>
 
-    {% block body %} {% endblock %} {% block footer %}
+   <div id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand col-sm-4 " ></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item">
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link text-dark"  href="{{path('home')}}">Accueil<span class="sr-only">(current)</span></a>
+
+      </li>
+  
+      <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Fiscal
+        </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item " href="#">Lois</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item " href="#">Lois</a>
+                       <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item " href="#">Lois</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                    </div>
+                </li>
+                 <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Foncier
+        </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item " href="#">Lois</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item " href="#">Lois</a>
+                       <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item " href="#">Lois</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                    </div>
+                </li>
+                 <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Social
+        </a>
+                 
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item " href="#">Lois</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item " href="#">Lois</a>
+                       <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item " href="#">Lois</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Degres</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Article</a>
+                    </div>
+                </li>
+    </ul>
+   
+  </div>
+</nav>
+    </div>
+
+
+  <script>
+        window.onscroll = function() {
+            myFunction()
+        };
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+
+    {% block body %} {% endblock %}
+     {% block footer %}
     <!-- Footer -->
 <footer class=" mt-5 page-footer font-small unique-color-dark text-white bg-dark">
 

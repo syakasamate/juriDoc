@@ -1,37 +1,99 @@
-.banniere {
-    background-image: url("banniere.jpg");
-    width: 100%;
-    height: 561px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-
-body {
-    background-color: gainsboro!important;
-}
-
-.des {
-    padding-top: 10%;
-    color: white;
-    font-size: 3.2em;
-}
-
-.chercher {
-    padding-left: 34%;
-}
-
-.footer {
-    margin-top: 100px;
-    background-color: black;
-    width: 100%;
-    height: 400px;
-}
-
-.footer-copyright {
-    background-color: black;
-}
-
-hr {
-    background-color: blue;
-}
+        .banniere {
+            background-image: url("banniere.jpg");
+            width: 100%;
+            height: 561px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            z-index: 10;
+        }
+        
+        body {
+            background-color: gainsboro!important;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .des {
+            padding-top: 10%;
+            color: white;
+            font-size: 3.2em;
+        }
+        
+        .chercher {
+            padding-left: 34%;
+        }
+        
+        .footer {
+            margin-top: 100px;
+            background-color: black;
+            width: 100%;
+            height: 400px;
+        }
+        
+        .footer-copyright {
+            background-color: black;
+        }
+        
+        hr {
+            background-color: blue;
+        }
+        
+        @media (min-width: 990px) {
+            .dropdown:hover>.dropdown-menu {
+                display: block;
+                border-bottom: 2px solid gold;
+            }
+            .dropdown-menu {
+                background: blue;
+            }
+        }
+        
+        .bord {
+            border-bottom: 0.5px solid rgb(230, 226, 226);
+            padding: 8px;
+        }
+        
+        #nav {
+            border-bottom: 0.5px solid rgb(241, 239, 239);
+            position: relative;
+            top: 0px;
+            left: 0;
+            z-index: 9999;
+            width: 100%;
+            height: 50px;
+            background-color: gray;
+        }
+        
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+        
+        .ns {
+            z-index: 1000;
+        }
+        
+        .con {
+            border-right: 0.5px solid rgb(218, 216, 216);
+            font-size: 13px;
+        }
+        
+        .ins {
+            font-size: 14px;
+        }
+        
+        .cont {
+            font-size: 14px;
+            border-right: 0.5px solid rgb(218, 216, 216);
+        }
+        
+        .dash {
+            font-size: 14px;
+            border-right: 0.5px solid rgb(218, 216, 216);
+        }
+        
+        .dec {
+            font-size: 14px;
+        }
