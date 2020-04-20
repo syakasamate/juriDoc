@@ -17,28 +17,28 @@
 
 </head>
 <div class="bg-light bord ">
-        <a class="navbar-brand navbar-fixed-top col-sm-4  " href="#">JuriDoc</a>
+        <a class="navbar-brand navbar-fixed-top j" href="#">JuriDoc</a>
        <ul class="nav bg-light" style="float:right">
   
                 {% if app.user %}
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#contact"><i class="fas fa-sign-out-alt"></i>Contact</a>
+                    <a class="nav-link text-dark cont" href="#contact"><i class="fas fa-user-plus"></i>Contact</a>
                 </li>
                  {% if app.user.role =="ROLE_ADMIN" %}
                  <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{path('dashbord')}}"><i class="fas fa-sign-out-alt"></i>DashBord</a>
+                    <a class="nav-link text-dark dash" href="{{path('dashbord')}}"><i class="fas fa-table"></i>DashBord</a>
                 </li>
                  {% endif %}
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+                    <a class="nav-link text-dark dec"  href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                 </li>
                 {% else %}
-                <li class="nav-item {% if login is defined %} active {%  endif %}">
-                    <a class="nav-link text-dark" href="{{path('login')}}"><i class="fas fa-lock"></i>Connexion</a>
+                <li class="nav-item  con {% if login is defined %} active {%  endif %}">
+                    <a class="nav-link text-dark" href="{{path('login')}}"><i class="far fa-user-circle"></i>Connexion</a>
                 </li>
-                <li class="nav-item {% if  connection is defined %}active{% endif %}">
-                    <a class="nav-link text-dark" href="{{path('inscription')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
+                <li class="nav-item ins {% if  connection is defined %}active{% endif %}">
+                    <a class="nav-link text-dark" href="{{path('inscription')}}"><i class="far fa-registered"></i>Inscription</a>
                 </li>
                 {% endif %}
 </ul>
