@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Repository\DocumentRepository;
 use App\Repository\CategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,8 @@ class HomeController extends AbstractController
      //   }
      $categories=$cat->findAll();
         return $this->render('home/index.html.twig', [
-            "categories"=> $categories
+            "categories"=> $categories,
+            "date"=>date_format(new \DateTime(),"Y")
         ]);
     }
      /**

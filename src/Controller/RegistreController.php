@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistreController extends AbstractController
 {
@@ -37,7 +38,8 @@ class RegistreController extends AbstractController
         return $this->render('registre/registre.html.twig', [
             'connection'=>true,
             'form'=>$form->createView(),
-            'title'=>'Inscription'
+            'title'=>'Inscription',
+            "date"=>date_format(new \DateTime(),"Y")
         ]);
     }
 
