@@ -56,24 +56,24 @@ class HomeController extends AbstractController
            $finance=array();
            $comptable=array();
            $social=array();
-           foreach($docs as $docs){
-            if($docs->getCategorie()->getLibelle() =="Jurique"){
-                $jur=$docs;
+           foreach($docs as $doc){
+            if($doc->getCategorie()->getLibelle() =="Jurique"){
+                $jur=$doc;
                 $juridique=array_merge(array($jur),$juridique);
             }
             
             
-            if($docs->getCategorie()->getLibelle() =="Financier"){
-                $jur=$docs;
+            if($doc->getCategorie()->getLibelle() =="Financier"){
+                $jur=$doc;
                 $finance=array_merge(array($jur),$finance);
             }
             
-            if($docs->getCategorie()->getLibelle() =="Comptable"){
-                $jur=$docs;
+            if($doc->getCategorie()->getLibelle() =="Comptable"){
+                $jur=$doc;
                 $comptable=array_merge(array($jur),$comptable);
             }
-            if($docs->getCategorie()->getLibelle() =="Social"){
-                $jur=$docs;
+            if($doc->getCategorie()->getLibelle() =="Social"){
+                $jur=$doc;
                 $social=array_merge(array($jur),$social);
             }
             
