@@ -1,2 +1,139 @@
-<p>Bienvenue</p>
-<iframe src="{{ asset('cv.pdf') }}#toolbar=0&navpanes=0" height="500px" width="70%">
+{% extends 'base.html.twig' %} {% block body %}
+<div class="bande " style="background-color: #6351ce;">
+
+</div>
+<div class=" bg-white pt-0 mt-0">
+    <div class="row ">
+        <div class="col-4">
+            <div class="card mb-4">
+                <div class="card-header text-center ">
+                    <h6 class="m-0 font-weight-bold  text-primary">RECHERCHE AVANCÉE</h6>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <small id="emailHelp" class="form-text text-muted">Le(s) mots clé(s)</small><br>
+                            <input type="text" name="search" class="form-control" value="{{ mots }}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mots clés">
+
+                        </div>
+                        <div class="form-group">
+                            <small id="emailHelp" class="form-text text-muted">Categories</small><br>
+                            <select name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
+                                <option value='' selected>Toutes Les Categories</options>
+                                {% for cat in categories %}
+                                <option value="{{ cat.id }}">{{ cat.libelle }}</option>
+                                {% endfor %}
+                                </select>
+                        </div>
+                        <br>
+
+                        <button type="submit" class="btn btn-primary form-control">RECHERCHER</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-8 pt-3">
+            <p class="text-center  "> <b>RESULTAT(S) DE RECHERCHE</b>: pour le(s) mot(s) clé(s) <b>'{{ mots }}'</b> </p>
+            <hr class=" text-center " style="width: 60% ;background-color: gray;"> {% if juri %}
+
+            <!--Accordion wrapper-->
+            <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo1">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                            <h5 class="mb-0">
+                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> JURIDIQUE [{{ juri|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    {% for juri in juri %}
+                    <!-- Card body -->
+                    <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
+                        <div class="card-body">
+                            {{ juri.description }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+
+            </div><br> {% endif %}
+            <!-- Accordion wrapper -->
+
+            <!--Accordion wrapper-->
+            {% if finance %}
+            <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo2">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo1">
+                            <h5 class="mb-0">
+                                <img src="{{ asset('fiscal.svg') }} " height="30px" width="30px"> FINANCIER[{{ finance|length }} docs] <i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    {% for finance in finance %}
+                    <!-- Card body -->
+                    <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx2">
+                        <div class="card-body">
+                            {{ finance.description }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+
+            </div><br>{% endif %}
+            <!-- Accordion wrapper -->
+
+
+            {% if social %}
+            <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo3">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo1">
+                            <h5 class="mb-0">
+                                <img src="{{ asset('social.svg') }} " height="30px" width="30px"> SOCIAL [ {{ social|length }} docs] <i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    {% for social in social %}
+                    <!-- Card body -->
+                    <div id="collapseTwo3" class="collapse" role="tabpanel" aria-labelledby="headingTwo3" data-parent="#accordionEx3">
+                        <div class="card-body">
+                            {{ social.description }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+
+            </div><br>{% endif %}
+            <!-- Accordion wrapper -->
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

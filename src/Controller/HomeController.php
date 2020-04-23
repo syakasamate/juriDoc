@@ -45,12 +45,58 @@ class HomeController extends AbstractController
         
         if ($request->request->count()>0) {
             $search= $request->request->get('search');
+            if(empty($search)){
+                return;
+            }
             $cat= $request->request->get('categorie');
-            $categorie=$ca->find($cat);
-            dd($doc->searchDoc($search,$cat));
+           $categorie=$ca->find($cat);
+           $docs = $doc->searchDoc($search,$cat);
+           $categories=$ca->findAll();
+           $juridique=array();
+           $finance=array();
+           $comptable=array();
+           $social=array();
+           foreach($docs as $docs){
+            if($docs->getCategorie()->getLibelle() =="Jurique"){
+                $jur=$docs;
+                $juridique=array_merge(array($jur),$juridique);
+            }
+            
+            
+            if($docs->getCategorie()->getLibelle() =="Financier"){
+                $jur=$docs;
+                $finance=array_merge(array($jur),$finance);
+            }
+            
+            if($docs->getCategorie()->getLibelle() =="Comptable"){
+                $jur=$docs;
+                $comptable=array_merge(array($jur),$comptable);
+            }
+            if($docs->getCategorie()->getLibelle() =="Social"){
+                $jur=$docs;
+                $social=array_merge(array($jur),$social);
+            }
+            
+            
+           }
+          
+         
 
         }else{
             dd('ok');
         }
+
+
+
+        return $this->render('home/try.html.twig', [
+            "mots"=>$search,
+            "categorie"=>$categorie,
+            "categories"=>$categories,
+            "date"=>date_format(new \DateTime(),"Y"),
+            "docs"=> $docs,
+           "juri"=>$juridique,
+           "finance"=>$finance,
+           "social"=>$social,
+            ]);
     }
 }

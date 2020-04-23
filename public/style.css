@@ -8,6 +8,11 @@
             z-index: 10;
         }
         
+        .bande {
+            height: 77px;
+            width: 100%;
+        }
+        
         body {
             background-color: gainsboro!important;
             font-family: Arial, Helvetica, sans-serif;
