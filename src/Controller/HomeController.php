@@ -26,16 +26,16 @@ class HomeController extends AbstractController
         ]);
     }
      /**
-     * @Route("pdf", name="pdf")
+     * @Route("renderpdf/{id}", name="render")
      */
-    public function inx()
+    public function inx($id,DocumentRepository $repDoc)
     {
-       // if($this->getUser()!=null){
-     //       dd($this->getUser());
-     //   }
-     
-        return $this->render('home/try.html.twig', [
-           
+         $doc=$repDoc->find($id);
+         $pdfblob=stream_get_contents($doc->getFichier());
+         $pdf = base64_encode(($pdfblob));
+         $doc->setFichier($pdf);
+        return $this->render('home/pdf.html.twig', [
+           "doc"=>$doc
         ]);
     }
      /**

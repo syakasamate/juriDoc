@@ -47,6 +47,7 @@
                     <div class="card-header" role="tab" id="headingTwo1">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
                             <h5 class="mb-0">
+                                <div class="vl" style=" border-left: 6px solid rgb(33, 102, 182);height:62px;float: left;margin: -20px;"></div>
                                 <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> JURIDIQUE [{{ juri|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
@@ -55,7 +56,7 @@
                     <!-- Card body -->
                     <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
                         <div class="card-body">
-                            {{ juri.description }}
+                            <a href="{{path('render',{id:juri.id})}}">{{ juri.description }}</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -77,7 +78,8 @@
                     <!-- Card header -->
                     <div class="card-header" role="tab" id="headingTwo2">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo1">
-                            <h5 class="mb-0">
+                            <h5 class="mb-0 ">
+                                <div class="vl" style=" border-left: 6px solid green;height:62px;float: left;margin: -20px;"></div>
                                 <img src="{{ asset('fiscal.svg') }} " height="30px" width="30px"> FINANCIER[{{ finance|length }} docs] <i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
@@ -109,6 +111,7 @@
                     <div class="card-header" role="tab" id="headingTwo3">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo1">
                             <h5 class="mb-0">
+                                <div class="vl" style=" border-left: 6px solid rgb(128, 20, 25);height:62px;float: left;margin: -20px;"></div>
                                 <img src="{{ asset('social.svg') }} " height="30px" width="30px"> SOCIAL [ {{ social|length }} docs] <i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
