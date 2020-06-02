@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> {% block stylesheets %} {% endblock %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<body>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+
+
+
+    <nav class="navbar navbar-expand-lg  fixed-top navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon "></span>
+  </button>
+        <a class="navbar-brand navbar-fixed-top" href="#">JuriDoc</a>
+
+        <div class="collapse navbar-collapse" class="float-right" id="navbarTogglerDemo03">
+
+            <ul class="navbar-nav navbar-fixed-top ml-auto">
+
+                <li class="nav-item {% if Home is defined %}active{% endif %}">
+                    <a class="nav-link" href="{{path('home')}}"><i class="fas fa-home"></i>Accueil</a>
+                </li>
+
+                {% if app.user.role %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact"><i class="fas fa-sign-out-alt"></i>Messages</a>
+                </li>
+                {% if app.user.role =="ROLE_ADMIN" %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('addDoc')}}"><i class="fas fa-sign-out-alt"></i>Ajouter des documents</a>
+                </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item {% if login is defined %} active {%  endif %}">
+                    <a class="nav-link" href="{{path('login')}}"><i class="fas fa-lock"></i>Connexion</a>
+                </li>
+                <li class="nav-item {% if  connection is defined %}active{% endif %}">
+                    <a class="nav-link" href="{{path('inscription')}}"><i class="fas fa-sign-in-alt"></i>Inscription</a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+    {% block body %} {% endblock %}
