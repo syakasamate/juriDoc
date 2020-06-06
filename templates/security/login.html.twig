@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<div class="container col-lg-4  " style="margin-top: 10%;">
+    {% for message in app.flashes("success") %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div>
+        <div class="card shadow p-3 mb-5  rounded">
+            <div class="card-body  ">
+                <form class="container  " action="{{ path('login') }}" method="post">
+                    <div class="form-group  mb-2 ">
+                        <label for=""></label>
+                        <input type="text" name="_username" class="form-control" placeholder="Adresse Email....">
+                    </div>
+                    <div class="form-group ">
+                        <label for=""></label>
+                        <input type="password" name="_password" id="" class="form-control" placeholder="password...">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"> connection</button>
+                    </div>
+                </form>
+            </div>
+            {% if error %}
+            <div class="alert alert-danger">
+                <ul class="list-unstyled mb-0">
+                    <li><span class="initialism form-error-icon badge badge-danger">Mot de Pass ou Email non valide</span>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div>
+</div>
+<div class="text-light m-1 p-4">
+    <p class="text-center">vous n'avez pas encore de conpte?<a href="registre"> Veillez-Vous Inscrire</a></p>
+</div>
+
+
+
+{% endblock %} {% block footer %} {% endblock %}
