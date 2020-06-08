@@ -70,17 +70,17 @@ class User implements UserInterface
     private $telephone;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $telephone_S;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adresse_S;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $numero_I_F;
 
@@ -90,10 +90,11 @@ class User implements UserInterface
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $code;
 
+    
   
 
     
@@ -284,6 +285,8 @@ class User implements UserInterface
 
         return $this;
     }
+
+   
 
   
 }

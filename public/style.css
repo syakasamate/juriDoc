@@ -59,6 +59,7 @@
                             .dropdown:hover>.dropdown-menu {
                                 display: block;
                                 border-bottom: 2px solid gold;
+                                width: 200%;
                             }
                             .dropdown-menu {
                                 background: blue;
@@ -98,6 +99,10 @@
                         
                         .ins {
                             font-size: 14px;
+                        }
+                        
+                        div .dropdown-divider {
+                            color: yellow;
                         }
                         
                         .cont {
@@ -257,4 +262,16 @@
                         
                         label {
                             font-size: 12px;
+                        }
+                        
+                        .t {
+                            font-size: 11px;
+                        }
+                        
+                        div .form-control {
+                            font-size: 12px;
+                        }
+                        
+                        a .dropdown-menu {
+                            width: 100%;
                         }
