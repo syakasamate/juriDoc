@@ -1,8 +1,150 @@
 {% extends 'admin.html.twig' %} {% block body %}
-<div class="mt-5 pt5">
-    {% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{ message }}
+
+<div>
+    <div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div class="mt-5 pt5">
+                    {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row text-center ">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-plus fa-5x"></i>
+                        <h4>Ajouter Docs</h4>
+                    </a>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-envelope-o fa-5x"></i>
+                        <h4>Messages</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fas fa-certificate fa-5x"></i>
+                        <h4>Les Packs</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-user-plus fa-5x"></i>
+                        <h4>Ajouter User</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-key fa-5x"></i>
+                        <h4>Admin </h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-comments-o fa-5x"></i>
+                        <h4>Support</h4>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row text-center pad-top">
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-clipboard fa-5x"></i>
+                        <h4>All Docs</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-gear fa-5x"></i>
+                        <h4>Categories</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-wechat fa-5x"></i>
+                        <h4>Live Talk</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-bell-o fa-5x"></i>
+                        <h4>Notifications </h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div style="color:#3c4474 ;" class="div-square ">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-rocket fa-5x"></i>
+                        <h4>Launch</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-user fa-5x"></i>
+                        <h4>Register User</h4>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
     </div>
-    {% endfor %}
-</div> {% endblock %}
+    <!-- /. PAGE INNER  -->
+</div>
+{% endblock %}
