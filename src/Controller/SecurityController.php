@@ -18,7 +18,9 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig',[
             'error' => $error,
             'login' => true,
-            'title'=>'Connexion'
+            'title'=>'Connexion',
+            "date"=>date_format(new \DateTime(),"Y")
+
         ]);
     }
     /**

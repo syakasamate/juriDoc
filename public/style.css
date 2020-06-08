@@ -1,5 +1,5 @@
                         .banniere {
-                            background-image: url("banniere.png");
+                            background-image: url("baniere.jpg");
                             width: 100%;
                             height: 561px;
                             background-repeat: no-repeat;
@@ -168,6 +168,11 @@
                             }
                         }
                         
+                        .reg1 {
+                            margin-bottom: 10%;
+                            font-family: 'Times New Roman', Times, serif;
+                        }
+                        
                         .reg {
                             margin-bottom: 10%;
                         }
@@ -243,7 +248,7 @@
                         }
                         
                         .container-fluid {
-                            background-image: url("baniere3.png");
+                            background-image: url("baniere.jpg");
                             height: 100%;
                             margin-top: -3%;
                             padding-top: 10%;
@@ -274,4 +279,17 @@
                         
                         a .dropdown-menu {
                             width: 100%;
+                        }
+                        
+                        .log {
+                            background-image: url("baniere.jpg");
+                            height: 100%;
+                            margin-top: -3%;
+                            padding-top: 10%;
+                            width: 100%;
+                            background-attachment: fixed;
+                            background-position: center;
+                            z-index: 10;
+                            margin-bottom: -10%;
+                            padding-bottom: 20%;
                         }
