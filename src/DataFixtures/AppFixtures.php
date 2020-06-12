@@ -23,9 +23,13 @@ class AppFixtures extends Fixture
         // $manager->persist($product);
         $user=new User();
         $user->setRole("ROLE_ADMIN");
+        $user->setCivilite("Mr");
+        $user->setNomS("nasrulex.com");
+        $user->setTelephone("783884597");
         $user->setUsername("ADMIN");
-        $user->setEmail("admin@admin.com");
-        $hsh=$this->encoder->encodePassword($user,"ADMINJURIDOC");
+        $user->setPrenom("Moussa");
+        $user->setEmail("Admin@nasrulex.com");
+        $hsh=$this->encoder->encodePassword($user,"ADMINNASRULEX");
         $user->setPassword(($hsh));
         $manager->persist($user);
         $categorie1=new Categorie();

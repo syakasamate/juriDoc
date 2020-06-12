@@ -19,7 +19,7 @@
 
 </head>
 <div class="bg-white bord " id="haut">
-    <a class="navbar-brand navbar-fixed-top j" href="#"> <img src="{{asset('senjuridoc.jpg')}}" style="height: 42px;margin-left:40px;" alt="senjuridoc"></a>
+    <a class="navbar-brand navbar-fixed-top j" href="#"> <img src="{{asset('senjuridoc.jpg')}}" style="height: 47px;width: 25%;margin-left:40px;" alt="senjuridoc"></a>
     <ul class="nav" style="float:right">
 
         {% if app.user %}
@@ -36,6 +36,9 @@
             <a class="nav-link text-dark dec" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
         </li>
         {% else %}
+        <li class="nav-item  con {% if login is defined %} active {%  endif %}">
+            <a class="nav-link text-dark" href="{{path('tarif')}}"><i class="fab fa-adobe"></i>Nos Tarifs</a>
+        </li>
         <li class="nav-item  con {% if login is defined %} active {%  endif %}">
             <a class="nav-link text-dark" href="{{path('login')}}"><i class="far fa-user-circle"></i>Connexion</a>
         </li>
@@ -171,8 +174,8 @@
 
 {% block body %} {% endblock %} {% block footer %}
 <!-- Footer -->
-<footer style="background-color: 	rgb(44, 46, 42);" class="  page-footer font-small  text-white ">
-    <div style="background-color: #3c4474;">
+<footer style="background-color: 	rgb(11, 11, 109);" class="  page-footer font-small  text-white ">
+    <div style="background-color: rgb(15, 180, 180);">
         <div class="container">
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center ">
@@ -284,13 +287,13 @@
                 <h6 class="text-uppercase font-weight-bold">Contact</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <i class="fas fa-home mr-3"></i> Dakar, NY 10012, US</p>
+                    <i class="fas fa-home mr-3"></i> Senegal,Dakar,Almadies nº648</p>
                 <p>
-                    <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                    <i class="fas fa-envelope mr-3"></i>Admin@nasrulex.com</p>
                 <p>
-                    <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                    <i class="fas fa-phone mr-3"></i> + 221 77 377 77 66</p>
                 <p>
-                    <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                    <i class="fas fa-print mr-3"></i> +221 338 95 57 76 </p>
 
             </div>
             <!-- Grid column -->
@@ -302,7 +305,7 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div style="background-color: #3c4474;" class="text-center py-3">{{ date }} Juridoc tous les droits resservés. Developpé Par:
+    <div style="background-color: rgb(15, 180, 180);" class="text-center py-3">{{ date }} Nasrulex tous les droits resservés. Developpé Par:Due diligence technologie
     </div>
     <!-- Copyright -->
 

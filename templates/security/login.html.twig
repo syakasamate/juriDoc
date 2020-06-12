@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %} {% block body %}
-
+<div  class="log">
 <div class="container col-lg-4  " style="margin-top: 10%;">
     {% for message in app.flashes("success") %}
     <div class="alert alert-success">
@@ -7,7 +7,11 @@
     </div>
     {% endfor %}
     <div>
+                <h4 class="text-white text-center txt"> Veuillez vous connecter!
+!</h4>
+
         <div class="card shadow p-3 mb-5  rounded">
+
             <div class="card-body  ">
                 <form class="container  " action="{{ path('login') }}" method="post">
                     <div class="form-group  mb-2 ">
@@ -36,10 +40,10 @@
 </div>
 <div>
 </div>
-<div class="text-light m-1 p-4">
+<div class="text-light">
     <p class="text-center">vous n'avez pas encore de conpte?<a href="registre"> Veillez-Vous Inscrire</a></p>
+</div>
 </div>
 
 
-
-{% endblock %} {% block footer %} {% endblock %}
+{% endblock %} 
