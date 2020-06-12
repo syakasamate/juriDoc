@@ -294,3 +294,41 @@
                         .font-small {
                             font-family: Verdana, Geneva, Tahoma, sans-serif;
                         }
+                        
+                        div .bon1 {
+                            border: 2px solid rgb(11, 11, 109);
+                        }
+                        
+                        div .bon2 {
+                            border: 2px solid rgb(15, 180, 180);
+                        }
+                        
+                        div .bon3 {
+                            border: 2px solid rgb(255, 0, 221);
+                        }
+                        
+                        div .bon4 {
+                            border: 2px solid springgreen;
+                        }
+                        
+                        .bc4 {
+                            padding-top: -40%;
+                        }
+                        
+                        .bc {
+                            color: white;
+                        }
+                        
+                        .bc:hover {
+                            text-decoration: none;
+                            color: white;
+                        }
+                        
+                        .sa {
+                            padding: 1%;
+                        }
+                        
+                        .ls:hover {
+                            text-decoration: none;
+                            color: white;
+                        }

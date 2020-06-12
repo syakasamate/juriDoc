@@ -28,8 +28,8 @@ class AppFixtures extends Fixture
         $user->setTelephone("783884597");
         $user->setUsername("ADMIN");
         $user->setPrenom("Moussa");
-        $user->setEmail("admin@admin.com");
-        $hsh=$this->encoder->encodePassword($user,"ADMINJURIDOC");
+        $user->setEmail("Admin@nasrulex.com");
+        $hsh=$this->encoder->encodePassword($user,"ADMINNASRULEX");
         $user->setPassword(($hsh));
         $manager->persist($user);
         $categorie1=new Categorie();
