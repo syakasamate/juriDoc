@@ -332,3 +332,43 @@
                             text-decoration: none;
                             color: white;
                         }
+                        
+                        .t1,
+                        .t2,
+                        .t3 {
+                            width: 30%;
+                            margin-left: 35%;
+                            background-color: yellow;
+                        }
+                        
+                        .t1 {
+                            border: 1px solid rgb(11, 11, 109)
+                        }
+                        
+                        .t2 {
+                            border: 1px solid rgb(15, 180, 180)
+                        }
+                        
+                        .t3 {
+                            border: 1px solid rgb(255, 0, 221)
+                        }
+                        
+                        div .t4 {
+                            padding-top: 58%;
+                        }
+                        
+                        div .rg {
+                            margin-left: 10%;
+                        }
+                        
+                        .bt {
+                            background-color: rgb(246, 244, 244);
+                            margin-left: -4.5%;
+                            margin-bottom: -6.5%;
+                            margin-right: -4.5%;
+                        }
+                        
+                        .bt1 {
+                            background-color: rgb(246, 244, 244);
+                            margin-bottom: -2%;
+                        }
