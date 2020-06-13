@@ -21,24 +21,37 @@ class DocumentRepository extends ServiceEntityRepository
 
 
 
-    public function searchDoc($s,$c)
+    public function searchDoc($mots,$cat,$souscat)
     {
-        if(!empty($c) || $c !=''){
-            
-            return $this->createQueryBuilder('d')
+        if(!empty($cat) || $cat !=''){
+            if(!empty($souscat)){
+                return $this->createQueryBuilder('d')
+                ->Where('d.description LIKE :val ')
+                //->andWhere(':cat MEMBER OF d.categories')
+                ->andWhere('d.categorie = :cat ')
+                ->setParameter('val', '%'.$mots.'%')
+                ->setParameter('cat', $cat)
+                ->getQuery()
+                ->getResult();
+            }else{
+
+                return $this->createQueryBuilder('d')
             ->Where('d.description LIKE :val ')
             //->andWhere(':cat MEMBER OF d.categories')
             ->andWhere('d.categorie = :cat ')
-            ->setParameter('val', '%'.$s.'%')
-            ->setParameter('cat', $c)
+            ->setParameter('val', '%'.$mots.'%')
+            ->setParameter('cat', $cat)
             ->getQuery()
-            ->getResult()
+            ->getResult();
+            }
+            
+            
         ;
     }else{
         return $this->createQueryBuilder('d')
         ->Where('d.description LIKE :val ')
         //->andWhere(':cat MEMBER OF d.categories')
-        ->setParameter('val', '%'.$s.'%')
+        ->setParameter('val', '%'.$mots.'%')
         ->getQuery()
         ->getResult()
     ;

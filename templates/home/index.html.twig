@@ -2,23 +2,24 @@
 
 {% extends 'base.html.twig' %} {% block body %}
 <div class="banniere">
-    <h1 class="des text-center"></h1>
+    <h1 class="des text-center">DOCUMENTS JURIDIQUES
+À PORTÉE DE MAIN</h1>
 
     <div class="container pt-5">
         <form action="{{path('recherche')}}" method='post'>
 
-            <div class="row mt-5">
-                <div class="col-lg-6 col-sm-12">
+            <div class="row no-gutters mt-5">
+                <div class="col-lg-4 m-0 col-sm-12">
                     <div class="form-group">
                         <div>
-                            <input class="form-control mr-sm-6" name="search" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control " style=" height:60px;border-radius: 33px 0 0 33px ;width:100%" name="search" type="search" placeholder="Recherche par mots clés .." aria-label="Search">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 ">
+                <div class="col-lg-4 m-0 ">
                     <div class="form-group">
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                        <select name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
+                        <select style=" height:60px;" name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
                         <option value='' selected>Toutes Les Categories</options>
                         {% for cat in categories %}
                         <option value="{{ cat.id }}">{{ cat.libelle }}</option>
@@ -26,9 +27,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-3  ">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-search"></i> Chercher</button>
+                <div class="col-lg-4 m-0 ">
+                    <div class="form-group ">
+                        <button  type="submit" style=" height:60px;border-radius: 0 33px 33px 0;width:70%" class="btn btn-success "><i class="fas fa-search"></i> Chercher</button>
                     </div>
                 </div>
             </div>

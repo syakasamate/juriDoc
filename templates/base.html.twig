@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
-<div class="bg-white bord " id="haut">
+<div class="bg-white bord " id="haut" style="height:100px">
     <a class="navbar-brand navbar-fixed-top j" href="#"> <img src="{{asset('senjuridoc.jpg')}}" style="height: 47px;width: 25%;margin-left:40px;" alt="senjuridoc"></a>
-    <ul class="nav" style="float:right">
+    <ul class="nav navbar-light"  style="float:right">
 
         {% if app.user %}
         <li class="nav-item">
@@ -51,11 +51,12 @@
 
 
 <div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-white bg-white">
-        <a class="navbar-brand col-sm-4 "></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand col-sm-4 p-4"></a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+        <button style="position:absolute;left:10px;top:-0px;margin:10px;" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="my-1 mx-2 close">X</span>
+       <span class="navbar-toggler-icon"></span>
   </button>
 
         <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
@@ -174,7 +175,7 @@
 
 {% block body %} {% endblock %} {% block footer %}
 <!-- Footer -->
-<footer style="background-color: 	rgb(11, 11, 109);" class="  page-footer font-small  text-white ">
+<footer style="background-color: 	#3c4474;" class="  page-footer font-small  text-white ">
     <div style="background-color: rgb(15, 180, 180);">
         <div class="container">
             <!-- Grid row-->
