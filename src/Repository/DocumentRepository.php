@@ -21,7 +21,7 @@ class DocumentRepository extends ServiceEntityRepository
 
 
 
-    public function searchDoc($mots,$cat,$souscat)
+    public function searchDoc($mots,$cat,$souscat="")
     {
         if(!empty($cat) || $cat !=''){
             if(!empty($souscat)){
