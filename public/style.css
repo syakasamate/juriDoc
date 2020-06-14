@@ -1,3 +1,16 @@
+.carte {
+    cursor: pointer;
+}
+
+.carte:hover .card {
+    -webkit-transform: translate(50px, -20px);
+    ;
+    transform: translate(0, -20px);
+    ;
+    -webkit-transition: 0.75s;
+    transition: 0.75s;
+}
+
 .navbar-toggler>.close {
     display: inline;
 }
@@ -254,7 +267,6 @@ div .juri img {
 }
 
 .container-fluid {
-    background-image: url("baniere.jpg");
     height: 100%;
     margin-top: -3%;
     padding-top: 10%;

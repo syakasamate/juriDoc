@@ -1,9 +1,6 @@
-
-
-{% extends 'base.html.twig' %} {% block body %}
+ {% extends 'base.html.twig' %} {% block body %}
 <div class="banniere">
-    <h1 class="des text-center">DOCUMENTS JURIDIQUES
-À PORTÉE DE MAIN</h1>
+    <h1 class="des text-center">DOCUMENTS JURIDIQUES À PORTÉE DE MAIN</h1>
 
     <div class="container pt-5">
         <form action="{{path('recherche')}}" method='post'>
@@ -29,7 +26,7 @@
                 </div>
                 <div class="col-lg-4 m-0 ">
                     <div class="form-group ">
-                        <button  type="submit" style=" height:60px;border-radius: 0 33px 33px 0;width:70%" class="btn btn-success "><i class="fas fa-search"></i> Chercher</button>
+                        <button type="submit" style=" height:60px;border-radius: 0 33px 33px 0;width:70%" class="btn btn-success "><i class="fas fa-search"></i> Chercher</button>
                     </div>
                 </div>
             </div>
@@ -71,38 +68,66 @@
     <div class="docs">
         <h2 class="text-center mt-5 text-bold">RETROUVEZ ICI TOUS LES DOCUMENTS JURIDIQUE</h2>
         <div class="row mt-5">
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-4 carte col-sm-12">
                 <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="investissement.svg" height="313px" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text text-center text-bold">5555 DOCUMENTS</p>
-                    </div>
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">JURIDIQUES</h4>
+
+                    <hr style="background-color:gray;height: 0.5px;height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-4 carte col-sm-12">
                 <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="foncier.svg" height="313px" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text text-center ">5555 DOCUMENTS </p>
-                    </div>
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">FISCAL</h4>
+
+                    <hr style="background-color:gray;height: 0.5px;color: gray;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">SOCIAL</h4>
+
+                    <hr style="background-color:gray; height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
                 </div>
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-4 carte col-sm-12">
                 <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="fiscal.svg" color="black" height="313px" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text text-center text-bold">5555 DOCUMENTS</p>
-                    </div>
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">FONCIER</h4>
+
+                    <hr style="background-color:gray; height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-4 carte col-sm-12">
                 <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="313px" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text text-center ">5555 DOCUMENTS </p>
-                    </div>
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">COMPTABLITÉ</h4>
+
+                    <hr style="background-color:gray; height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">AFFAIRES</h4>
+
+                    <hr style="background-color:gray;height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
                 </div>
             </div>
         </div>
