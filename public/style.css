@@ -11,6 +11,19 @@
     transition: 0.75s;
 }
 
+.pack {
+    cursor: pointer;
+}
+
+.pack:hover .card {
+    -webkit-transform: translate(50px, -20px);
+    ;
+    transform: translate(0, -20px);
+    ;
+    -webkit-transition: 0.75s;
+    transition: 0.75s;
+}
+
 .navbar-toggler>.close {
     display: inline;
 }
@@ -200,7 +213,7 @@ footer p:hover {
 }
 
 footer p a {
-    color: honeydew;
+    color: black;
 }
 
 footer p a:hover {
@@ -354,16 +367,12 @@ div .bon4 {
     color: white;
 }
 
-.t1,
-.t2,
-.t3 {
+div .t1 {
     width: 30%;
-    margin-left: 35%;
-    background-color: yellow;
 }
 
-.t1 {
-    border: 1px solid rgb(11, 11, 109)
+div .t1 {
+    margin-left: 30%;
 }
 
 .t2 {
@@ -374,8 +383,8 @@ div .bon4 {
     border: 1px solid rgb(255, 0, 221)
 }
 
-div .t4 {
-    padding-top: 58%;
+.t4 {
+    padding-top: 57%;
 }
 
 div .rg {
@@ -392,4 +401,10 @@ div .rg {
 .bt1 {
     background-color: rgb(246, 244, 244);
     margin-bottom: -2%;
+}
+
+div .tp {
+    margin-top: -40%;
+    width: 40%;
+    margin-left: 30%;
 }
