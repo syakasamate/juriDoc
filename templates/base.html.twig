@@ -68,80 +68,21 @@
                     <a class="nav-link text-dark" href="{{path('home')}}">Accueil<span class="sr-only">(current)</span></a>
 
                 </li>
-
+{% for cat in categories%}
                 <li class="nav-item dropdown">
                       <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Juridique
+          {{ cat.libelle }}
         </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item " href="#">Lois</a>
+                       {% for sousCat in cat.sousCategorie %}
+                        <a class="dropdown-item" href="#">{{ sousCat.libelle }}</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Degres</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Article</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item " href="#">Lois</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Degres</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Article</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item " href="#">Lois</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Degres</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Article</a>
+                     {% endfor%}
                     </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Fiscal
-        </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item " href="#">Lois</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Circulaires </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Arrêtés</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Social
-        </a>
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item " href="#">Lois</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Ordonnances</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Arrêtés</a>
-                    </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Comptabilité
-        </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item " href="#">Communautaire</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">International</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Affaires
-        </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item " href="#">Assurances</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Banques</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Investissement</a>
-                        
-                    </div>
-                </li>
+                {% endfor %}
+         
                
             </ul>
 
@@ -151,8 +92,10 @@
 
 
 <script>
+
     window.onscroll = function() {
-        myFunction()
+       
+        myFunction();
     };
 
     var navbar = document.getElementById("navbar");
@@ -165,6 +108,7 @@
         } else {
             navbar.classList.remove("sticky");
         }
+         
         document.getElementById("cRetour").className = (window.pageYOffset > 100) ? "cVisible" : "cInvisible";
 
     }

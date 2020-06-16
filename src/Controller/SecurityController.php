@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CategorieRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -13,13 +14,15 @@ class SecurityController extends AbstractController
      */
 
      
-    public function login(AuthenticationUtils $authenticationUtils){
+    public function login(AuthenticationUtils $authenticationUtils,CategorieRepository $cat){
+        $categories=$cat->findAll();
         $error = $authenticationUtils->getLastAuthenticationError();
         return $this->render('security/login.html.twig',[
             'error' => $error,
             'login' => true,
             'title'=>'Connexion',
-            "date"=>date_format(new \DateTime(),"Y")
+            "date"=>date_format(new \DateTime(),"Y"),
+            "categories"=>$categories
 
         ]);
     }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,9 +19,10 @@ class RegistreController extends AbstractController
      * @Route("/registre", name="inscription")
      */
     
-    public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder )
+    public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder, CategorieRepository $cat)
     {
 
+        $categories=$cat->findAll();
         if($request->request->count()>0){
             $user = new User();
             $hsh=$encoder->encodePassword($user,$request->request->get('password'));
@@ -48,7 +50,8 @@ class RegistreController extends AbstractController
             'connection'=>true,
            // 'form'=>$form->createView(),
             'title'=>'Inscription',
-            "date"=>date_format(new \DateTime(),"Y")
+            "date"=>date_format(new \DateTime(),"Y"),
+            "categories"=>$categories
         ]);
     }
 

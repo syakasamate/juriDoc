@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+
     /**
      * @Route("", name="home")
      */
@@ -28,14 +29,16 @@ class HomeController extends AbstractController
      /**
      * @Route("renderpdf/{id}", name="render")
      */
-    public function inx($id,DocumentRepository $repDoc)
+    public function inx($id,DocumentRepository $repDoc,CategorieRepository $cat)
     {
+        $categories=$cat->findAll();
          $doc=$repDoc->find($id);
          $pdfblob=stream_get_contents($doc->getFichier());
          $pdf = base64_encode(($pdfblob));
          $doc->setFichier($pdf);
         return $this->render('home/pdf.html.twig', [
-           "doc"=>$doc]);
+           "doc"=>$doc,
+           "categories"=> $categories ]);
     }
      /**
      * @Route("recherche", name="recherche")

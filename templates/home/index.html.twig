@@ -19,7 +19,10 @@
                         <select style=" height:60px;" name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
                         <option value='' selected>Toutes Les Categories</options>
                         {% for cat in categories %}
-                        <option value="{{ cat.id }}">{{ cat.libelle }}</option>
+                        <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b></option>
+                        {% for sousCat in cat.sousCategorie %}
+                        <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b> >> {{ sousCat.libelle }}</option>
+                        {% endfor %}
                         {% endfor %}
                         </select>
                     </div>

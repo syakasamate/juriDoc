@@ -28,10 +28,16 @@ class Categorie
      */
     private $docs;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\SousCategorie", inversedBy="y")
+     */
+    private $sousCategorie;
+
     public function __construct()
     {
        
         $this->docs = new ArrayCollection();
+        $this->sousCategorie = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -78,6 +84,32 @@ class Categorie
             if ($doc->getCategorie() === $this) {
                 $doc->setCategorie(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SousCategorie[]
+     */
+    public function getSousCategorie(): Collection
+    {
+        return $this->sousCategorie;
+    }
+
+    public function addSousCategorie(SousCategorie $sousCategorie): self
+    {
+        if (!$this->sousCategorie->contains($sousCategorie)) {
+            $this->sousCategorie[] = $sousCategorie;
+        }
+
+        return $this;
+    }
+
+    public function removeSousCategorie(SousCategorie $sousCategorie): self
+    {
+        if ($this->sousCategorie->contains($sousCategorie)) {
+            $this->sousCategorie->removeElement($sousCategorie);
         }
 
         return $this;
