@@ -1,0 +1,221 @@
+{% extends 'base.html.twig' %} {% block body %}
+<div class="banniere">
+
+<h1 class="ml6 text-center">
+  <span class="text-wrapper">
+    <span class="letters ">DOCUMENTS JURIDIQUES À PORTÉE DE MAIN</span>
+  </span>
+</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    
+    <div class="container pt-5">
+        <form action="{{path('recherche')}}" method='post'>
+
+            <div class="row no-gutters mt-5">
+                <div class="col-lg-4 m-0 col-sm-12">
+                    <div class="form-group">
+                        <div>
+                            <input class="form-control " style=" height:60px;border-radius: 33px 0 0 33px ;width:100%" name="search" type="search" placeholder="Recherche par mots clés .." aria-label="Search">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 m-0 ">
+                    <div class="form-group">
+                        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                        <select style=" height:60px;" name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
+                        <option value='' selected>Toutes Les Categories</options>
+                        {% for cat in categories %}
+                        <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b></option>
+                        {% for sousCat in cat.sousCategorie %}
+                        <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b> >> {{ sousCat.libelle }}</option>
+                        {% endfor %}
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 m-0 ">
+                    <div class="form-group ">
+                        <button type="submit" style=" height:60px;border-radius: 0 33px 33px 0;width:70%" class="btn btn-success "><i class="fas fa-search"></i> Chercher</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="partner mt-5">
+
+    <h2 class="text-center mt-5 text-bold">NOS PARTENAIRES</h2>
+    <div class="container ptxt">
+        <div class="row mt-5 ">
+            <div class="col-lg-6   carte col-sm-12 mb-3">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <p class="card-text text-dark
+
+">Signer une convention avec NASRULEX, pour faire bénéficier à votre Organisme, Ordre, Cabinet ou Société un accès privilégié sur notre Plateforme.</p>
+
+                    <img class="card-img-top mt-3 mb-3 p1" src="h1.png" alt="Card image cap">
+
+                    <div class="card-body text-dark">
+                       <b class="sl"> NASRULEX</b>, <b>au Service des professionnels du droit et des chiffres</b> Contactez-nous au : <a class="text-primary n">nasrulex@nasrulex.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 carte col-sm-12 tt">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <p class="card-text text-dark">Signer une convention avec NASRULEX, pour faire bénéficier à votre Organisme, Ordre, Cabinet ou Société un accès privilégié sur notre Plateforme.</p>
+
+                    <img class="card-img-top mt-3 mb-3 p1" src="m.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text text-dark ">  <b class="sl"> NASRULEX</b>,<b>au Service des professionnels du droit et des chiffres</b> Contactez-nous au :  <a class="text-primary n">nasrulex@nasrulex.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-center mt-5"> <a href="#" class="btn btn-success" style="background-color: 	#3c4474;">VOIR PLUS</a></p>
+</div>
+<div class="container">
+    <div class="docs">
+        <h2 class="text-center mt-5 text-bold">RETROUVEZ ICI TOUS LES DOCUMENTS JURIDIQUE</h2>
+        <div class="row mt-5">
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">JURIDIQUES</h4>
+
+                    <hr style="background-color:gray;height: 0.5px;height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">FISCAL</h4>
+
+                    <hr style="background-color:gray;height: 0.5px;color: gray;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">SOCIAL</h4>
+
+                    <hr style="background-color:gray; height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">FONCIER</h4>
+
+                    <hr style="background-color:gray; height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">COMPTABLITÉ</h4>
+
+                    <hr style="background-color:gray; height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 carte col-sm-12">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="90px" alt="Card image cap">
+                    <h4 class="text-center">AFFAIRES</h4>
+
+                    <hr style="background-color:gray;height: 0.5px;">
+                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;">5555</span> DOCUMENTS </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="banner2"></div>
+</div>
+<div class="container" id="contact">
+
+    <div class="contact">
+        <h2 class="text-center mt-5 text-bold">CONTACT</h2>
+        <form action="{{path('contact.add')}}" method="post">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="mt-3">
+                        <label class="sr-only" for="inlineFormInputGroup">Prenom et Nom</label>
+                        <div class="input-group mb-2 shadow p-3  bg-white rounded">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
+                            </div>
+                            <input type="text" class="form-control" name="nomComplet" id="inlineFormInputGroup" placeholder="Prenom et Nom...">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label class="sr-only" for="inlineFormInputGroup">Email</label>
+                        <div class="input-group mb-2 shadow p-3  bg-white rounded">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                            </div>
+                            <input type="text" class="form-control" name="username" id="inlineFormInputGroup" placeholder="Email.">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label class="sr-only" for="inlineFormInputGroup">Numero Telephone</label>
+                        <div class="input-group mb-2 shadow p-3  bg-white rounded">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-mobile"></i></div>
+                            </div>
+                            <input type="number" class="form-control" name="telephone" id="inlineFormInputGroup" placeholder="Numero de Telephone....">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="input-group mt-3 shadow p-3 mb-5 bg-white rounded">
+                        <textarea class="form-control " placeholder="Votre message" name="message" style="height: 212px;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-5"> <input type="submit" class=" shadow p-3 mb-5  rounded btn btn-primary" style="background-color: 	#3c4474;" value="Envoyer"></p>
+
+        </form>
+
+
+    </div>
+</div>
+<script>
+var textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml6',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+   </script>
+
+{% endblock %}
