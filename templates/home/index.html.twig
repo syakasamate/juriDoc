@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %} {% block body %}
 <div class="banniere">
-    <h1 class="des text-center">DOCUMENTS JURIDIQUES À PORTÉE DE MAIN</h1>
+
+
+    <h1 class="ml6 text-center">
+        <span class="text-wrapper">
+    <span class="letters ">DOCUMENTS JURIDIQUES À PORTÉE DE MAIN</span>
+        </span>
+    </h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
 
     <div class="container pt-5">
         <form action="{{path('recherche')}}" method='post'>
@@ -39,36 +48,42 @@
 </div>
 <div class="partner mt-5">
 
-    <h2 class="text-center mt-5 text-bold">NOS PARTENAIRE</h2>
-    <div class="container">
+
+    <h2 class="text-center mt-5 text-bold">NOS PARTENAIRES</h2>
+    <div class="container ptxt">
         <div class="row mt-5 ">
             <div class="col-lg-6   carte col-sm-12 mb-3">
                 <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <p class="card-text text-primary
+                    <p class="card-text text-dark
 
 ">Signer une convention avec NASRULEX, pour faire bénéficier à votre Organisme, Ordre, Cabinet ou Société un accès privilégié sur notre Plateforme.</p>
 
-                    <img class="card-img-top mt-3 mb-3 t1" src="h1.png" alt="Card image cap">
+                    <img class="card-img-top mt-3 mb-3 p1" src="h1.png" alt="Card image cap">
 
-                    <div class="card-body text-primary">
-                        NASRULEX, au Service des professionnels du droit et des chiffres Contactez-nous au : nasrulex@nasrulex.com
+                    <div class="card-body text-dark">
+                        <b class="sl"> NASRULEX</b>, <b>au Service des professionnels du droit et des chiffres</b> Contactez-nous au : <a class="text-primary n">nasrulex@nasrulex.com</a>
+
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 carte col-sm-12 tt">
                 <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <p class="card-text text-primary">Signer une convention avec NASRULEX, pour faire bénéficier à votre Organisme, Ordre, Cabinet ou Société un accès privilégié sur notre Plateforme.</p>
 
-                    <img class="card-img-top mt-3 mb-3 t1" src="h1.png" alt="Card image cap">
+                    <p class="card-text text-dark">Signer une convention avec NASRULEX, pour faire bénéficier à votre Organisme, Ordre, Cabinet ou Société un accès privilégié sur notre Plateforme.</p>
+
+                    <img class="card-img-top mt-3 mb-3 p1" src="m.png" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text text-primary "> NASRULEX, au Service des professionnels du droit et des chiffres Contactez-nous au : nasrulex@nasrulex.com</p>
+                        <p class="card-text text-dark "> <b class="sl"> NASRULEX</b>,<b>au Service des professionnels du droit et des chiffres</b> Contactez-nous au : <a class="text-primary n">nasrulex@nasrulex.com</a></p>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <p class="text-center mt-5"> <a href="#" class="btn btn-success">VOIR PLUS</a></p>
+
+    <p class="text-center mt-5"> <a href="#" class="btn btn-success" style="background-color: 	#3c4474;">VOIR PLUS</a></p>
+
 </div>
 <div class="container">
     <div class="docs">
@@ -184,12 +199,37 @@
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-5"> <input type="submit" class=" shadow p-3 mb-5  rounded btn btn-primary" value="Envoyer"></p>
+
+            <p class="text-center mt-5"> <input type="submit" class=" shadow p-3 mb-5  rounded btn btn-primary" style="background-color: 	#3c4474;" value="Envoyer"></p>
+
 
         </form>
 
 
     </div>
 </div>
+
+<script>
+    var textWrapper = document.querySelector('.ml6 .letters');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({
+            loop: true
+        })
+        .add({
+            targets: '.ml6 .letter',
+            translateY: ["1.1em", 0],
+            translateZ: 0,
+            duration: 750,
+            delay: (el, i) => 50 * i
+        }).add({
+            targets: '.ml6',
+            opacity: 0,
+            duration: 1000,
+            easing: "easeOutExpo",
+            delay: 1000
+        });
+</script>
+
 
 {% endblock %}
