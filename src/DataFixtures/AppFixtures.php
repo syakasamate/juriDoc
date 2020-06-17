@@ -63,50 +63,49 @@ class AppFixtures extends Fixture
         $SousCategorie14=new SousCategorie();
 
 
-
-        $SousCategorie1->setLibelle('lois');
-        $SousCategorie2->setLibelle('Decrets');
-        $SousCategorie3->setLibelle('Ordonnances');
+        $SousCategorie1->setLibelle('Conventions');
+        $SousCategorie2->setLibelle('lois');
+        $SousCategorie3->setLibelle('Decrets');
         $SousCategorie4->setLibelle('Arretés');
-        $SousCategorie5->setLibelle('Communautaire');
+        $SousCategorie5->setLibelle('Circulaires');
         $SousCategorie6->setLibelle('Doctrines');
-        $SousCategorie7->setLibelle('Conventions');
-        $SousCategorie8->setLibelle('Circulaires');
-        $SousCategorie9->setLibelle(' National');
+        $SousCategorie7->setLibelle('Ordonnances');
+        $SousCategorie8->setLibelle(' National');
+        $SousCategorie9->setLibelle('Communautaire');
         $SousCategorie10->setLibelle(' International');
-        $SousCategorie11->setLibelle('Banque');
-        $SousCategorie12->setLibelle(' Investissement');
-        $SousCategorie13->setLibelle(' Telecommunication');
-        $SousCategorie14->setLibelle(' Assurances');
+        $SousCategorie11->setLibelle(' Assurances');
+        $SousCategorie12->setLibelle('Banque');
+        $SousCategorie13->setLibelle(' Investissement');
+        $SousCategorie14->setLibelle(' Telecommunication');
 
         
 
         $categorie1->addSousCategorie($SousCategorie2);
 
-        $categorie2->addSousCategorie($SousCategorie7)
-                    ->addSousCategorie($SousCategorie1)
+        $categorie2->addSousCategorie($SousCategorie1)
                     ->addSousCategorie($SousCategorie2)
+                    ->addSousCategorie($SousCategorie3)
                     ->addSousCategorie($SousCategorie4)
-                    ->addSousCategorie($SousCategorie8)
+                    ->addSousCategorie($SousCategorie5)
                     ->addSousCategorie($SousCategorie6);
 
-        $categorie3->addSousCategorie($SousCategorie7)
-                    ->addSousCategorie($SousCategorie1)
+        $categorie3->addSousCategorie($SousCategorie1)
                     ->addSousCategorie($SousCategorie2)
+                    ->addSousCategorie($SousCategorie3)
                     ->addSousCategorie($SousCategorie4);
                     
-        $categorie4->addSousCategorie($SousCategorie7)
-                    ->addSousCategorie($SousCategorie1)
+        $categorie4->addSousCategorie($SousCategorie2)
+                    ->addSousCategorie($SousCategorie3)
                     ->addSousCategorie($SousCategorie4);
 
-        $categorie5->addSousCategorie($SousCategorie5)
-                    ->addSousCategorie($SousCategorie10)
-                    ->addSousCategorie($SousCategorie9);
+        $categorie5->addSousCategorie($SousCategorie8)
+                    ->addSousCategorie($SousCategorie9)
+                    ->addSousCategorie($SousCategorie10);
                     
-        $categorie6->addSousCategorie($SousCategorie14)
-                    ->addSousCategorie($SousCategorie11)
+        $categorie6->addSousCategorie($SousCategorie11)
                     ->addSousCategorie($SousCategorie12)
-                    ->addSousCategorie($SousCategorie13);
+                    ->addSousCategorie($SousCategorie13)
+                    ->addSousCategorie($SousCategorie14);
                     
                     
         
