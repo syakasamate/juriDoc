@@ -88,9 +88,10 @@ hr {
 
 @media (min-width: 990px) {
     .dropdown:hover>.dropdown-menu {
+        padding: 10px;
+        margin-top: 15px;
         display: block;
-        border-bottom: 2px solid gold;
-        width: 200%;
+        border-top: 2px solid darkorange;
     }
     .dropdown-menu {
         background: blue;
