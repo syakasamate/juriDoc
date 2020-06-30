@@ -466,3 +466,87 @@
                         .n {
                             font-size: 20px;
                         }
+                        
+                        .hexagon {
+                            position: relative;
+                            height: 500px;
+                            width: 300px;
+                            background-color: white;
+                            -webkit-clip-path: polygon(50% 0%, 100% 9%, 100% 93%, 50% 100%, 0 92%, 0 8%);
+                            clip-path: polygon(50% 0%, 100% 9%, 100% 93%, 50% 100%, 0 92%, 0 8%);
+                        }
+                        
+                        .hexagon .fils {
+                            position: absolute;
+                            top: 150px;
+                            height: 300px;
+                            width: 300px;
+                            background-color: #00B5C7;
+                            -webkit-clip-path: polygon(50% 0%, 100% 9%, 100% 93%, 50% 100%, 0 92%, 0 8%);
+                            clip-path: polygon(50% 0%, 100% 9%, 100% 93%, 50% 100%, 0 92%, 0 8%);
+                        }
+                        
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            -webkit-box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+                            box-sizing: border-box;
+                        }
+                        
+                        .pricetable {
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            width: 15%;
+                            background-color: white;
+                            border-radius: 2%;
+                            height: 500px;
+                        }
+                        
+                        .titleprice {
+                            margin: 10px;
+                            line-height: 0.85;
+                            background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+                        
+                        .price {
+                            text-align: center;
+                            width: 100%;
+                            height: 77px;
+                            background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                        }
+                        
+                        .priceprice span {
+                            margin-top: 10px;
+                            color: white;
+                            font-size: 50;
+                            font-weight: 100;
+                        }
+                        
+                        .princecondition p {
+                            text-align: center;
+                            margin: 10px;
+                            color: gray;
+                        }
+                        
+                        .ligne1 {
+                            height: 2px;
+                            background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                            margin: 3px 10px;
+                        }
+                        
+                        .ligne {
+                            height: 2px;
+                            background-color: gray;
+                            margin: 10px;
+                        }
+                        
+                        .btn-price1 {
+                            color: white;
+                            background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                        }
