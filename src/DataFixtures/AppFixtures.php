@@ -39,12 +39,17 @@ class AppFixtures extends Fixture
         $categorie4=new Categorie();
         $categorie5=new Categorie();
         $categorie6=new Categorie();
+        $categorie7=new Categorie();
+
         $categorie1->setLibelle('Juridique');
         $categorie2->setLibelle('Fiscal');
         $categorie3->setLibelle('Social');
         $categorie4->setLibelle('Foncier');
-        $categorie5->setLibelle('Comptable');
-        $categorie6->setLibelle('Affaires');
+        $categorie5->setLibelle('Affaires');
+        $categorie6->setLibelle('Normes Communautaires');
+        $categorie7->setLibelle('Normes Internationales');
+
+       
        
 
         $SousCategorie1=new SousCategorie();
@@ -61,52 +66,92 @@ class AppFixtures extends Fixture
         $SousCategorie12=new SousCategorie();
         $SousCategorie13=new SousCategorie();
         $SousCategorie14=new SousCategorie();
+        $SousCategorie15=new SousCategorie();
+        $SousCategorie16=new SousCategorie();
+        $SousCategorie17=new SousCategorie();
+        $SousCategorie18=new SousCategorie();
+        $SousCategorie19=new SousCategorie();
+        $SousCategorie20=new SousCategorie();
+        $SousCategorie21=new SousCategorie();
+    
+
+
+        
+        
 
 
 
-        $SousCategorie1->setLibelle('lois');
-        $SousCategorie2->setLibelle('Decrets');
-        $SousCategorie3->setLibelle('Ordonnances');
-        $SousCategorie4->setLibelle('Arretés');
-        $SousCategorie5->setLibelle('Communautaire');
-        $SousCategorie6->setLibelle('Doctrines');
-        $SousCategorie7->setLibelle('Conventions');
-        $SousCategorie8->setLibelle('Circulaires');
-        $SousCategorie9->setLibelle(' National');
-        $SousCategorie10->setLibelle(' International');
-        $SousCategorie11->setLibelle('Banque');
-        $SousCategorie12->setLibelle(' Investissement');
-        $SousCategorie13->setLibelle(' Telecommunication');
-        $SousCategorie14->setLibelle(' Assurances');
+        $SousCategorie1->setLibelle('Lois organique');
+        $SousCategorie2->setLibelle('Lois référendaires');
+        $SousCategorie3->setLibelle('Lois organiques');
+        $SousCategorie4->setLibelle('Ordonnances');
+        $SousCategorie5->setLibelle('Traités-Accords');
+        $SousCategorie6->setLibelle('Conventions');
+        $SousCategorie7->setLibelle('lois');
+        $SousCategorie8->setLibelle('Decrets');
+        $SousCategorie9->setLibelle('Arretés');
+        $SousCategorie10->setLibelle('Circulaires');
+        $SousCategorie11->setLibelle('Doctrines');
+        $SousCategorie12->setLibelle(' National');
+        $SousCategorie13->setLibelle('Communautaire');
+        $SousCategorie14->setLibelle(' International');
+        $SousCategorie15->setLibelle(' Assurances');
+        $SousCategorie16->setLibelle('Banque');
+        $SousCategorie17->setLibelle(' Investissement');
+        $SousCategorie18->setLibelle(' Telecommunication');
+        $SousCategorie19->setLibelle('CEDAO');
+        $SousCategorie20->setLibelle('UEMOA');
+        $SousCategorie21->setLibelle('Chartes');
+
+
+
 
         
 
-        $categorie1->addSousCategorie($SousCategorie2);
+        $categorie1->addSousCategorie($SousCategorie1)
+                   ->addSousCategorie($SousCategorie2)
+                   ->addSousCategorie($SousCategorie3)
+                   ->addSousCategorie($SousCategorie4)
+                   ->addSousCategorie($SousCategorie8)
+                   ->addSousCategorie($SousCategorie9)
+                   ->addSousCategorie($SousCategorie10);
+    
 
-        $categorie2->addSousCategorie($SousCategorie7)
-                    ->addSousCategorie($SousCategorie1)
-                    ->addSousCategorie($SousCategorie2)
-                    ->addSousCategorie($SousCategorie4)
+
+
+
+
+        $categorie2->addSousCategorie($SousCategorie6)
+                    ->addSousCategorie($SousCategorie7)
                     ->addSousCategorie($SousCategorie8)
-                    ->addSousCategorie($SousCategorie6);
-
-        $categorie3->addSousCategorie($SousCategorie7)
-                    ->addSousCategorie($SousCategorie1)
-                    ->addSousCategorie($SousCategorie2)
-                    ->addSousCategorie($SousCategorie4);
-                    
-        $categorie4->addSousCategorie($SousCategorie7)
-                    ->addSousCategorie($SousCategorie1)
-                    ->addSousCategorie($SousCategorie4);
-
-        $categorie5->addSousCategorie($SousCategorie5)
+                    ->addSousCategorie($SousCategorie9)
                     ->addSousCategorie($SousCategorie10)
+                    ->addSousCategorie($SousCategorie11);
+
+        $categorie3->addSousCategorie($SousCategorie6)
+                    ->addSousCategorie($SousCategorie7)
+                    ->addSousCategorie($SousCategorie8)
                     ->addSousCategorie($SousCategorie9);
                     
-        $categorie6->addSousCategorie($SousCategorie14)
-                    ->addSousCategorie($SousCategorie11)
-                    ->addSousCategorie($SousCategorie12)
-                    ->addSousCategorie($SousCategorie13);
+        $categorie4->addSousCategorie($SousCategorie7)
+                    ->addSousCategorie($SousCategorie8)
+                    ->addSousCategorie($SousCategorie9);
+
+        $categorie5->addSousCategorie($SousCategorie15)
+                    ->addSousCategorie($SousCategorie16)
+                    ->addSousCategorie($SousCategorie17)
+                    ->addSousCategorie($SousCategorie18);
+
+                    
+        $categorie6->addSousCategorie($SousCategorie19)
+                    ->addSousCategorie($SousCategorie20);
+
+
+
+        $categorie7->addSousCategorie($SousCategorie5)
+                    ->addSousCategorie($SousCategorie6)
+                    ->addSousCategorie($SousCategorie21);
+                    
                     
                     
         
@@ -118,6 +163,8 @@ class AppFixtures extends Fixture
         $manager->persist($categorie4);
         $manager->persist($categorie5);
         $manager->persist($categorie6);
+        $manager->persist($categorie7);
+
         $manager->persist($SousCategorie1);
         $manager->persist($SousCategorie2);
         $manager->persist($SousCategorie3);
@@ -132,6 +179,17 @@ class AppFixtures extends Fixture
         $manager->persist($SousCategorie12);
         $manager->persist($SousCategorie13);
         $manager->persist($SousCategorie14);
+        $manager->persist($SousCategorie15);
+        $manager->persist($SousCategorie16);
+        $manager->persist($SousCategorie17);
+        $manager->persist($SousCategorie18);
+        $manager->persist($SousCategorie19);
+        $manager->persist($SousCategorie20);
+        $manager->persist($SousCategorie21);
+       
+
+
+
 
         $manager->flush();
     }
