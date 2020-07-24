@@ -11,7 +11,7 @@
 
 
 
-    <div class="container pt-5">
+    <div class="container ">
         <form action="{{path('recherche')}}" method='post'>
 
             <div class="row no-gutters mt-5">
@@ -30,7 +30,7 @@
                         {% for cat in categories %}
                         <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b></option>
                         {% for sousCat in cat.sousCategorie %}
-                        <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b> >> {{ sousCat.libelle }}</option>
+                        <option value="{{ cat.id }}-{{ sousCat.id }}"><b>{{ cat.libelle }}</b> >> {{ sousCat.libelle }}</option>
                         {% endfor %}
                         {% endfor %}
                         </select>
@@ -44,6 +44,8 @@
             </div>
 
         </form>
+        <b class="text-center text-light mt-4"  ><a  class="nav-link mt-4 text-light " href="/recherche" >RECHERCHE AVANCÉE</a> </b>
+
     </div>
 </div>
 <div class="partner mt-5">

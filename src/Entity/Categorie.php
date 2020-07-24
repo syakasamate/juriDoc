@@ -29,15 +29,18 @@ class Categorie
     private $docs;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\SousCategorie", inversedBy="y")
+     * @ORM\ManyToMany(targetEntity="App\Entity\SousCategorie", inversedBy="categories")
      */
     private $sousCategorie;
+
+    
 
     public function __construct()
     {
        
         $this->docs = new ArrayCollection();
         $this->sousCategorie = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -114,4 +117,6 @@ class Categorie
 
         return $this;
     }
+
+    
 }

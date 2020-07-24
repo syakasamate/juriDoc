@@ -33,6 +33,19 @@ class Document
      */
     private $categorie;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $CreatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SousCategorie", inversedBy="documents")
+     */
+    private $souscat;
+
+   
+   
+
     public function __construct()
     {
         
@@ -79,6 +92,30 @@ class Document
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $CreatedAt): self
+    {
+        $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    public function getSouscat(): ?SousCategorie
+    {
+        return $this->souscat;
+    }
+
+    public function setSouscat(SousCategorie $souscat): self
+    {
+        $this->souscat = $souscat;
 
         return $this;
     }

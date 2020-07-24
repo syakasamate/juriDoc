@@ -70,7 +70,7 @@
                     <a class="nav-link text-dark" href="{{path('home')}}">Accueil<span class="sr-only">(current)</span></a>
 
                 </li>
-{% for cat in categories%}
+     {% for cat in categories %}
                 <li class="nav-item dropdown">
                       <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ cat.libelle }}
@@ -79,11 +79,11 @@
                        {% for sousCat in cat.sousCategorie %}
                         <a class="dropdown-item" href="#">{{ sousCat.libelle }}</a>
                         <div class="dropdown-divider"></div>
-                     {% endfor%}
+                     {% endfor %}
                     </div>
 
                 </li>
-                {% endfor %}
+        {% endfor %}
          
                
             </ul>

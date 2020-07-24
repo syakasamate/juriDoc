@@ -12,18 +12,25 @@
                 <div class="card-body">
                     <form method="post">
                         <div class="form-group">
-                            <small id="emailHelp" class="form-text text-muted">Le(s) mots clé(s)</small><br>
+                            <label for="datepub">Le(s) mots clé(s) à rechercher</label>
                             <input type="text" name="search" class="form-control" value="{{ mots }}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mots clés">
 
                         </div>
                         <div class="form-group">
-                            <small id="emailHelp" class="form-text text-muted">Categories</small><br>
-                            <select name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
+                            <label for="categorie">Categories >>Sous Categories</label>                            <select name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
                                 <option value='' selected>Toutes Les Categories</options>
-                                {% for cat in categories %}
-                                <option value="{{ cat.id }}">{{ cat.libelle }}</option>
-                                {% endfor %}
+                        {% for cat in categories %}
+                        <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b></option>
+                        {% for sousCat in cat.sousCategorie %}
+                        <option value="{{ cat.id }}-{{ sousCat.id }}"><b>{{ cat.libelle }}</b> >> {{ sousCat.libelle }}</option>
+                        {% endfor %}
+                        {% endfor %}
                                 </select>
+                        </div>
+                        <div class="form-group">
+                         <label for="datepub">Date de publication</label>
+                         <input type="date" value=" {{ datepub }}  " name="datepub" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mots clés">
+
                         </div>
                         <br>
 
@@ -38,102 +45,200 @@
             <hr class=" text-center " style="width: 60% ;background-color: gray;"> {% if juri %}
 
             <!--Accordion wrapper-->
-            <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+            <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
                 <!-- Accordion card -->
                 <div class="card">
 
                     <!-- Card header -->
                     <div class="card-header" role="tab" id="headingTwo1">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                        <a class="collapsed text-dark text-dark " data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
                             <h5 class="mb-0">
                                 <div class="vl" style=" border-left: 6px solid rgb(33, 102, 182);height:62px;float: left;margin: -20px;"></div>
                                 <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> JURIDIQUE [{{ juri|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
                     </div>
-                    {% for juri in juri %}
+                    {% if res %}
                     <!-- Card body -->
-                    <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
+                    {% for key,res in res %}
+                    <div id="collapseTwo1" class="collapse card " role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            <a href="{{path('render',{id:juri.id})}}">{{ juri.description }}</a>
+                            
+                            
+                            
+                                <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                    <h5 class="mb-0">
+                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            
+                        </div>
+                    </div>
+                    {% for docs in res %}
+                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div class="card-body">
+                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
+                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}} <p/>
                         </div>
                     </div>
                     {% endfor %}
+                    {% endfor %}
+                    {% endif %}
                 </div>
                 <!-- Accordion card -->
 
                 <!-- Accordion card -->
 
-            </div><br> {% endif %}
+            </div>{% endif %}
             <!-- Accordion wrapper -->
 
             <!--Accordion wrapper-->
-            {% if finance %}
-            <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+           {% if fiscal %}
+            <!-- Accordion wrapper -->
+            <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
                 <!-- Accordion card -->
                 <div class="card">
 
                     <!-- Card header -->
-                    <div class="card-header" role="tab" id="headingTwo2">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo1">
-                            <h5 class="mb-0 ">
-                                <div class="vl" style=" border-left: 6px solid green;height:62px;float: left;margin: -20px;"></div>
-                                <img src="{{ asset('fiscal.svg') }} " height="30px" width="30px"> FINANCIER[{{ finance|length }} docs] <i class="fas fa-angle-down rotate-icon"></i>
+                    <div class="card-header" role="tab" id="headingTwo1">
+                        <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo1">
+                            <h5 class="mb-0">
+                                <div class="vl" style=" border-left: 6px solid rgb(67, 5, 80);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> FISCAL [{{ fiscal|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
                     </div>
-                    {% for finance in finance %}
+                    {% if fis %}
                     <!-- Card body -->
-                    <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx2">
+                    {% for key,res in fis%}
+                    <div id="collapseTwo2" class="collapse card" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            {{ finance.description }}
+                            
+                            
+                            
+                                <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                    <h5 class="mb-0">
+                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            
+                        </div>
+                    </div>
+                     {% for docs in res %}
+                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div class="card-body">
+                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
+                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}} <p/>
                         </div>
                     </div>
                     {% endfor %}
+                    {% endfor %}
+                    {% endif %}
                 </div>
                 <!-- Accordion card -->
 
                 <!-- Accordion card -->
 
-            </div><br>{% endif %}
-            <!-- Accordion wrapper -->
-
+            </div> {% endif %}
 
             {% if social %}
-            <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+            <!-- Accordion wrapper -->
+            <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
                 <!-- Accordion card -->
                 <div class="card">
 
                     <!-- Card header -->
-                    <div class="card-header" role="tab" id="headingTwo3">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo1">
+                    <div class="card-header" role="tab" id="headingTwo1">
+                        <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo1">
                             <h5 class="mb-0">
-                                <div class="vl" style=" border-left: 6px solid rgb(128, 20, 25);height:62px;float: left;margin: -20px;"></div>
-                                <img src="{{ asset('social.svg') }} " height="30px" width="30px"> SOCIAL [ {{ social|length }} docs] <i class="fas fa-angle-down rotate-icon"></i>
+                                <div class="vl" style=" border-left: 6px solid rgb(120, 196, 34);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> SOCIAL[{{ social|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
                     </div>
-                    {% for social in social %}
+                    {% if soc %}
                     <!-- Card body -->
-                    <div id="collapseTwo3" class="collapse" role="tabpanel" aria-labelledby="headingTwo3" data-parent="#accordionEx3">
+                    {% for key,res in soc %}
+                    <div id="collapseTwo3" class="collapse" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            {{ social.description }}
+                            
+                            
+                            
+                                <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                    <h5 class="mb-0">
+                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            
+                        </div>
+                    </div>
+                     {% for docs in res %}
+                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div class="card-body">
+                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
+                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}} <p/>
                         </div>
                     </div>
                     {% endfor %}
+                    {% endfor %}
+                    {% endif %}
                 </div>
                 <!-- Accordion card -->
 
                 <!-- Accordion card -->
 
-            </div><br>{% endif %}
+            </div> {% endif %}
+            {% if foncier %}
             <!-- Accordion wrapper -->
+            <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
+                <!-- Accordion card -->
+                <div class="card">
 
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo1">
+                        <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo4" aria-expanded="false" aria-controls="collapseTwo1">
+                            <h5 class="mb-0">
+                                <div class="vl" style=" border-left: 6px solid rgb(189, 119, 129);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> Foncier [{{ foncier|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    {% if fon %}
+                    <!-- Card body -->
+                    {% for key,res in fon %}
+                    <div id="collapseTwo4" class="collapse" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
+                        <div class="card-body">
+                            
+                            
+                            
+                                <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                    <h5 class="mb-0">
+                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            
+                        </div>
+                    </div>
+                     {% for docs in res %}
+                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div class="card-body">
+                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
+                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}} <p/>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <!-- Accordion card -->
 
+                <!-- Accordion card -->
+
+            </div> {% endif %}
         </div>
     </div>
 </div>

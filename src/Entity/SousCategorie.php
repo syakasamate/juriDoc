@@ -22,20 +22,21 @@ class SousCategorie
      * @ORM\Column(type="string", length=255)
      */
     private $libelle;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="categories")
-     */
-    private $categorie;
-
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", mappedBy="sousCategorie")
      */
-    private $y;
+    private $categories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="souscat")
+     */
+    private $documents;
 
     public function __construct()
     {
-        $this->y = new ArrayCollection();
+        
+        $this->documents = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -55,41 +56,63 @@ class SousCategorie
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
-    {
-        return $this->categorie;
-    }
+   
 
-    public function setCategorie(?Categorie $categorie): self
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
+   
     /**
      * @return Collection|Categorie[]
      */
-    public function getY(): Collection
+    public function getCategories(): Collection
     {
-        return $this->y;
+        return $this->categories;
     }
 
-    public function addY(Categorie $y): self
+    public function addCategory(Categorie $category): self
     {
-        if (!$this->y->contains($y)) {
-            $this->y[] = $y;
-            $y->addSousCategorie($this);
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addSousCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeY(Categorie $y): self
+    public function removeCategory(Categorie $category): self
     {
-        if ($this->y->contains($y)) {
-            $this->y->removeElement($y);
-            $y->removeSousCategorie($this);
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+            $category->removeSousCategorie($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Document[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Document $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setSouscat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Document $document): self
+    {
+        if ($this->documents->contains($document)) {
+            $this->documents->removeElement($document);
+            // set the owning side to null (unless already changed)
+            if ($document->getSouscat() === $this) {
+                $document->setSouscat(null);
+            }
         }
 
         return $this;

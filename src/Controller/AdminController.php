@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Document;
 use App\Form\DocumentType;
+use App\Repository\CategorieRepository;
+use App\Repository\SousCategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,9 +34,9 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/docs", name="addDoc")
      */
-    public function addDoc(Request $req)
+    public function addDoc(Request $req, CategorieRepository $cat,SousCategorieRepository $scat)
     {
-
+        $categories=$cat->findAll();
         $doc=new Document();
          //creation formulaire 
          $form=$this->createForm(DocumentType::class,$doc);
@@ -44,6 +46,12 @@ class AdminController extends AbstractController
              $em=$this->getDoctrine()->getManager();
              $pdf=file_get_contents($doc->getFichier());
              $doc->setFichier($pdf);
+             $cts= explode("-",$req->request->get('categorie'));
+             $categorie=$cat->find($cts[0]);
+             $scategorie=$scat->find($cts[1]);
+             $doc->setCategorie($categorie);
+             $doc->setSouscat($scategorie);
+             
              //Modification des donnees dans le db
              $em->persist($doc);
              $em->flush();
@@ -57,6 +65,7 @@ class AdminController extends AbstractController
      
          return $this->render('admin/index.html.twig', [
              'form' => $form->createView(),
+             'categories'=>$categories
  
          ]);
      }
