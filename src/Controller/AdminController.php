@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Document;
 use App\Form\DocumentType;
+use App\Repository\DocumentRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\SousCategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -69,6 +70,63 @@ class AdminController extends AbstractController
  
          ]);
      }
+    /**
+     * @Route("/admin/edit/{id}", name="editDoc")
+     */
+    public function editDoc(Request $req,$id,DocumentRepository $docR, CategorieRepository $cat,SousCategorieRepository $scat)
+    {
+        $categories=$cat->findAll();
+        $doc=$docR->find($id);
+        
+         //creation formulaire 
+         $form=$this->createForm(DocumentType::class,$doc);
+         //recuperation des donnees modifies
+         $form->handleRequest($req);
+         if($form->isSubmitted() && $form->isValid()){
+             $em=$this->getDoctrine()->getManager();
+             if(!empty($doc->getFichier())){
+                $pdf=file_get_contents($doc->getFichier());
+                $doc->setFichier($pdf);
+             }
+             
+             $cts= explode("-",$req->request->get('categorie'));
+             $categorie=$cat->find($cts[0]);
+             $scategorie=$scat->find($cts[1]);
+             $doc->setCategorie($categorie);
+             $doc->setSouscat($scategorie);
+             
+             //Modification des donnees dans le db
+
+             $em->flush();
+             //Ajout msg alert de success
+             $this->addFlash("success","Modifier avec success");
+
+             //Redirection
+             return $this->redirectToRoute('dashbord');
+ 
+         }
+     
+         return $this->render('admin/edit.html.twig', [
+             'form' => $form->createView(),
+             'categories'=>$categories
+ 
+         ]);
+     }
+     /**
+     * @Route("/admin/remove/{id}", name="removeDoc")
+     */
+    public function supDoc(Request $req,$id,DocumentRepository $docR, CategorieRepository $cat,SousCategorieRepository $scat)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $doc=$docR->find($id);
+        $em->remove($doc);
+        $em->flush();
+        //Ajout msg alert de success
+        $this->addFlash("danger","Supprimer avec success");
+
+        //Redirection
+        return $this->redirectToRoute('dashbord');
+    }
 
 
 
