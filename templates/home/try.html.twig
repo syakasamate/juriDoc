@@ -3,8 +3,8 @@
 
 </div>
 <div class=" bg-white pt-0 mt-0">
-    <div class="row ">
-        <div class="col-4" style="height: 100%;">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 " style="height: 100%;">
             <div class="card mb-4">
                 <div class="card-header text-center ">
                     <h6 class="m-0 font-weight-bold  text-primary"><i class="fas fa-file-alt"></i> RECHERCHE AVANCÉE</h6>
@@ -17,7 +17,7 @@
 
                         </div>
                         <div class="form-group">
-                            <label for="categorie">Categories >>Sous Categories</label>                            <select name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
+                            <label for="categorie">Categories >>Sous Categories</label> <select name="categorie" class="custom-select mr-sm-5" id="inlineFormCustomSelect">
                                 <option value='' selected>Toutes Les Categories</options>
                         {% for cat in categories %}
                         <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b></option>
@@ -28,8 +28,8 @@
                                 </select>
                         </div>
                         <div class="form-group">
-                         <label for="datepub">Date de publication</label>
-                         <input type="date" value=" {{ datepub }}  " name="datepub" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mots clés">
+                            <label for="datepub">Date de publication</label>
+                            <input type="date" value=" {{ datepub }}  " name="datepub" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="mots clés">
 
                         </div>
                         <br>
@@ -40,7 +40,7 @@
             </div>
 
         </div>
-        <div class="col-8 pt-3">
+        <div class="col-lg-8 col-md-8 col-sm-12 pt-3">
             <p class="text-center  "> <b>  <i class="fas fa-file-alt"></i> RESULTAT(S) DE RECHERCHE</b>: pour le(s) mot(s) clé(s) <b>'{{ mots }}'</b> </p>
             <hr class=" text-center " style="width: 60% ;background-color: gray;"> {% if juri %}
 
@@ -64,28 +64,29 @@
                     {% for key,res in res %}
                     <div id="collapseTwo1" class="collapse card " role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            
-                            
-                            
-                                <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
-                                    <h5 class="mb-0">
-                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
-                                    </h5>
-                                </a>
-                            
+
+
+
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                <h5 class="mb-0">
+                                    {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+
                         </div>
                     </div>
                     {% for docs in res %}
                     <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                         <div class="card-body">
-                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
-                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}} <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{% endif %}{% endif %}
-                           
+                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                            %}
+                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}} <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
+                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
+                            endif %}{% endif %}
+
                         </div>
                     </div>
-                    {% endfor %}
-                    {% endfor %}
-                    {% endif %}
+                    {% endfor %} {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 
@@ -95,7 +96,7 @@
             <!-- Accordion wrapper -->
 
             <!--Accordion wrapper-->
-           {% if fiscal %}
+            {% if fiscal %}
             <!-- Accordion wrapper -->
             <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
@@ -116,35 +117,34 @@
                     {% for key,res in fis%}
                     <div id="collapseTwo2" class="collapse card" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            
-                            
-                            
-                                <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
-                                    <h5 class="mb-0">
-                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
-                                    </h5>
-                                </a>
-                            
+
+
+
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                <h5 class="mb-0">
+                                    {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+
                         </div>
                     </div>
-                     {% for docs in res %}
+                    {% for docs in res %}
                     <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                         <div class="card-body">
-                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
-                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{% endif %}{% endif %}
+                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                            %}
+                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
+                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
+                            endif %}{% endif %}
                         </div>
                     </div>
-                    {% endfor %}
-                    {% endfor %}
-                    {% endif %}
+                    {% endfor %} {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 
                 <!-- Accordion card -->
 
-            </div> {% endif %}
-
-            {% if social %}
+            </div> {% endif %} {% if social %}
             <!-- Accordion wrapper -->
             <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
@@ -165,34 +165,34 @@
                     {% for key,res in soc %}
                     <div id="collapseTwo3" class="collapse" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            
-                            
-                            
-                                <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
-                                    <h5 class="mb-0">
-                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
-                                    </h5>
-                                </a>
-                            
+
+
+
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                <h5 class="mb-0">
+                                    {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+
                         </div>
                     </div>
-                     {% for docs in res %}
+                    {% for docs in res %}
                     <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                         <div class="card-body">
-                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
-                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{% endif %}{% endif %}
+                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                            %}
+                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
+                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
+                            endif %}{% endif %}
                         </div>
                     </div>
-                    {% endfor %}
-                    {% endfor %}
-                    {% endif %}
+                    {% endfor %} {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 
                 <!-- Accordion card -->
 
-            </div> {% endif %}
-            {% if foncier %}
+            </div> {% endif %} {% if foncier %}
             <!-- Accordion wrapper -->
             <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
@@ -213,27 +213,28 @@
                     {% for key,res in fon %}
                     <div id="collapseTwo4" class="collapse" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            
-                            
-                            
-                                <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
-                                    <h5 class="mb-0">
-                                         {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
-                                    </h5>
-                                </a>
-                            
+
+
+
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                                <h5 class="mb-0">
+                                    {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+
                         </div>
                     </div>
-                     {% for docs in res %}
+                    {% for docs in res %}
                     <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                         <div class="card-body">
-                           <p><b class="souscat text-light p-2" style="background-color:green" >{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>" %}
-                           <p>{{ res[0].souscat.libelle  }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{% endif %}{% endif %}
+                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                            %}
+                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
+                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
+                            endif %}{% endif %}
                         </div>
                     </div>
-                    {% endfor %}
-                    {% endfor %}
-                    {% endif %}
+                    {% endfor %} {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 

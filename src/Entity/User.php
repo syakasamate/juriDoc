@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -60,7 +62,7 @@ class User implements UserInterface
     private $civilite;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nom_S;
 
@@ -93,6 +95,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $code;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Subscription", mappedBy="user")
+     */
+    private $subscriptions;
+
+    public function __construct()
+    {
+        $this->subscriptions = new ArrayCollection();
+    }
 
     
   
@@ -282,6 +294,37 @@ class User implements UserInterface
     public function setCode(string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subscription[]
+     */
+    public function getSubscriptions(): Collection
+    {
+        return $this->subscriptions;
+    }
+
+    public function addSubscription(Subscription $subscription): self
+    {
+        if (!$this->subscriptions->contains($subscription)) {
+            $this->subscriptions[] = $subscription;
+            $subscription->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubscription(Subscription $subscription): self
+    {
+        if ($this->subscriptions->contains($subscription)) {
+            $this->subscriptions->removeElement($subscription);
+            // set the owning side to null (unless already changed)
+            if ($subscription->getUser() === $this) {
+                $subscription->setUser(null);
+            }
+        }
 
         return $this;
     }

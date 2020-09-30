@@ -33,6 +33,11 @@ class Categorie
      */
     private $sousCategorie;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Packs", mappedBy="categories")
+     */
+    private $packs;
+
     
 
     public function __construct()
@@ -40,6 +45,7 @@ class Categorie
        
         $this->docs = new ArrayCollection();
         $this->sousCategorie = new ArrayCollection();
+        $this->packs = new ArrayCollection();
         
     }
 
@@ -113,6 +119,34 @@ class Categorie
     {
         if ($this->sousCategorie->contains($sousCategorie)) {
             $this->sousCategorie->removeElement($sousCategorie);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Packs[]
+     */
+    public function getPacks(): Collection
+    {
+        return $this->packs;
+    }
+
+    public function addPack(Packs $pack): self
+    {
+        if (!$this->packs->contains($pack)) {
+            $this->packs[] = $pack;
+            $pack->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePack(Packs $pack): self
+    {
+        if ($this->packs->contains($pack)) {
+            $this->packs->removeElement($pack);
+            $pack->removeCategory($this);
         }
 
         return $this;

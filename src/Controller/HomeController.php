@@ -33,14 +33,55 @@ class HomeController extends AbstractController
      */
     public function inx($id,DocumentRepository $repDoc,CategorieRepository $cat)
     {
-        $categories=$cat->findAll();
-         $doc=$repDoc->find($id);
-         $pdfblob=stream_get_contents($doc->getFichier());
-         $pdf = base64_encode(($pdfblob));
-         $doc->setFichier($pdf);
-        return $this->render('home/pdf.html.twig', [
-           "doc"=>$doc,
-           "categories"=> $categories ]);
+        $user=$this->getUser();
+        $jdate=new DateTime();
+//s'il n'est pas connecté
+if(!$user){
+    $this->addFlash("success","Veillez vous connecter ou vous inscrire pour lire un document");
+    return $this->redirectToRoute('login');
+}else{
+    $subs=$user->getSubscriptions();
+    if($subs){
+        if($subs[count($subs)-1]){
+           $sub= $subs[count($subs)-1];
+           $datefin=$sub->getDateFin();
+            if($datefin >= $jdate){
+                $doc=$repDoc->find($id);
+                $cats=$doc->getCategorie()->getLibelle();
+                $catspack=$sub->getPack()->getCategories();
+                foreach($catspack as $catspack){
+                    if($catspack->getLibelle()==$cats){
+                        $i=true;
+                    }
+                }
+                if(!empty($i) && $i==true){
+                    $categories=$cat->findAll();
+                    $doc=$repDoc->find($id);
+                    $pdfblob=stream_get_contents($doc->getFichier());
+                    $pdf = base64_encode(($pdfblob));
+                    $doc->setFichier($pdf);
+                   return $this->render('home/pdf.html.twig', [
+                      "doc"=>$doc,
+                      "categories"=> $categories ]);
+                }else{
+                    $this->addFlash("success","Votre abonnement ne vous permet pas de consulter ce document ");
+                    $this->addFlash("success","Veillez vous souscrire dans un autre packs! ");
+
+                return $this->redirectToRoute('tarif');
+                }
+            }
+            else{
+                $this->addFlash("success","Veillez vous souscrire dans un de nos packs votre abonnement a expiré");
+                return $this->redirectToRoute('tarif');
+            }
+        }
+    }
+        $this->addFlash("success","Veillez vous souscrire dans un de nos packs");
+    return $this->redirectToRoute('tarif');
+    
+}
+//sinon
+       
     }
      /**
      * @Route("recherche", name="recherche")

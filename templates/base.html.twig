@@ -4,11 +4,36 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0" />
     <meta charset="UTF-8">
+    
     <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{{asset('assets/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{asset('assets/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/lib/animate/animate.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="../public/style.js">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -18,82 +43,74 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
+<header id="header2" class="text-center "  >
+    <div class="container text-center">
+      <nav class="main-nav ">
+        <ul class="text-center float-right ml-3">
 
-<div class="bg-white bord shawdow" id="haut">
-    <a class="navbar-brand navbar-fixed-top j" href="#"> <img src="{{asset('senjuridoc.svg')}}" style="height: 47px;width: 45%;margin-left:40px;" alt="senjuridoc"></a>
-
-    <ul class="nav navbar-light"  style="float:right">
-
+         
         {% if app.user %}
-        <li class="nav-item">
-            <a class="nav-link text-dark cont" href="#contact"><i class="fas fa-user-plus"></i>Contact</a>
+        <li >
+            <a class="text-dark cont" href="{{path('profil')}}"><i class="fas fa-user-plus"></i>Mon Compte</a>
         </li>
         {% if app.user.role =="ROLE_ADMIN" %}
-        <li class="nav-item">
-            <a class="nav-link text-dark dash" href="{{path('dashbord')}}"><i class="fas fa-table"></i>DashBord</a>
+        <li >
+            <a class="text-dark dash" href="{{path('dashbord')}}"><i class="fas fa-table"></i>DashBord</a>
         </li>
         {% endif %}
 
-        <li class="nav-item">
-            <a class="nav-link text-dark dec" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+        <li >
+            <a class="text-dark dec" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
         </li>
         {% else %}
-        <li class="nav-item  con {% if login is defined %} active {%  endif %}">
-            <a class="nav-link text-dark" href="{{path('tarif')}}"><i class="fab fa-adobe"></i>Nos Tarifs</a>
+        <li class=" con {% if login is defined %} active {%  endif %}">
+            <a  href="{{path('tarif')}}"><i class="fab fa-adobe"></i>Nos Tarifs</a>
         </li>
-        <li class="nav-item  con {% if login is defined %} active {%  endif %}">
-            <a class="nav-link text-dark" href="{{path('login')}}"><i class="far fa-user-circle"></i>Connexion</a>
+        <li class=" con {% if login is defined %} active {%  endif %}">
+            <a  href="{{path('login')}}"><i class="far fa-user-circle"></i>Connexion</a>
         </li>
-        <li class="nav-item ins {% if  connection is defined %}active{% endif %}">
-            <a class="nav-link text-dark" href="{{path('inscription')}}"><i class="far fa-registered"></i>Inscription</a>
+        <li class="ins {% if  connection is defined %}active{% endif %}">
+            <a  href="{{path('inscription')}}"><i class="far fa-registered"></i>Inscription</a>
         </li>
         {% endif %}
     </ul>
-</div>
+
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+  </header>
 
 
-<div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand col-sm-2 p-4"></a>
+<header id="header"   >
+    <div class="container">
 
-        <button style="position:absolute;left:10px;top:-0px;margin:10px;" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="my-1 mx-2 close">X</span>
-       <span class="navbar-toggler-icon"></span>
-  </button>
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+        <a href="#intro" class="scrollto"><img src="{{asset('senjuridoc.svg')}}" style="height:21px;" class="img-fluid"></a>
+      </div>
 
-        <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                </li>
+      <nav class="main-nav float-right d-none d-lg-block" >
+        <ul>
+          <li class="active"><a href="#intro">Accueil</a></li>
 
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{path('home')}}">Accueil<span class="sr-only">(current)</span></a>
-
-                </li>
-     {% for cat in categories %}
-                <li class="nav-item dropdown">
-                      <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ cat.libelle }}
-        </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                       {% for sousCat in cat.sousCategorie %}
-                        <a class="dropdown-item" href="#">{{ sousCat.libelle }}</a>
-                        <div class="dropdown-divider"></div>
-                     {% endfor %}
-                    </div>
-
-                </li>
-        {% endfor %}
-         
-               
+         {% for cat in categories %}
+          <li class="drop-down"><a href="">{{ cat.libelle }}</a>
+            <ul>
+            {% for sousCat in cat.sousCategorie %}
+              <li><a href="#">{{ sousCat.libelle }}</a></li>
+              {% endfor %}
             </ul>
+          </li>  
+          {% endfor %}
 
-        </div>
-    </nav>
-</div>
-
-
-<script>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+  </header>
+<!-- <script>
 
     window.onscroll = function() {
        
@@ -105,7 +122,7 @@
 
 
     function myFunction() {
-        if (window.pageYOffset >= sticky) {
+        if (window.pageYOffset >= sticky) 
             navbar.classList.add("sticky")
         } else {
             navbar.classList.remove("sticky");
@@ -117,12 +134,13 @@
 </script>
 <div>
     <a id="cRetour" class="cInvisible" href="#haut"></a>
-</div>
+</div> -->
+  <a href="#" style="margin-top:-19px" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 {% block body %} {% endblock %} {% block footer %}
 <!-- Footer -->
 <footer  class="  page-footer font-small  text-white ">
-    <div style="background-color: 	#3c4474;">
+    <div style="background-color: 	 #004a99;">
         <div class="container">
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center ">
@@ -254,7 +272,7 @@
 
     <!-- Copyright -->
 
-    <div style="background-color: 	#3c4474;" class="text-center py-3">{{ date }} Nasrulex tous les droits reservés. Developpé Par:Due diligence technology
+    <div style="background-color:  #004a99;" class="text-center py-3">{{ date }} Nasrulex tous les droits reservés. Developpé Par:Due diligence technology
 
     </div>
     <!-- Copyright -->
@@ -265,7 +283,23 @@
 
 
 {% endblock %} {% block javascripts %} {% endblock %}
+ <!-- JavaScript Libraries -->
+  <script src="{{asset('assets/lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/lib/jquery/jquery-migrate.min.js')}}"></script>
+  <script src="{{asset('assets/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/lib/easing/easing.min.js')}}"></script>
+  <script src="{{asset('assets/lib/mobile-nav/mobile-nav.js')}}"></script>
+  <script src="{{asset('assets/lib/wow/wow.min.js')}}"></script>
+  <script src="{{asset('assets/lib/waypoints/waypoints.min.js')}}"></script>
+  <script src="{{asset('assets/lib/counterup/counterup.min.js')}}"></script>
+  <script src="{{asset('assets/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('assets/lib/isotope/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('assets/lib/lightbox/js/lightbox.min.js')}}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
 
+  <!-- Template Main Javascript File -->
+  <script src="{{asset('assets/js/main.js')}}"></script>
 </body>
 
 </html>

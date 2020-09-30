@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Packs;
+use App\Form\PackType;
 use App\Entity\Document;
 use App\Form\DocumentType;
+use App\Repository\PacksRepository;
 use App\Repository\DocumentRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\SousCategorieRepository;
@@ -129,5 +132,70 @@ class AdminController extends AbstractController
     }
 
 
+    /**
+     * @Route("/admin/addpack", name="addPack")
+     */
+    public function addpack(Request $req, CategorieRepository $cat,SousCategorieRepository $scat)
+    {
+        
+        $packs=new Packs();
+         //creation formulaire 
+         $form=$this->createForm(PackType::class,$packs);
+         //recuperation des donnees modifies
+         $form->handleRequest($req);
+         if($form->isSubmitted() && $form->isValid()){
+             $em=$this->getDoctrine()->getManager();
+             //Modification des donnees dans le db
+             $em->persist($packs);
+             $em->flush();
+             //Ajout msg alert de success
+             $this->addFlash("success","Ajouter avec success");
 
+             //Redirection
+             return $this->redirectToRoute('dashbord');
+ 
+         }
+     
+         return $this->render('admin/addpack.html.twig', [
+             'form' => $form->createView(),
+ 
+         ]);
+     }
+/**
+     * @Route("/admin/pack", name="Pack")
+     */
+public function pack(PacksRepository $p){
+    $packs=$p->findAll();
+    return $this->render('admin/packs.html.twig', [
+        "packs"=>$packs
+
+    ]);
+}
+
+/**
+     * @Route("/admin/pack/{id}/edit", name="editPack")
+     */
+public function editpack(PacksRepository $p,$id,Request $req){
+    $packs=$p->find($id);
+         //creation formulaire 
+         $form=$this->createForm(PackType::class,$packs);
+         //recuperation des donnees modifies
+         $form->handleRequest($req);
+         if($form->isSubmitted() && $form->isValid()){
+             $em=$this->getDoctrine()->getManager();
+             //Modification des donnees dans le db
+             $em->flush();
+             //Ajout msg alert de success
+             $this->addFlash("success","modifier avec success");
+
+             //Redirection
+             return $this->redirectToRoute('Pack');
+ 
+   
+}
+return $this->render('admin/editpacks.html.twig', [
+    'form' => $form->createView(),
+
+]);
+}
 }

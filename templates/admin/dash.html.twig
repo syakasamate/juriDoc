@@ -21,7 +21,9 @@
             </div>
         </div>
         <!-- /. ROW  -->
+         {% if app.user.role =="ROLE_ADMIN" %}
         <div class="row text-center ">
+         
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="div-square">
                     <a href="{{path('addDoc')}}">
@@ -45,9 +47,9 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="div-square">
-                    <a href="blank.html">
+                    <a href="{{path('addPack')}}">
                         <i style="color:#3c4474 ;" class="fas fa-certificate fa-5x"></i>
-                        <h4>Les Packs</h4>
+                        <h4>Ajouter un  Packs</h4>
                     </a>
                 </div>
 
@@ -55,9 +57,9 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="div-square">
-                    <a href="blank.html">
-                        <i style="color:#3c4474 ;" class="fa fa-user-plus fa-5x"></i>
-                        <h4>Ajouter User</h4>
+                    <a href="{{path('Pack')}}">
+                        <i style="color:#3c4474 ;" class="fas fa-certificate fa-5x"></i>
+                        <h4>Les Packs</h4>
                     </a>
                 </div>
 
@@ -83,15 +85,17 @@
 
 
             </div>
-        </div>
+         </div>
+         {% endif %}
         <!-- /. ROW  -->
+         {% if app.user.role =="ROLE_USER" %}
         <div class="row text-center pad-top">
 
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="div-square">
                     <a href="blank.html">
                         <i style="color:#3c4474 ;" class="fa fa-clipboard fa-5x"></i>
-                        <h4>All Docs</h4>
+                        <h4>Vos favoris</h4>
                     </a>
                 </div>
 
@@ -99,9 +103,19 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="div-square">
-                    <a href="blank.html">
+                    <a href="{{path('passe')}}">
                         <i style="color:#3c4474 ;" class="fa fa-gear fa-5x"></i>
-                        <h4>Categories</h4>
+                        <h4> Mots de passe</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div style="color:#3c4474 ;" class="div-square ">
+                    <a href="{{path('abonnement')}}">
+                        <i style="color:#3c4474 ;" class="fa fa-rocket fa-5x"></i>
+                        <h4>Abonnements</h4>
                     </a>
                 </div>
 
@@ -127,16 +141,7 @@
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div style="color:#3c4474 ;" class="div-square ">
-                    <a href="blank.html">
-                        <i style="color:#3c4474 ;" class="fa fa-rocket fa-5x"></i>
-                        <h4>Partenaires</h4>
-                    </a>
-                </div>
-
-
-            </div>
+            
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="div-square">
                     <a href="blank.html">
@@ -149,7 +154,8 @@
             </div>
         </div>
 
-    </div>
+    </div>{% endif %}
     <!-- /. PAGE INNER  -->
 </div>
+
 {% endblock %}
