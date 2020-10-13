@@ -46,8 +46,8 @@ class AppFixtures extends Fixture
         $categorie3->setLibelle('Social');
         $categorie4->setLibelle('Foncier');
         $categorie5->setLibelle('Affaires');
-        $categorie6->setLibelle('Normes Communautaires');
-        $categorie7->setLibelle('Normes Internationales');
+        $categorie6->setLibelle('Banques');
+        $categorie7->setLibelle('Assurances');
 
        
        
@@ -81,13 +81,13 @@ class AppFixtures extends Fixture
 
 
 
-        $SousCategorie1->setLibelle('Lois organique');
+        $SousCategorie1->setLibelle('Lois organiques');
         $SousCategorie2->setLibelle('Lois référendaires');
-        $SousCategorie3->setLibelle('Lois organiques');
+        $SousCategorie3->setLibelle('Lois ordinaires');
         $SousCategorie4->setLibelle('Ordonnances');
         $SousCategorie5->setLibelle('Traités-Accords');
-        $SousCategorie6->setLibelle('Conventions');
-        $SousCategorie7->setLibelle('lois');
+        $SousCategorie6->setLibelle('Conventions fiscals');
+        $SousCategorie7->setLibelle('Lois');
         $SousCategorie8->setLibelle('Decrets');
         $SousCategorie9->setLibelle('Arretés');
         $SousCategorie10->setLibelle('Circulaires');
@@ -99,8 +99,8 @@ class AppFixtures extends Fixture
         $SousCategorie16->setLibelle('Banque');
         $SousCategorie17->setLibelle(' Investissement');
         $SousCategorie18->setLibelle(' Telecommunication');
-        $SousCategorie19->setLibelle('CEDAO');
-        $SousCategorie20->setLibelle('UEMOA');
+        $SousCategorie19->setLibelle('Réglements');
+        $SousCategorie20->setLibelle('Instructions/Avis');
         $SousCategorie21->setLibelle('Chartes');
 
 
@@ -138,8 +138,6 @@ class AppFixtures extends Fixture
                     ->addSousCategorie($SousCategorie9);
 
         $categorie5->addSousCategorie($SousCategorie15)
-                    ->addSousCategorie($SousCategorie16)
-                    ->addSousCategorie($SousCategorie17)
                     ->addSousCategorie($SousCategorie18);
 
                     
@@ -148,9 +146,9 @@ class AppFixtures extends Fixture
 
 
 
-        $categorie7->addSousCategorie($SousCategorie5)
-                    ->addSousCategorie($SousCategorie6)
-                    ->addSousCategorie($SousCategorie21);
+        $categorie7->addSousCategorie($SousCategorie7)
+                    ->addSousCategorie($SousCategorie8)
+                    ->addSousCategorie($SousCategorie9);
                     
                     
                     

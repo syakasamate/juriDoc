@@ -212,7 +212,7 @@ h6 {
 
 #intro {
     position: relative;
-    background: url("../../imgnasrulex.jpg");
+    background: url("../../assets/img/banniere.png");
     width: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -665,17 +665,17 @@ h6 {
     flex-direction: column;
     text-align: center;
     border-radius: 50%;
-    border: 2px solid #007bff;
+    border: 2px solid #018786;
     transition: all 0.3s ease-in-out;
 }
 
 #about .about-container .icon-box .icon i {
-    color: #007bff;
+    color: #018786;
     font-size: 24px;
 }
 
 #about .about-container .icon-box:hover .icon {
-    background: #007bff;
+    background: #018786;
 }
 
 #about .about-container .icon-box:hover .icon i {
@@ -767,7 +767,11 @@ h6 {
 
 #why-us {
     padding: 60px 0;
-    background: #004a99;
+    background: #018786;
+}
+
+#why {
+    background-image: url('../../2.png');
 }
 
 #why-us .section-header h3,
@@ -776,21 +780,15 @@ h6 {
 }
 
 #why-us .card {
-    background: #00458f;
-    border-color: #00458f;
     border-radius: 10px;
     margin: 0 15px;
     padding: 15px 0;
     text-align: center;
-    color: #fff;
     transition: 0.3s ease-in-out;
     height: 100%;
 }
 
-#why-us .card:hover {
-    background: #003b7a;
-    border-color: #003b7a;
-}
+#why-us .card:hover {}
 
 #why-us .card i {
     font-size: 48px;

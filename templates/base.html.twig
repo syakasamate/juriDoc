@@ -5,13 +5,13 @@
     <meta name="viewport" content="initial-scale=1.0" />
     <meta charset="UTF-8">
     
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %} Nasrulex {% endblock %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
+  <link rel="icon" type="image/png" href="{{asset('assets/img/Nasurlex-logo.png')}}" />
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -87,8 +87,8 @@
 
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-        <a href="#intro" class="scrollto"><img src="{{asset('senjuridoc.svg')}}" style="height:21px;" class="img-fluid"></a>
+       <h1 class="text-light"><a href="#header"><span><img src="{{asset('assets/img/Nasurlex-logo.png')}}"></span></a></h1>
+        <a href="#intro" class="scrollto"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block" >
@@ -140,7 +140,7 @@
 {% block body %} {% endblock %} {% block footer %}
 <!-- Footer -->
 <footer  class="  page-footer font-small  text-white ">
-    <div style="background-color: 	 #004a99;">
+    <div style="background-color: 	  #018786">
         <div class="container">
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center ">
@@ -194,7 +194,7 @@
              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 juri">
 
                 <!-- Content -->
-                <p><img src="{{asset('senjuridoc.svg')}}"</p>
+                <p><img src="{{asset('assets/img/Nasurlex-logo.png')}}"</p>
 
 
             </div>
@@ -272,7 +272,7 @@
 
     <!-- Copyright -->
 
-    <div style="background-color:  #004a99;" class="text-center py-3">{{ date }} Nasrulex tous les droits reservés. Developpé Par:Due diligence technology
+    <div style="background-color:   #018786;" class="text-center py-3">{{ date }} Nasrulex tous les droits reservés.Developpé Par : DUE DILIGENCE TECHOLOGY
 
     </div>
     <!-- Copyright -->

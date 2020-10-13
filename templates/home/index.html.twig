@@ -1,21 +1,24 @@
 {% extends 'base.html.twig' %} {% block body %}
 <section id="intro" class="clearfix">
-      
- <div class="container" style="position:relative;top:30%">
-        <form action="{{path('recherche')}}" method='post' >
- 
+    <div class="container">
+        <h2 class=" textb wow fadeInUp  text-white text-center"> Moteur de recherche ultra puissant pour la documentation législative et règlementaire</h2>
+    </div>
+    <div class="container" style="position:relative;top:30%">
+        <form action="{{path('recherche')}}" method='post'>
+
             <div class="row no-gutters clearfix mt-5">
                 <div class="col-lg-4 col-md-6 col-sm-12 m-0 col-sm-12">
                     <div class="form-group">
                         <div>
-                            <input class="form-control wow fadeInUp " style="margin-right:2px;border-width:0px;border:none!important; height:48px;height:48px;border-radius: 33px 0 0 33px ;border-right:0.7;width:100%" name="search" type="search" placeholder="Recherche par mots clés .." aria-label="Search">
+                            <input class="form-control wow fadeInUp " data-wow-delay="0.2s" style="margin-right:2px;border-width:0px;border:none!important; height:48px;height:48px;border-radius: 33px 0 0 33px ;border-right:0.7;width:100%" name="search" type="search" placeholder="Recherche par mots clés .."
+                                aria-label="Search">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-6 m-0 ">
                     <div class="form-group">
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-                        <select style="border-width:0px !important;border:none!important; height:48px;" name="categorie" class="custom-select wow fadeInUp mr-sm-5" id="inlineFormCustomSelect">
+                        <select style="border-width:0px !important;border:none!important; height:48px;" name="categorie" class="custom-select wow fadeInUp mr-sm-5" id="inlineFormCustomSelect" data-wow-delay="0.2s">
                         <option value='' selected>Toutes Les Categories</options>
                         {% for cat in categories %}
                         <option value="{{ cat.id }}"><b>{{ cat.libelle }}</b></option>
@@ -27,408 +30,428 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-12 m-0 ">
-                    
-                        <button type="submit" style="border-width:0px;border:none!important;height:48px;border-radius: 0 33px 33px 0;width:70%;margin-left:2px" class="btn btn-primary wow fadeInUp " ><i class="fas fa-search"></i> Chercher</button>
-                    </div>
+
+                    <button type="submit" style="border-width:0px;border:none!important;height:48px;border-radius: 0 33px 33px 0;width:70%;margin-left:2px" class="btn btn-primary wow fadeInUp " data-wow-delay="0.2s"><i class="fas fa-search"></i> Chercher</button>
                 </div>
             </div>
+    </div>
 
-        </form>
-        <b class="text-center text-light mt-4"  ><a  class="nav-link mt-4 text-light " href="/recherche" >RECHERCHE AVANCÉE</a> </b>
+    </form>
+    <b class="text-center text-light mt-4"><a  class="nav-link mt-4 text-light wow fadeInUp " href="/recherche" data-wow-delay="0.42s" > <i class="fas fa-crosshairs"></i> RECHERCHE AVANCÉE  <i class="fas fa-crosshairs"></i></a> </b>
 
     </div>
-    
 
-     
+
+
 
     </div>
-  </section>
+</section>
 
 
- <section id="about">
-      <div class="container">
+<section id="about">
+    <div class="container">
 
         <header class="section-header">
-          <h3>COMMENT TROUVER UN DOCUMENT ?? </h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h3>Comment trouver un document ? </h3>
+            <p>Avec NASRULEX, la recherche juridique devient une partie de plaisir.
+            </p>
         </header>
 
         <div class="row about-container">
 
-          <div class="col-lg-6 content order-lg-1 order-2">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <div class="col-lg-6 content order-lg-1 order-2">
+                <p>
+                    La recherche documentaire passe par trois étapes : avoir un compte NASRULEX, choisir un pack et passer au paiement. </p>
 
-            <div class="icon-box wow fadeInUp">
-              <div class="icon"><i class="fa fa-shopping-bag"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+                <div class="icon-box wow fadeInUp">
+                    <div class="icon"> <i class="fas fa-user-alt"></i></i>
+                    </div>
+                    <h4 class="title">
+                        <a href=""></a>
+                    </h4>
+                    <p class="description"><b>AVOIR UN COMPTE NASRULEX  </b>
+                        <r>La première étape consiste à ouvrir un compte à partir de
+                            <b> l’onglet inscription.</b>.Une fois l’inscription terminée, veuillez passer à <b>l’étape choisir le pack
+</b></p>
+                </div>
+
+                <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="icon"><i class="fas fa-cube"></i></div>
+                    <h4 class="title">
+                        <a href=""></a>
+                    </h4>
+                    <p class="description"><b>Choisir un Pack</b> Choisir le pack qui répond le mieux à votre activité ,NASRULEX propose trois packs, que sont le pack Platinium, le pack Silver et le pack Gold  Le pack Platinum offre la possibilité d’accéder à tous les documents
+                        dans la rubrique juridique et ses sous catégories. Le pack silver propose les documents des catégories juridiques et fiscales tout en permettant d’accéder d’une manière optionnelle aux rubriques affaires, social, bancaire et assurance.
+                        Le pack Gold permet un accès total à toutes les rubriques généralement, ce pack est mieux adapté aux cabinets et aux professionnels des métiers du droit et des chiffres.</p>
+                </div>
+
+                <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="icon"><i class="fas fa-credit-card"></i></div>
+                    <h4 class="title">
+                        <a href=""></a>
+                    </h4>
+                    <p class="description"><b> Passer au paiement </b> est composée de textes en vigueur et Après le choix du pack, vous allez être redirigé vers une interface de paiement qui gère la transaction. Et pour cela, nous vous
+                        <b> proposons une plateforme de payement
+sécurisée en collaboration avec l’intégrateur de paiement PAYDUNYA. L’intégrateur
+PAYDUNYA permet de payer par Orange Money, Wari, Wizall Money, Proximo, E-
+Money, VISA, Mastercard.
+ </b>.Nous vous proposons également à ceux qui sont à l’étranger la solution PAYPAL</p>
+                </div>
+
             </div>
 
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
-              <div class="icon"><i class="fa fa-photo"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+                <img src="{{asset('assets/img/about-img.jpg')}}" class="img-fluid" alt="">
             </div>
-
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-bar-chart"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-            <img src="{{asset('assets/img/about-img.jpg')}}" class="img-fluid" alt="">
-          </div>
         </div>
 
-      
-      </div>
-    </section>
-    <!--==========================
+
+    </div>
+</section>
+<!--==========================
       Clients Section
     ============================-->
-    <section id="clients" class="section-bg">
+<section id="clients" class="section-bg">
 
-      <div class="container">
+    <div class="container">
 
         <div class="section-header">
-          <h3>Nos Partenaires</h3>
-          <p>Signer une convention avec NASRULEX, pour faire bénéficier à votre Organisme, Ordre, Cabinet ou Société un accès privilégié sur notre Plateforme.</p>
+            <h3>Nos Partenaires</h3>
+            <p>Signer une convention avec NASRULEX, pour faire bénéficier à votre Organisme, Ordre, Cabinet ou Société un accès privilégié sur notre Plateforme.</p>
         </div>
 
         <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
 
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-1.png')}}" class="img-fluid" alt="">
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-2.png')}}" class="img-fluid" alt="">
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
-        
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-3.png')}}" class="img-fluid" alt="">
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-4.png')}}" class="img-fluid" alt="">
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-5.png')}}" class="img-fluid" alt="">
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
-        
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-6.png')}}" class="img-fluid" alt="">
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-7.png')}}" class="img-fluid" alt="">
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="client-logo">
-              <img src="{{asset('assets/img/clients/client-8.png')}}" class="img-fluid" alt="">
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo">
+                    <img src="{{asset('assets/img/Nasurlex-logo.png')}}" class="img-fluid" alt="">
+                </div>
             </div>
-          </div>
 
         </div>
-<div class="section-header">
-        <p> <b class="text-center"> NASRULEX</b>, <b>au Service des professionnels du droit et des chiffres</b> Contactez-nous au : <a class="text-primary n">nasrulex@nasrulex.com</a><p>
-        </div> 
-      </div>
-      
+        <div class="section-header">
+            <p> <b class="text-center"> NASRULEX</b>, <b> au Service des professionnels des métiers du droit et des chiffres
 
-    </section>
+Contactez-nous au : nasrulex@nasrulex.com </b> <a class="text-primary n">nasrulex@nasrulex.com</a>
+                <p>
+        </div>
+    </div>
 
-<section id="services">
-      <div class="container">
 
+</section>
+
+<section id="why-us">
+    <div class="container">
         <header class="section-header">
-          <h3>Services</h3>
-          <p>Categories de documents</p>
+            <h3>Services</h3>
+            <p>Categories de documents</p>
         </header>
 
         <div class="row">
 
-          <div class="col-md-4 col-sm-12 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            
-                <div class="box shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="60px" alt="Card image cap">
-                    <h4 class="text-center title">FONCIER</h4>
+            <div class="col-md-4 mb-3  ">
 
-                    <hr style="background-color:gray; height: 0.5px;">
-                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
 
-              
+                <div class="card mb-3 bg-white ">
+                    <img class="card-img-top mt-3 mb-3" src="{{asset('assets/img/Juridique.png')}}" height="100px" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="text-center" style="color:black">Juridique</h5>
+
+                        <hr style="background-color:gray; height: 0.5px;">
+                        <p class="card-text text-center " style="color:gray"><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
+
+
+                    </div>
+
+                </div>
             </div>
-          </div>
-           <div class="col-md-4 col-sm-12 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            
-                <div class="box shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="60px" alt="Card image cap">
-                    <h4 class="text-center title">FONCIER</h4>
+            <div class="col-md-4 mb-3  ">
 
-                    <hr style="background-color:gray; height: 0.5px;">
-                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
 
-              
+                <div class="card mb-3 bg-white ">
+                    <img class="card-img-top mt-3 mb-3" src="{{asset('assets/img/Fiscal.png')}}" height="100px" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="title text-center" style="color:black">FISCAL</h5>
+
+                        <hr style="background-color:gray; height: 0.5px;">
+                        <p class="card-text text-center " style="color:gray"><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
+
+
+                    </div>
+
+                </div>
             </div>
-          </div>
-           <div class="col-md-4 col-sm-12 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            
-                <div class="box shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="60px" alt="Card image cap">
-                    <h4 class="text-center title">FONCIER</h4>
+            <div class="col-md-4 mb-3  ">
 
-                    <hr style="background-color:gray; height: 0.5px;">
-                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
 
-              
+                <div class="card mb-3 bg-white ">
+                    <img class="card-img-top mt-3 mb-3" src="{{asset('assets/img/Social.png')}}" height="100px" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="title text-center" style="color:black">SOCIAL</h5>
+
+                        <hr style="background-color:gray; height: 0.5px;">
+                        <p class="card-text text-center " style="color:gray"><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
+
+
+                    </div>
+
+                </div>
             </div>
-          </div>
-           <div class="col-md-4 col-sm-12 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            
-                <div class="box shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="60px" alt="Card image cap">
-                    <h4 class="text-center title">FONCIER</h4>
+            <div class="col-md-4 mb-3  ">
 
-                    <hr style="background-color:gray; height: 0.5px;">
-                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
 
-              
+                <div class="card mb-3 bg-white ">
+                    <img class="card-img-top mt-3 mb-3" src="{{asset('assets/img/Foncier.png')}}" height="100px" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="title text-center" title text-center style="color:black">FONCIER</h5>
+
+                        <hr style="background-color:gray; height: 0.5px;">
+                        <p class="card-text text-center " style="color:gray"><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
+
+
+                    </div>
+
+                </div>
             </div>
-          </div>
-           <div class="col-md-4 col-sm-12 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            
-                <div class="box shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="60px" alt="Card image cap">
-                    <h4 class="text-center title">FONCIER</h4>
+            <div class="col-md-4 mb-3  ">
 
-                    <hr style="background-color:gray; height: 0.5px;">
-                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
 
-              
+                <div class="card mb-3 bg-white ">
+                    <img class="card-img-top mt-3 mb-3" src="{{asset('assets/img/Affaires.png')}}" height="100px" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="title text-center" style="color:black">AFFAIRE</h5>
+
+                        <hr style="background-color:gray; height: 0.5px;">
+                        <p class="card-text text-center " style="color:gray"><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
+
+
+                    </div>
+
+                </div>
             </div>
-          </div>
-           <div class="col-md-4 col-sm-12 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            
-                <div class="box shadow p-3 mb-5 bg-white rounded">
-                    <img class="card-img-top mt-3 mb-3" src="social.svg" height="60px" alt="Card image cap">
-                    <h4 class="text-center title">FONCIER</h4>
+            <div class="col-md-4 mb-3  ">
 
-                    <hr style="background-color:gray; height: 0.5px;">
-                    <p class="card-text text-center "><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
 
-              
+                <div class="card mb-3 bg-white ">
+                    <img class="card-img-top mt-3 mb-3" src="{{asset('assets/img/banque.png')}}" height="100px" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="title text-center" style="color:black">BANQUE</h5>
+
+                        <hr style="background-color:gray; height: 0.5px;">
+                        <p class="card-text text-center " style="color:gray"><span style="color:gray;font-weight: bold;" data-toggle="counter-up">5555</span> DOCUMENTS </p>
+
+
+                    </div>
+
+                </div>
             </div>
-          </div>
-     
-         
 
         </div>
 
-      </div>
-    </section>
+    </div>
+</section>
 <section id="testimonials" class="section-bg">
-      <div class="container">
+    <div class="container">
 
         <header class="section-header">
-          <h3>Conseil d'experts</h3>
+            <h3>Conseil d'experts</h3>
         </header>
 
         <div class="row justify-content-center">
-          <div class="col-lg-8">
+            <div class="col-lg-8">
 
-            <div class="owl-carousel testimonials-carousel wow fadeInUp">
-    
-              <div class="testimonial-item">
-                <img src="{{('assets/img/testimonial-1.jpg')}}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                </p>
-              </div>
-    
-              <div class="testimonial-item">
-                <img src="{{('assets/img/testimonial-2.jpg')}}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                </p>
-              </div>
-    
-              <div class="testimonial-item">
-                <img src="{{('assets/img/testimonial-3.jpg')}}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                </p>
-              </div>
-    
-              <div class="testimonial-item">
-                <img src="{{('assets/img/testimonial-4.jpg')}}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                </p>
-              </div>
-    
-              <div class="testimonial-item">
-                <img src="{{('assets/img/testimonial-5.jpg')}}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                </p>
-              </div>
+                <div class="owl-carousel testimonials-carousel wow fadeInUp">
+
+                    <div class="testimonial-item">
+                        <img src="{{('assets/img/testimonial-1.jpg')}}" class="testimonial-img" alt="">
+                        <h3>Saul Goodman</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <p>
+                            Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                        </p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="{{('assets/img/testimonial-2.jpg')}}" class="testimonial-img" alt="">
+                        <h3>Sara Wilsson</h3>
+                        <h4>Designer</h4>
+                        <p>
+                            Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                        </p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="{{('assets/img/testimonial-3.jpg')}}" class="testimonial-img" alt="">
+                        <h3>Jena Karlis</h3>
+                        <h4>Store Owner</h4>
+                        <p>
+                            Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                        </p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="{{('assets/img/testimonial-4.jpg')}}" class="testimonial-img" alt="">
+                        <h3>Matt Brandon</h3>
+                        <h4>Freelancer</h4>
+                        <p>
+                            Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                        </p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="{{('assets/img/testimonial-5.jpg')}}" class="testimonial-img" alt="">
+                        <h3>John Larson</h3>
+                        <h4>Entrepreneur</h4>
+                        <p>
+                            Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                        </p>
+                    </div>
+
+                </div>
 
             </div>
-
-          </div>
         </div>
 
 
-      </div>
-    </section>
-      <section id="why-us" class="wow fadeIn">
-      <div class="container">
+    </div>
+</section>
+<section class="wow fadeIn">
+    <div class="container">
         <header class="section-header">
-          <h3>Pourquoi Nasrulex ?</h3>
-          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+            <h3></h3>
+            <p></p>
         </header>
-
-        <div class="row row-eq-height justify-content-center">
-
-          <div class="col-lg-4 mb-4">
-            <div class="card wow bounceInUp">
-                <i class="fa fa-diamond"></i>
-              <div class="card-body">
-                <h5 class="card-title">Corporis dolorem</h5>
-                <p class="card-text">Deleniti optio et nisi dolorem debitis. Aliquam nobis est temporibus sunt ab inventore officiis aut voluptatibus.</p>
-                <a href="#" class="readmore">Read more </a>
-              </div>
+        <div class="row">
+            <div class="col-lg-5 col-md-4 col-sm-12">
+                <img src="{{ asset('banniere.jpg')}}" style="width:100%">
             </div>
-          </div>
-
-          <div class="col-lg-4 mb-4">
-            <div class="card wow bounceInUp">
-                <i class="fa fa-language"></i>
-              <div class="card-body">
-                <h5 class="card-title">Voluptates dolores</h5>
-                <p class="card-text">Voluptates nihil et quis omnis et eaque omnis sint aut. Ducimus dolorum aspernatur.</p>
-                <a href="#" class="readmore">Read more </a>
-              </div>
+            <div class="col-lg-7 col-md-8 col-sm-12">
+                <h3> <b>NASRULEX</b> une plateforme interactive qui répond
+                    <b>aux préoccupations des théoriciens et professionnels des
+            métiers du droit et des chiffres</b> </h3>
+                <h3>Elle est une base de données de textes juridiques qui a pour objectif de faciliter l’accès à la documentation législative et réglementaire
+                </h3>
             </div>
-          </div>
-
-          <div class="col-lg-4 mb-4">
-            <div class="card wow bounceInUp">
-                <i class="fa fa-object-group"></i>
-              <div class="card-body">
-                <h5 class="card-title">Eum ut aspernatur</h5>
-                <p class="card-text">Autem quod nesciunt eos ea aut amet laboriosam ab. Eos quis porro in non nemo ex. </p>
-                <a href="#" class="readmore">Read more </a>
-              </div>
-            </div>
-          </div>
-
         </div>
+    </div>
+    <header class="section-header">
+        <h3></h3>
+        <p></p>
+    </header>
+    <p class="text-center">« Avec NASRULEX, la recherche juridique n’est plus qu’une question de formalité pour vous »</p>
+    <p class="text-center"><b>AVOCAT - NOTAIRE - EXPERT FISCAL - EXPERT COMPTABLE - CHERCHEUR - CONSULTANT...</b></p>
+</section>
 
-       
-
-      </div>
-    </section>
 
 
 
-
- <section id="contact">
-      <div class="container-fluid">
+<section id="contact">
+    <div class="container-fluid">
 
         <div class="section-header">
-          <h3>Contactez-nous</h3>
+            <h3>Contactez-nous</h3>
         </div>
 
         <div class="row wow fadeInUp">
 
-          <div class="col-lg-6">
-            <div class="map mb-4 mb-lg-0">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
-            </div>
-          </div>
+            <div class="col-lg-6">
+                <div class="map mb-4 mb-lg-0">
 
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-md-5 info">
-                <i class="ion-ios-location-outline"></i>
-                <p> Senegal,Dakar,Almadies nº648</p>
-              </div>
-              <div class="col-md-4 info">
-                <i class="ion-ios-email-outline"></i>
-                <p>nasrulex@nasrulex.com</p>
-              </div>
-              <div class="col-md-3 info">
-                <i class="ion-ios-telephone-outline"></i>
-                <p> + 221 77 377 77 66</p>
-              </div>
+                </div>
             </div>
 
-            <div class="form">
-              <div id="sendmessage">Votre message a été bien envoyé</div>
-              <div id="errormessage"></div>
-              <form action="{{path('contact.add')}}" method="post">
-                <div class="form-row">
-                  <div class="form-group col-lg-6">
-                    <input type="text" name="nomComplet" class="form-control" id="name" placeholder="Prenom et Nom" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validation"></div>
-                  </div>
-                  <div class="form-group col-lg-6">
-                    <input type="email" class="form-control" name="username" id="email" placeholder="Votre email" data-rule="email" data-msg="Please enter a valid email" />
-                    <div class="validation"></div>
-                  </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-5 info">
+                        <i class="ion-ios-location-outline"></i>
+                        <p> Senegal,Dakar,Almadies nº648</p>
+                    </div>
+                    <div class="col-md-4 info">
+                        <i class="ion-ios-email-outline"></i>
+                        <p>nasrulex@nasrulex.com</p>
+                    </div>
+                    <div class="col-md-3 info">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <p> + 221 77 377 77 66</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <input type="number" class="form-control"name="telephone" id="subject" placeholder="Numero Telephone" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
+
+                <div class="form">
+                    <div id="sendmessage">Votre message a été bien envoyé</div>
+                    <div id="errormessage"></div>
+                    <form action="{{path('contact.add')}}" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <input type="text" name="nomComplet" class="form-control" id="name" placeholder="Prenom et Nom" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input type="email" class="form-control" name="username" id="email" placeholder="Votre email" data-rule="email" data-msg="Please enter a valid email" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="telephone" id="subject" placeholder="Numero Telephone" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+                    </form>
                 </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
-              </form>
             </div>
-          </div>
 
         </div>
 
-      </div>
-    </section><!-- #contact -->
+    </div>
+</section>
+<!-- #contact -->
 
-    
+
 
 
 

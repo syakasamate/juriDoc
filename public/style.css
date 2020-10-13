@@ -243,6 +243,12 @@
                                     padding-left: 34%;
                                 }
                                 
+                                h2.textb {
+                                    color: white;
+                                    font-weight: bold;
+                                    font-size: 2.3em;
+                                }
+                                
                                 .footer {
                                     margin-top: 100px;
                                     background-color: black;
@@ -670,7 +676,7 @@
                                 .titleprice1 {
                                     margin: 10px;
                                     line-height: 0.85;
-                                    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                                    background: linear-gradient(to right, #30CFD0 0%, #018786 100%);
                                     -webkit-background-clip: text;
                                     background-clip: text;
                                     -webkit-text-fill-color: transparent;
@@ -679,7 +685,7 @@
                                 .titleprice2 {
                                     margin: 10px;
                                     line-height: 0.85;
-                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #018786 100%);
                                     -webkit-background-clip: text;
                                     background-clip: text;
                                     -webkit-text-fill-color: transparent;
@@ -688,7 +694,7 @@
                                 .titleprice3 {
                                     margin: 10px;
                                     line-height: 0.85;
-                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #018786 100%);
                                     -webkit-background-clip: text;
                                     background-clip: text;
                                     -webkit-text-fill-color: transparent;
@@ -698,21 +704,21 @@
                                     text-align: center;
                                     width: 100%;
                                     height: 77px;
-                                    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                                    background: linear-gradient(to right, #30CFD0 0%, #018786 100%);
                                 }
                                 
                                 .price2 {
                                     text-align: center;
                                     width: 100%;
                                     height: 77px;
-                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #018786 100%);
                                 }
                                 
                                 .price3 {
                                     text-align: center;
                                     width: 100%;
                                     height: 77px;
-                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #018786 100%);
                                 }
                                 
                                 .priceprice span {
@@ -730,19 +736,19 @@
                                 
                                 .ligne1 {
                                     height: 2px;
-                                    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                                    background: linear-gradient(to right, #30CFD0 0%, #018786 100%);
                                     margin: 3px 10px;
                                 }
                                 
                                 .ligne2 {
                                     height: 2px;
-                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #018786 100%);
                                     margin: 3px 10px;
                                 }
                                 
                                 .ligne3 {
                                     height: 2px;
-                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #018786 100%);
                                     margin: 3px 10px;
                                 }
                                 
@@ -753,13 +759,13 @@
                                 }
                                 
                                 .btn-price1 {
-                                    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                                    background: linear-gradient(to right, #30CFD0 0%, #018786 100%);
                                 }
                                 
                                 .btn-price2 {
-                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 112, 9) 0%, #018786 100%);
                                 }
                                 
                                 .btn-price3 {
-                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #330867 100%);
+                                    background: linear-gradient(to right, rgb(160, 9, 67) 0%, #018786 100%);
                                 }

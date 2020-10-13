@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %} {% block body %}
-<div style="background-color: 	rgb(11, 11, 109)" class="sa">
+<div style="background-color: #018786" class="sa">
     <a href="{{path('acceuil')}}" class="text-white ls">Acceuil > abonnement</a>
 </div>
 <div style="background-color:#E8E8E6">
@@ -39,7 +39,7 @@
                         </p>
                     </div>
                     <div class="priceaction text-center m-3" style="color:white ">
-                        <button class='btn btn-price1' style="color:white;width: 200px;border-radius: 4%; ">Je m'abonne</button>
+                        <a class='btn btn-price1' href="{{path('paiement',{ id : 1})}}" style="color:white;width: 200px;border-radius: 4%; "  target="_blank">Je m'abonne</a>
                     </div>
                 </div>
             </div>
