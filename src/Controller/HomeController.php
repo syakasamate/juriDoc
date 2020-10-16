@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use DateTime;
@@ -25,7 +24,8 @@ class HomeController extends AbstractController
      //dd($categories);
         return $this->render('home/index.html.twig', [
             "categories"=> $categories,
-            "date"=>date_format(new \DateTime(),"Y")
+            "date"=>date_format(new \DateTime(),"Y"),
+            "home"=>true
         ]);
     }
      /**
@@ -40,8 +40,9 @@ if(!$user){
     $this->addFlash("success","Veillez vous connecter ou vous inscrire pour lire un document");
     return $this->redirectToRoute('login');
 }else{
+   if($user->getRole()!= "ROLE_ADMIN"){
     $subs=$user->getSubscriptions();
-    if($subs){
+    if($subs  ){
         if($subs[count($subs)-1]){
            $sub= $subs[count($subs)-1];
            $datefin=$sub->getDateFin();
@@ -78,6 +79,17 @@ if(!$user){
     }
         $this->addFlash("success","Veillez vous souscrire dans un de nos packs");
     return $this->redirectToRoute('tarif');
+   }else{
+    $categories=$cat->findAll();
+    $doc=$repDoc->find($id);
+    $pdfblob=stream_get_contents($doc->getFichier());
+    $pdf = base64_encode(($pdfblob));
+    $doc->setFichier($pdf);
+   return $this->render('home/pdf.html.twig', [
+      "doc"=>$doc,
+      "categories"=> $categories ]);
+   }
+    
     
 }
 //sinon

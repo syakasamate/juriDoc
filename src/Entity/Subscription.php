@@ -36,6 +36,11 @@ class Subscription
      */
     private $dateFin;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $linkFacture;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Subscription
     public function setDateFin(\DateTimeInterface $dateFin): self
     {
         $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    public function getLinkFacture(): ?string
+    {
+        return $this->linkFacture;
+    }
+
+    public function setLinkFacture(string $linkFacture): self
+    {
+        $this->linkFacture = $linkFacture;
 
         return $this;
     }

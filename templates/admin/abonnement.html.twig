@@ -1,41 +1,45 @@
 {% extends 'admin.html.twig' %} {% block body %}
 <div class="mt-5">
     <div class="container">
-   
-      <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                      <tr>
+        <div class="mt-5 pt5">
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+            {% endfor %} {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
                         <th>Nom du Packs</th>
-                        <th>Reduction en %</th>
-                        <th>Price </th>
+                        <th>Categorie(s)</th>
                         <th>Date de souscription</th>
                         <th>Date d'expiration </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <tr> EN COURS </tr>
-                     <tr> EN COURS </tr>
-                      <tr> EN COURS </tr>
-                       <tr> EN COURS </tr>
-                        <tr> EN COURS </tr>
-                        <tr> EN COURS </tr>
+                        <th>Facture</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                        
+                    {% for sub in subs %}
+                    <tr>
+                        <td> {{ sub.pack.libelle }} </td>
 
-                 {#  {% for pack in packs %}
-                      <tr>
-                        <td>{{ pack.libelle }}</td>
-                        <td>{% if pack.reduction > 0 %}{{ pack.reduction  }} %{% else %} pas de réduction {% endif %}</td>
-                        <td>{{ pack.price  }} FCFA</td>
-                        <td><span class="badge badge-success">{% if pack.reduction > 0 %}{{ pack.reduction * pack.price / 100  }} FCFA{% else %} {{ pack.price  }} FCFA {% endif %}</span></td>
-                        <td><a href="{{path("editPack",{ id : pack.id })}}" class="btn btn-sm btn-primary">Modifier</a></td>
-                      </tr>
-                     {% endfor %}
-                     #}
-                    </tbody>
-                  </table>
-                </div>
-                  </div>
+                        <td>{% for cat in sub.pack.categories %} {{ cat.libelle }} ,{% endfor %}</td>
+
+                        <td> {{ sub.dateDebut|date('d-m-Y') }}</td>
+                        <td>{{ sub.dateFin|date('d-m-Y') }} </td>
+                        <td> <a href="{{ sub.linkFacture }}" class="btn-btn-success" target='_blank'>Télecharger</a> </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}

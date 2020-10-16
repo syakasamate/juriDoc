@@ -1,0 +1,93 @@
+{% extends 'admin.html.twig' %} {% block body %}
+
+<div class="">
+    <div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div class="mt-5 pt5">
+                    {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                     {% for message in app.flashes('danger') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row text-center ">
+         
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="{{path('addDoc')}}">
+                        <i style="color:#3c4474 ;" class="fa fa-plus fa-5x"></i>
+                        <h4>Ajouter Docs</h4>
+                    </a>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-envelope-o fa-5x"></i>
+                        <h4>Messages</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="{{path('addPack')}}">
+                        <i style="color:#3c4474 ;" class="fas fa-certificate fa-5x"></i>
+                        <h4>Ajouter un  Packs</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="{{path('Pack')}}">
+                        <i style="color:#3c4474 ;" class="fas fa-certificate fa-5x"></i>
+                        <h4>Les Packs</h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-key fa-5x"></i>
+                        <h4>Admin </h4>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
+                    <a href="blank.html">
+                        <i style="color:#3c4474 ;" class="fa fa-comments-o fa-5x"></i>
+                        <h4>Support</h4>
+                    </a>
+                </div>
+
+
+            </div>
+         </div>
+            
+        </div>
+
+  
+
+{% endblock %}

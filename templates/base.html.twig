@@ -50,29 +50,32 @@
 
          
         {% if app.user %}
+        {% if app.user.role =="ROLE_USER" %}
         <li >
-            <a class="text-dark cont" href="{{path('profil')}}"><i class="fas fa-user-plus"></i>Mon Compte</a>
+            <a class="text-dark cont" href="{{path('profil')}}"></i>Mon Compte</a>
         </li>
+        {% endif %}
         {% if app.user.role =="ROLE_ADMIN" %}
         <li >
-            <a class="text-dark dash" href="{{path('dashbord')}}"><i class="fas fa-table"></i>DashBord</a>
+            <a class="text-dark  cont dash" href="{{path('dashbord')}}"></i>DashBord</a>
         </li>
         {% endif %}
 
         <li >
-            <a class="text-dark dec" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+            <a class="text-dark  cont dec" href="{{path('logout')}}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
         </li>
         {% else %}
+    
         <li class=" con {% if login is defined %} active {%  endif %}">
-            <a  href="{{path('tarif')}}"><i class="fab fa-adobe"></i>Nos Tarifs</a>
-        </li>
-        <li class=" con {% if login is defined %} active {%  endif %}">
-            <a  href="{{path('login')}}"><i class="far fa-user-circle"></i>Connexion</a>
+            <a  href="{{path('login')}}"></i>Connexion</a>
         </li>
         <li class="ins {% if  connection is defined %}active{% endif %}">
             <a  href="{{path('inscription')}}"><i class="far fa-registered"></i>Inscription</a>
         </li>
         {% endif %}
+         <li >
+            <a class="text-dark" href="{{path('tarif')}}"><i class="fab fa-adobe"></i>Nos Tarifs</a>
+        </li>
     </ul>
 
         </ul>
@@ -87,13 +90,13 @@
 
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
-       <h1 class="text-light"><a href="#header"><span><img src="{{asset('assets/img/Nasurlex-logo.png')}}"></span></a></h1>
+       <h1 class="text-light"><a href="/"><span><img src="{{asset('assets/img/Nasurlex-logo.png')}}"></span></a></h1>
         <a href="#intro" class="scrollto"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block" >
         <ul>
-          <li class="active"><a href="#intro">Accueil</a></li>
+          <li class="{% if home is defined %} active {%  endif %}"><a href="/">Accueil</a></li>
 
          {% for cat in categories %}
           <li class="drop-down"><a href="">{{ cat.libelle }}</a>

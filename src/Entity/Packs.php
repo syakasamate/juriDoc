@@ -43,6 +43,11 @@ class Packs
      */
     private $reduction;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $principal=false;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -143,6 +148,18 @@ class Packs
     public function setReduction(?int $reduction): self
     {
         $this->reduction = $reduction;
+
+        return $this;
+    }
+
+    public function getPrincipal(): ?bool
+    {
+        return $this->principal;
+    }
+
+    public function setPrincipal(?bool $principal): self
+    {
+        $this->principal = $principal;
 
         return $this;
     }

@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %} {% block body %}
-<div  class="log">
-<div class="container col-lg-4  " style="margin-top: 10%;">
+
+<div style="background-color: #018786" class="sa">
+    <i class="text-white ls"></i>
+</div>
+<div class="log ">
+<div class="container col-lg-6 " style="margin-top: 10%;">
     {% for message in app.flashes("success") %}
     <div class="alert alert-success">
         {{ message }}

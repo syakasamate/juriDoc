@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Entity\Packs;
 use App\Entity\Categorie;
 use App\Entity\SousCategorie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -22,6 +23,10 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
+        $pack1=new Packs();
+        $pack2=new Packs();
+        $pack3=new Packs();
+
         $user=new User();
         $user->setRole("ROLE_ADMIN");
         $user->setCivilite("Mr");
@@ -51,6 +56,28 @@ class AppFixtures extends Fixture
 
        
        
+        $pack1->setPrincipal(true);
+        $pack2->setPrincipal(true);
+        $pack3->setPrincipal(true);
+
+        $pack1->setLibelle("PLATINIUM")
+                ->setPrice(50000)
+                ->addCategory($categorie1)
+                ->addCategory($categorie2)
+                ->addCategory($categorie3)
+                ->addCategory($categorie4)
+                ->addCategory($categorie5)
+                ->addCategory($categorie6)
+                ->addCategory($categorie7);
+
+        $pack2->setLibelle("SILVER")
+                ->setPrice(35000)
+                ->addCategory($categorie1)
+                ->addCategory($categorie2);
+        $pack3->setLibelle("GOLD")
+                ->setPrice(20000)
+                ->addCategory($categorie1);
+               
 
         $SousCategorie1=new SousCategorie();
         $SousCategorie2=new SousCategorie();
@@ -185,6 +212,9 @@ class AppFixtures extends Fixture
         $manager->persist($SousCategorie20);
         $manager->persist($SousCategorie21);
        
+        $manager->persist($pack1);
+        $manager->persist($pack2);
+        $manager->persist($pack3);
 
 
 

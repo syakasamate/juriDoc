@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,8 +14,9 @@ class UserController extends AbstractController
      */
     public function dash()
     {
-        return $this->render('admin/dash.html.twig', [
-            
+        return $this->render('admin/dash2.html.twig', [
+            "categories"=>array(),
+           "date"=> "07878"
         ]);
     }
     /**
@@ -70,8 +71,10 @@ class UserController extends AbstractController
      */
     public function abonnement()
     {
+        $user=$this->getUser();
+        $subs=$user->getSubscriptions();
         return $this->render('admin/abonnement.html.twig', [
-            
+            "subs"=>$subs
         ]);
     }
 
