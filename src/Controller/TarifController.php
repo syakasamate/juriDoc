@@ -38,8 +38,9 @@ class TarifController extends AbstractController
         $pack=$repac->find($id);
         $idpack=$id;
         $iduser=$this->getUser()->getId();
-       Store::setReturnUrl("http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME'])."/status/$idpack/$iduser");
-       //Store::setReturnUrl("http://127.0.0.1:8000/status/".$idpack."/".$iduser);
+ //dump($_SERVER['HTTP_HOST']);
+       // dd("http://".$_SERVER['HTTP_HOST']."/status/$idpack/$iduser");
+       Store::setReturnUrl("https://".$_SERVER['HTTP_HOST']."/status/$idpack/$iduser");       //Store::setReturnUrl("http://127.0.0.1:8000/status/".$idpack."/".$iduser);
            
         $price=$pack->getPrice();
        
