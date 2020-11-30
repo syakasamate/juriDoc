@@ -15,6 +15,7 @@
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
+      <link rel="stylesheet" href="{{ asset('style.js') }}">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
@@ -31,7 +32,6 @@
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <link rel="stylesheet" href="../public/style.js">
    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -113,31 +113,14 @@
       
     </div>
   </header>
-<!-- <script>
+<script>
 
-    window.onscroll = function() {
-       
-        myFunction();
-    };
-
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
-
-
-    function myFunction() {
-        if (window.pageYOffset >= sticky) 
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-         
-        document.getElementById("cRetour").className = (window.pageYOffset > 100) ? "cVisible" : "cInvisible";
-
-    }
+    function scroller(key) {
+    var elm = document.querySelector('#scroll' + key);
+    elm.classList.toggle("scroll");
+};
 </script>
-<div>
-    <a id="cRetour" class="cInvisible" href="#haut"></a>
-</div> -->
+
   <a href="#" style="margin-top:-19px" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 {% block body %} {% endblock %} {% block footer %}
@@ -288,9 +271,7 @@
 {% endblock %} {% block javascripts %} {% endblock %}
  <!-- JavaScript Libraries -->
   <script src="{{asset('assets/lib/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('assets/lib/jquery/jquery-migrate.min.js')}}"></script>
-  <script src="{{asset('assets/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('assets/lib/easing/easing.min.js')}}"></script>
+ <script src="{{asset('assets/lib/easing/easing.min.js')}}"></script>
   <script src="{{asset('assets/lib/mobile-nav/mobile-nav.js')}}"></script>
   <script src="{{asset('assets/lib/wow/wow.min.js')}}"></script>
   <script src="{{asset('assets/lib/waypoints/waypoints.min.js')}}"></script>
@@ -299,7 +280,6 @@
   <script src="{{asset('assets/lib/isotope/isotope.pkgd.min.js')}}"></script>
   <script src="{{asset('assets/lib/lightbox/js/lightbox.min.js')}}"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
   <script src="{{asset('assets/js/main.js')}}"></script>

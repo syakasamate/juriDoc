@@ -55,7 +55,7 @@
                         <a class="collapsed text-dark text-dark " data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
                             <h5 class="mb-0">
                                 <div class="vl" style=" border-left: 6px solid rgb(33, 102, 182);height:62px;float: left;margin: -20px;"></div>
-                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> JURIDIQUE [{{ juri|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                <img src="{{asset('assets/img/juridique.svg')}}" height="30px" width="40px"> Juridique [{{ juri|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
                     </div>
@@ -67,7 +67,7 @@
 
 
 
-                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -75,18 +75,28 @@
 
                         </div>
                     </div>
-                    {% for docs in res %}
-                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
-                        <div class="card-body">
-                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
-                            %}
-                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}} <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
-                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
-                            endif %}{% endif %}
+                    <div id="scroll{{ key }}">
+                        {% for docs in res %}
+                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                            <div class="card-body">
 
+                                <p><b class="souscat text-light p-2" style="background-color: rgb(33, 102, 182)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                                %}
+                                <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}
+                                    <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">
+                                        <i class="fas fa-book"></i>
+                                    </a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}
+                                    <a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-info ml-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger  ml-1">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </p>{% endif %}{% endif %}
+
+                            </div>
                         </div>
-                    </div>
-                    {% endfor %} {% endfor %} {% endif %}
+                        {% endfor %}</div> {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 
@@ -104,23 +114,23 @@
                 <div class="card">
 
                     <!-- Card header -->
-                    <div class="card-header" role="tab" id="headingTwo1">
-                        <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo1">
+                    <div class="card-header" role="tab" id="headingTwo2">
+                        <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                             <h5 class="mb-0">
                                 <div class="vl" style=" border-left: 6px solid rgb(67, 5, 80);height:62px;float: left;margin: -20px;"></div>
-                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> FISCAL [{{ fiscal|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                <img src="{{asset('assets/img/juridique.svg')}}" height="30px" width="40px"> Fiscal [{{ fiscal|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
                     </div>
                     {% if fis %}
                     <!-- Card body -->
-                    {% for key,res in fis%}
-                    <div id="collapseTwo2" class="collapse card" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
+                    {% for key,res in fis %}
+                    <div id="collapseTwo2" class="collapse card" role="tabpanel" aria-labelledby="headingTwo2-1" data-parent="#accordionEx2-1">
                         <div class="card-body">
 
 
 
-                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo2">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -128,24 +138,37 @@
 
                         </div>
                     </div>
-                    {% for docs in res %}
-                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
-                        <div class="card-body">
-                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
-                            %}
-                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
-                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
-                            endif %}{% endif %}
+
+                    <div id="scroll{{ key }}">
+                        {% for docs in res %}
+                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo2-2" data-parent="#accordionEx2-2">
+                            <div class="card-body">
+                                <p><b class="souscat text-light p-2" style="background-color: rgb(67, 5, 80)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                                %}
+                                <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}
+                                    <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">
+                                        <i class="fas fa-book"></i>
+                                    </a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}
+                                    <a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-info ml-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger  ml-1">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </p>
+                                </p>{% endif %}{% endif %}
+                            </div>
                         </div>
-                    </div>
-                    {% endfor %} {% endfor %} {% endif %}
+                        {% endfor %}
+                    </div> {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 
                 <!-- Accordion card -->
 
-            </div> {% endif %} {% if social %}
-            <!-- Accordion wrapper -->
+            </div> {% endif %} {% if affaires %}
+
+            <!--Accordion wrapper-->
             <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
                 <!-- Accordion card -->
@@ -153,22 +176,22 @@
 
                     <!-- Card header -->
                     <div class="card-header" role="tab" id="headingTwo1">
-                        <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo1">
+                        <a class="collapsed text-dark text-dark " data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo7" aria-expanded="false" aria-controls="collapseTwo7">
                             <h5 class="mb-0">
-                                <div class="vl" style=" border-left: 6px solid rgb(120, 196, 34);height:62px;float: left;margin: -20px;"></div>
-                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> SOCIAL[{{ social|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                <div class="vl" style=" border-left: 6px solid rgb(238, 201, 53);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{asset('assets/img/juridique.svg')}}" height="30px" width="40px"> Affaire [{{ affaires|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
                     </div>
-                    {% if soc %}
+                    {% if aff %}
                     <!-- Card body -->
-                    {% for key,res in soc %}
-                    <div id="collapseTwo3" class="collapse" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
+                    {% for key,res in aff %}
+                    <div id="collapseTwo7" class="collapse card " role="tabpanel" aria-labelledby="headingTwo1-7" data-parent="#accordionEx1-7">
                         <div class="card-body">
 
 
 
-                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -176,17 +199,88 @@
 
                         </div>
                     </div>
-                    {% for docs in res %}
-                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                    <div id="scroll{{ key }}">
+                        {% for docs in res %}
+                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                            <div class="card-body">
+
+                                <p><b class="souscat text-light p-2" style="background-color:rgb(238, 201, 53)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                                %}
+                                <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}
+                                    <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">
+                                        <i class="fas fa-book"></i>
+                                    </a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}
+                                    <a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-info ml-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger  ml-1">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </p>{% endif %}{% endif %}
+
+                            </div>
+                        </div>
+                        {% endfor %}</div> {% endfor %} {% endif %}
+                </div>
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+
+            </div>{% endif %}{% if social %}
+
+            <!--Accordion wrapper-->
+            <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo1">
+                        <a class="collapsed text-dark text-dark " data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo78" aria-expanded="false" aria-controls="collapseTwo7">
+                            <h5 class="mb-0">
+                                <div class="vl" style=" border-left: 6px solid rgb(221, 35, 238);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{asset('assets/img/juridique.svg')}}" height="30px" width="40px"> Social [{{ social|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    {% if soc %}
+                    <!-- Card body -->
+                    {% for key,res in soc %}
+                    <div id="collapseTwo78" class="collapse card " role="tabpanel" aria-labelledby="headingTwo1-7" data-parent="#accordionEx1-7">
                         <div class="card-body">
-                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
-                            %}
-                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
-                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
-                            endif %}{% endif %}
+
+
+
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                                <h5 class="mb-0">
+                                    {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+
                         </div>
                     </div>
-                    {% endfor %} {% endfor %} {% endif %}
+                    <div id="scroll{{ key }}">
+                        {% for docs in res %}
+                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                            <div class="card-body">
+
+                                <p><b class="souscat text-light p-2" style="background-color:rgb(221, 35, 238)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                                %}
+                                <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}
+                                    <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">
+                                        <i class="fas fa-book"></i>
+                                    </a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}
+                                    <a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-info ml-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger  ml-1">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </p>{% endif %}{% endif %}
+
+                            </div>
+                        </div>
+                        {% endfor %}</div> {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 
@@ -203,8 +297,8 @@
                     <div class="card-header" role="tab" id="headingTwo1">
                         <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo4" aria-expanded="false" aria-controls="collapseTwo1">
                             <h5 class="mb-0">
-                                <div class="vl" style=" border-left: 6px solid rgb(189, 119, 129);height:62px;float: left;margin: -20px;"></div>
-                                <img src="{{ asset('investissement.svg') }}" height="30px" width="30px"> Foncier [{{ foncier|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                <div class="vl" style=" border-left: 6px solid rgb(202, 6, 35);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{asset('assets/img/juridique.svg')}}" height="30px" width="40px"> Foncier [{{ foncier|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                             </h5>
                         </a>
                     </div>
@@ -216,7 +310,7 @@
 
 
 
-                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -224,17 +318,150 @@
 
                         </div>
                     </div>
-                    {% for docs in res %}
-                    <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                    <div id="scroll{{ key }}">
+
+                        {% for docs in res %}
+                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                            <div class="card-body">
+                                <p><b class="souscat text-light p-2" style="background-color: rgb(202, 6, 35)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                                %}
+                                <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}
+                                    <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">
+                                        <i class="fas fa-book"></i>
+                                    </a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}
+                                    <a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-info ml-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger  ml-1">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </p>
+                                </p>{% endif %}{% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div> {% endfor %} {% endif %}
+                </div>
+
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+
+            </div> {% endif %} {% if banque %}
+            <!-- Accordion wrapper -->
+            <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo1">
+                        <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo41" aria-expanded="false" aria-controls="collapseTwo1">
+                            <h5 class="mb-0">
+                                <div class="vl" style=" border-left: 6px solid rgb(245, 27, 190);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{asset('assets/img/juridique.svg')}}" height="30px" width="40px"> Banque [{{ banque|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    {% if ban %}
+                    <!-- Card body -->
+                    {% for key,res in ban %}
+                    <div id="collapseTwo41" class="collapse" role="tabpanel" aria-labelledby="headingTwo1-1" data-parent="#accordionEx1-1">
                         <div class="card-body">
-                            <p><b class="souscat text-light p-2" style="background-color:green">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
-                            %}
-                            <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}<a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">Lire le Document</a>{% if app.user %}{% if app.user.role
-                                =="ROLE_ADMIN" %}<a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-primary ml-1">Modifier le Document</a><a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger ml-1">Supprimer le Document</a></p>{%
-                            endif %}{% endif %}
+
+
+
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                                <h5 class="mb-0">
+                                    {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+
                         </div>
                     </div>
-                    {% endfor %} {% endfor %} {% endif %}
+                    <div id="scroll{{ key }}">
+                        {% for docs in res %}
+                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                            <div class="card-body">
+                                <p><b class="souscat text-light p-2" style="background-color:rgb(245, 27, 190)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                                %}
+                                <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}
+                                    <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">
+                                        <i class="fas fa-book"></i>
+                                    </a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}
+                                    <a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-info ml-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger  ml-1">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </p>
+                                </p>{% endif %}{% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>{% endfor %} {% endif %}
+                </div>
+
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+
+            </div> {% endif %} {% if assurance %}
+
+            <!--Accordion wrapper-->
+            <div class="accordion m-3 md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo1">
+                        <a class="collapsed text-dark text-dark " data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo70" aria-expanded="false" aria-controls="collapseTwo70">
+                            <h5 class="mb-0">
+                                <div class="vl" style=" border-left: 6px solid rgba(57, 73, 0, 0.856);height:62px;float: left;margin: -20px;"></div>
+                                <img src="{{asset('assets/img/juridique.svg')}}" height="30px" width="40px"> Assurance [{{ social|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+                    {% if ass %}
+                    <!-- Card body -->
+                    {% for key,res in ass %}
+                    <div id="collapseTwo70" class="collapse card " role="tabpanel" aria-labelledby="headingTwo1-70" data-parent="#accordionEx1-70">
+                        <div class="card-body">
+
+
+
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}1" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                                <h5 class="mb-0">
+                                    {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div id="scroll{{ key }}">
+                        {% for docs in res %}
+                        <div id="collapseTwo{{ key }}1" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-70" data-parent="#accordionEx1-70">
+                            <div class="card-body">
+
+                                <p><b class="souscat text-light p-2" style="background-color:rgba(57, 73, 0, 0.856)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
+                                %}
+                                <p>{{ res[0].souscat.libelle }} : {{ docs.description|upper|replace({ (mots|upper) :( text ) })|raw}}
+                                    <a href="{{path('render',{id:docs.id})}}" class="btn btn-success ml-1">
+                                        <i class="fas fa-book"></i>
+                                    </a>{% if app.user %}{% if app.user.role =="ROLE_ADMIN" %}
+                                    <a href="{{path('editDoc',{id:docs.id})}}" class="btn btn-info ml-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a onclick="return confirm('Voulez-vous vraiment suppprimer')" href="{{path('removeDoc',{id:docs.id})}}" class="btn btn-danger  ml-1">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </p>{% endif %}{% endif %}
+
+                            </div>
+                        </div>
+                        {% endfor %}</div> {% endfor %} {% endif %}
                 </div>
                 <!-- Accordion card -->
 

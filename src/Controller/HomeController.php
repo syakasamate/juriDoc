@@ -134,12 +134,19 @@ if(!$user){
            $categories=$ca->findAll();
            $juridique=array();
            $foncier=array();
-           $finance=array();
+           $assurance=array();
            $affaires=array();
-           $comptable=array();
+           //banque=comptable
+           $banque=array();
+           //assurances = social
            $social=array();
+           $assurance=array();
            $fiscal=array();
            foreach($docs as $doc){
+            if($doc->getCategorie()->getLibelle() =="Assurances"){
+                $jur=$doc; 
+                $assurance=array_merge(array($jur),$assurance);
+            }
             if($doc->getCategorie()->getLibelle() =="Juridique"){
                 $jur=$doc;
                 $juridique=array_merge(array($jur),$juridique);
@@ -159,21 +166,15 @@ if(!$user){
 
             }
             
-           
             
-            
-            if($doc->getCategorie()->getLibelle() =="Financier"){
-                $jur=$doc;
-                $finance=array_merge(array($jur),$finance);
-            }
             if($doc->getCategorie()->getLibelle() =="Fiscal"){
                 $jur=$doc;
                 $fiscal=array_merge(array($jur),$fiscal);
             }
             
-            if($doc->getCategorie()->getLibelle() =="Comptable"){
+            if($doc->getCategorie()->getLibelle() =="Banques"){
                 $jur=$doc;
-                $comptable=array_merge(array($jur),$comptable);
+                $banque=array_merge(array($jur),$banque);
             }
             if($doc->getCategorie()->getLibelle() =="Social"){
                 $jur=$doc;
@@ -227,6 +228,25 @@ if(!$user){
                 $aff[$affaires[$i]->getSouscat()->getId()] = array($affaires[$i]);
                }
             }
+            $ass=array();
+            for($i=0;$i<count($assurance);$i++){
+               if(!empty($ass[$assurance[$i]->getSouscat()->getId()])){
+                
+                   array_push($ass[$assurance[$i]->getSouscat()->getId()],($assurance[$i]));
+               }else{
+                $ass[$assurance[$i]->getSouscat()->getId()] = array($assurance[$i]);
+               }
+            }
+            $ban=array();
+            
+            for($i=0;$i<count($banque);$i++){
+               if(!empty($ban[$banque[$i]->getSouscat()->getId()])){
+                
+                   array_push($ban[$banque[$i]->getSouscat()->getId()],($banque[$i]));
+               }else{
+                $ban[$banque[$i]->getSouscat()->getId()] = array($banque[$i]);
+               }
+            }
             
           
          
@@ -234,21 +254,26 @@ if(!$user){
         }else{
             $juridique="";
             $datepub="";
-            $finance="";
+            $assurance="";
+            $banque="";
             $fiscal="";
             $social="";
             $categories=$ca->findAll();
             $search=" ";
+            $foncier="";
+            $affaires='';
             return $this->render('home/try.html.twig', [
                 "mots"=>$search,
                 "categories"=>$categories,
                 "date"=>date_format(new \DateTime(),"Y"),
                "juri"=>$juridique,
-               "finance"=>$finance,
+               "assurance"=>$assurance,
                "foncier"=>$foncier,
                "fiscal"=>$fiscal,
                'datepub'=>$datepub,
                "social"=>$social,
+               "affaire"=>$affaires,
+               "banque"=>$banque
                 ]);
         }
 
@@ -263,16 +288,19 @@ if(!$user){
             "date"=>date_format(new \DateTime(),"Y"),
             "docs"=> $docs,
            "juri"=>$juridique,
-           "finance"=>$finance,
+           "assurance"=>$assurance,
            "fiscal"=>$fiscal,
            "foncier"=>$foncier,
            "affaires"=>$affaires,
+           "banque"=>$banque,
            "social"=>$social,
            "res"=> $jur,
            "soc"=> $soc,
            "fis"=>$fis,
            "fon"=>$fon,
-           "aff"=>$aff
+           "aff"=>$aff,
+           "ass"=>$ass,
+           "ban"=>$ban
             ]);
     }
 }
