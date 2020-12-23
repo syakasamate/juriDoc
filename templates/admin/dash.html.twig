@@ -10,8 +10,7 @@
                     <div class="alert alert-success">
                         {{ message }}
                     </div>
-                    {% endfor %}
-                     {% for message in app.flashes('danger') %}
+                    {% endfor %} {% for message in app.flashes('danger') %}
                     <div class="alert alert-danger">
                         {{ message }}
                     </div>
@@ -21,132 +20,139 @@
             </div>
         </div>
         <!-- /. ROW  -->
-         {% if app.user.role =="ROLE_ADMIN" %}
+        {% if app.user.role =="ROLE_ADMIN" %}
         <div class="row text-center ">
-         
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
-                    <a href="{{path('addDoc')}}">
-                        <i style="color:#3c4474 ;" class="fa fa-plus fa-5x"></i>
-                        <h4>Ajouter Docs</h4>
+
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3 ">
+                    <a href="{{path('addDoc')}}" class="text-decoration-none">
+                        <div class="float-left"> <i style="color:#3c4474 ;" class="fas fa-file-upload fa-5x"></i>
+                        </div>
+                        <h4 class="mt-4" class="mt-4">Ajouter Docs</h4>
                     </a>
                 </div>
 
 
             </div>
 
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
-                    <a href="blank.html">
-                        <i style="color:#3c4474 ;" class="fa fa-envelope-o fa-5x"></i>
-                        <h4>Messages</h4>
-                    </a>
-                </div>
 
 
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3 ">
                     <a href="{{path('addPack')}}">
-                        <i style="color:#3c4474 ;" class="fas fa-certificate fa-5x"></i>
-                        <h4>Ajouter un  Packs</h4>
+                        <div class="float-left">
+                            <i style="color:#3c4474 ;" class="fab fa-gg-circle fa-5x"></i>
+                        </div>
+                        <h4 class="mt-4">Ajouter un Packs</h4>
                     </a>
                 </div>
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3 ">
                     <a href="{{path('Pack')}}">
-                        <i style="color:#3c4474 ;" class="fas fa-certificate fa-5x"></i>
-                        <h4>Les Packs</h4>
+                        <div class="float-left">
+                            <i style="color:#3c4474 ;" class="fas fa-stop-circle fa-5x"></i>
+                        </div>
+                        <h4 class="mt-4">Les Packs</h4>
                     </a>
                 </div>
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
-                    <a href="blank.html">
-                        <i style="color:#3c4474 ;" class="fa fa-key fa-5x"></i>
-                        <h4>Admin </h4>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
+                    <a href="/">
+                        <i style="color:#3c4474 ;" class="fa fa-hourglass fa-5x"></i>
+                        <h4 class="mt-4">Avenir ....</h4>
                     </a>
                 </div>
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
-                    <a href="blank.html">
-                        <i style="color:#3c4474 ;" class="fa fa-comments-o fa-5x"></i>
-                        <h4>Support</h4>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
+                    <a href="/">
+                        <i style="color:#3c4474 ;" class="fa fa-hourglass fa-5x"></i>
+                        <h4 class="mt-4">Avenir ....</h4>
                     </a>
                 </div>
 
 
             </div>
-         </div>
-         {% endif %}
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
+                    <a href="/">
+                        <i style="color:#3c4474 ;" class="fa fa-hourglass fa-5x"></i>
+                        <h4 class="mt-4">Avenir ....</h4>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+        {% endif %}
         <!-- /. ROW  -->
-         {% if app.user.role =="ROLE_USER" %}
+        {% if app.user.role =="ROLE_USER" %}
         <div class="row text-center pad-top">
 
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
                     <a href="blank.html">
                         <i style="color:#3c4474 ;" class="fa fa-clipboard fa-5x"></i>
-                        <h4>Vos favoris</h4>
+                        <h4 class="mt-4">Vos favoris</h4>
                     </a>
                 </div>
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
                     <a href="{{path('passe')}}">
                         <i style="color:#3c4474 ;" class="fa fa-gear fa-5x"></i>
-                        <h4> Mots de passe</h4>
+                        <h4 class="mt-4"> Mots de passe</h4>
                     </a>
                 </div>
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div style="color:#3c4474 ;" class="div-square ">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div style="color:#3c4474 ;" class="card p-3 ">
                     <a href="{{path('abonnement')}}">
                         <i style="color:#3c4474 ;" class="fa fa-rocket fa-5x"></i>
-                        <h4>Abonnements</h4>
+                        <h4 class="mt-4">Abonnements</h4>
                     </a>
                 </div>
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
                     <a href="blank.html">
                         <i style="color:#3c4474 ;" class="fa fa-wechat fa-5x"></i>
-                        <h4>Mailing</h4>
+                        <h4 class="mt-4">Mailing</h4>
                     </a>
                 </div>
 
 
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
                     <a href="blank.html">
                         <i style="color:#3c4474 ;" class="fa fa-bell-o fa-5x"></i>
-                        <h4>Notifications </h4>
+                        <h4 class="mt-4">Notifications </h4>
                     </a>
                 </div>
 
 
             </div>
-            
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="div-square">
+
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 p-3">
+                <div class="card p-3">
                     <a href="blank.html">
                         <i style="color:#3c4474 ;" class="fa fa-user fa-5x"></i>
-                        <h4>Register User</h4>
+                        <h4 class="mt-4">Register User</h4>
                     </a>
                 </div>
 

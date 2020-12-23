@@ -67,7 +67,7 @@
 
 
 
-                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}1" onclick="scroller('{{ key }}1')" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -75,9 +75,9 @@
 
                         </div>
                     </div>
-                    <div id="scroll{{ key }}">
+                    <div id="scroll{{ key }}1">
                         {% for docs in res %}
-                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div id="collapseTwo{{ key }}1" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                             <div class="card-body">
 
                                 <p><b class="souscat text-light p-2" style="background-color: rgb(33, 102, 182)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
@@ -130,7 +130,7 @@
 
 
 
-                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo2">
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}2" onclick="scroller('{{ key }}2')" aria-expanded="false" aria-controls="collapseTwo2">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -139,9 +139,9 @@
                         </div>
                     </div>
 
-                    <div id="scroll{{ key }}">
+                    <div id="scroll{{ key }}2">
                         {% for docs in res %}
-                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo2-2" data-parent="#accordionEx2-2">
+                        <div id="collapseTwo{{ key }}2" class="card collapse" role="tabpanel" aria-labelledby="headingTwo2-2" data-parent="#accordionEx2-2">
                             <div class="card-body">
                                 <p><b class="souscat text-light p-2" style="background-color: rgb(67, 5, 80)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
                                 %}
@@ -191,7 +191,7 @@
 
 
 
-                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}3" onclick="scroller('{{ key }}3')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -199,9 +199,9 @@
 
                         </div>
                     </div>
-                    <div id="scroll{{ key }}">
+                    <div id="scroll{{ key }}3">
                         {% for docs in res %}
-                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div id="collapseTwo{{ key }}3" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                             <div class="card-body">
 
                                 <p><b class="souscat text-light p-2" style="background-color:rgb(238, 201, 53)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
@@ -251,7 +251,7 @@
 
 
 
-                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}4" onclick="scroller('{{ key }}4')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -259,9 +259,9 @@
 
                         </div>
                     </div>
-                    <div id="scroll{{ key }}">
+                    <div id="scroll{{ key }}4">
                         {% for docs in res %}
-                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div id="collapseTwo{{ key }}4" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                             <div class="card-body">
 
                                 <p><b class="souscat text-light p-2" style="background-color:rgb(221, 35, 238)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
@@ -310,7 +310,7 @@
 
 
 
-                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}5" onclick="scroller('{{ key }}5')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -318,10 +318,10 @@
 
                         </div>
                     </div>
-                    <div id="scroll{{ key }}">
+                    <div id="scroll{{ key }}5">
 
                         {% for docs in res %}
-                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div id="collapseTwo{{ key }}5" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                             <div class="card-body">
                                 <p><b class="souscat text-light p-2" style="background-color: rgb(202, 6, 35)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
                                 %}
@@ -371,7 +371,7 @@
 
 
 
-                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}6" onclick="scroller('{{ key }}6')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -379,9 +379,9 @@
 
                         </div>
                     </div>
-                    <div id="scroll{{ key }}">
+                    <div id="scroll{{ key }}6">
                         {% for docs in res %}
-                        <div id="collapseTwo{{ key }}" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
+                        <div id="collapseTwo{{ key }}6" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-2" data-parent="#accordionEx1-2">
                             <div class="card-body">
                                 <p><b class="souscat text-light p-2" style="background-color:rgb(245, 27, 190)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
                                 %}
@@ -432,7 +432,7 @@
 
 
 
-                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}1" onclick="scroller('{{ key }}')" aria-expanded="false" aria-controls="collapseTwo1">
+                            <a class="collapsed text-dark text-dark" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo{{ key }}7" onclick="scroller('{{ key }}7')" aria-expanded="false" aria-controls="collapseTwo1">
                                 <h5 class="mb-0">
                                     {{ res[0].souscat.libelle }}[{{ res|length }} docs]<i class="fas fa-angle-down rotate-icon"></i>
                                 </h5>
@@ -440,9 +440,9 @@
 
                         </div>
                     </div>
-                    <div id="scroll{{ key }}">
+                    <div id="scroll{{ key }}7">
                         {% for docs in res %}
-                        <div id="collapseTwo{{ key }}1" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-70" data-parent="#accordionEx1-70">
+                        <div id="collapseTwo{{ key }}7" class="card collapse" role="tabpanel" aria-labelledby="headingTwo1-70" data-parent="#accordionEx1-70">
                             <div class="card-body">
 
                                 <p><b class="souscat text-light p-2" style="background-color:rgba(57, 73, 0, 0.856)">{{ res[0].souscat.libelle|slice(0,4) }}</b><b> {{ docs.description }}</b></p>{% set mots = mots|upper%}{% set text = "<b class='p-1' style='background-color:grey'>"~mots~"</b>"
