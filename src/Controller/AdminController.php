@@ -130,6 +130,27 @@ class AdminController extends AbstractController
         //Redirection
         return $this->redirectToRoute('dashbord');
     }
+     /**
+     * @Route("/admin/rv/{id}", name="removePack")
+     */
+    public function sup(Request $req,$id,PacksRepository $pk, CategorieRepository $cat,SousCategorieRepository $scat)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $doc=$pk->find($id);
+        if($doc->getPrincipal()== true ){
+            $this->addFlash("danger","Impossible de Supprimer un pack principal");
+
+        //Redirection
+        return $this->redirectToRoute('dashbord');
+        }
+        $em->remove($doc);
+        $em->flush();
+        //Ajout msg alert de success
+        $this->addFlash("danger","Supprimer avec success");
+
+        //Redirection
+        return $this->redirectToRoute('dashbord');
+    }
 
 
     /**
@@ -173,8 +194,8 @@ public function pack(PacksRepository $p){
 }
 
 /**
-     * @Route("/admin/pack/{id}/edit", name="editPack")
-     */
+* @Route("/admin/pack/{id}/edit", name="editPack")
+*/
 public function editpack(PacksRepository $p,$id,Request $req){
     $packs=$p->find($id);
          //creation formulaire 

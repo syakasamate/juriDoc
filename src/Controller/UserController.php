@@ -41,6 +41,9 @@ class UserController extends AbstractController
                     $em->flush();
                     $this->addFlash("success","Mots de Passe Modifier avec success !");
                     //Redirection
+                    if($user->getRole()=="ROLE_ADMIN"){
+                        return $this->redirectToRoute('dashbord');
+                    }
                     return $this->redirectToRoute('profil');
                 }else{
                     //Ajout msg alert de success
