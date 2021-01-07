@@ -19,7 +19,7 @@ class RegistreController extends AbstractController
      * @Route("/registre", name="inscription")
      */
     
-    public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder, CategorieRepository $cat)
+    public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder, CategorieRepository $cat,\Swift_Mailer $mailer)
     {
 
         $categories=$cat->findAll();
@@ -39,10 +39,30 @@ class RegistreController extends AbstractController
              ->setCode($request->request->get('code'))
              ->setRole(("ROLE_USER"));
 
+             $user->setActivationToken(md5(uniqid()));
+
              $entityManager = $this->getDoctrine()->getManager();
-          $entityManager->persist($user);
-         $entityManager->flush();
-         $this->addFlash("success","Inscription validée-vous pouvez vous-connectez");
+             $entityManager->persist($user);
+             $entityManager->flush();
+ 
+             // do anything else you need here, like send an email
+             // On crée le message
+             $message = (new \Swift_Message('Bienvenue'))
+                 // On attribue l'expéditeur
+                 ->setFrom(['admin@nasrulex.com'=> " NASRULEX "])
+                 // On attribue le destinataire
+                 ->setTo($user->getEmail())
+                 // On crée le texte avec la vue
+                 ->setBody(
+                     $this->renderView(
+                         'email/activation.html.twig', ['token' => $user->getActivationToken()]
+                     ),
+                     'text/html'
+                 )
+             ;
+             $mailer->send($message);
+ 
+         $this->addFlash("success","Inscription validé! un message vous a été envoyé sur ".$user->getEmail() ."SI C'EST PAS LE CAS REGARDER DANS VOS SPAMS");
          return $this->redirectToRoute('login');
 
         }

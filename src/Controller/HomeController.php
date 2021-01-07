@@ -2,15 +2,27 @@
 namespace App\Controller;
 
 use DateTime;
+use App\Entity\User;
+use App\Form\ResetPassType;
+use FOS\UserBundle\Mailer\Mailer;
+use App\Repository\UserRepository;
 use App\Repository\DocumentRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\SousCategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class HomeController extends AbstractController
-{
+{   private $date;
+    public $categories;
+    function __construct(CategorieRepository $rep){
+    $this->categories=$rep->findAll();
+    $this->date=date_format(new \DateTime(),"Y")  ;
+    }
 
     /**
      * @Route("", name="home")
@@ -27,6 +39,126 @@ class HomeController extends AbstractController
             "date"=>date_format(new \DateTime(),"Y"),
             "home"=>true
         ]);
+    }
+      /**
+     * @Route("/activation/{token}", name="activation")
+     */
+    public function activation($token, UserRepository $user)
+    {
+        // On recherche si un utilisateur avec ce token existe dans la base de données
+        $user = $user->findOneBy(['ActivationToken' => $token]);
+
+        // Si aucun utilisateur n'est associé à ce token
+        if(!$user){
+            // On renvoie une erreur 404
+            throw $this->createNotFoundException('Cet utilisateur n\'existe pas');
+        }
+
+        // On supprime le token
+        $user->setActivationToken(null);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        // On génère un message
+        $this->addFlash('success', 'Utilisateur activé avec succès');
+
+        // On retourne à l'accueil
+        if($this->getUser()){
+            return $this->redirectToRoute('profil');
+        }
+        return $this->redirectToRoute('login');
+    }
+     /**
+     * @Route("/reinspass", name="resetpass")
+     */
+    public function resetpass(CategorieRepository $cat,Request $req,UserRepository $repuser,TokenGeneratorInterface $tk,\Swift_Mailer $mailer)
+    {
+        
+        $categories=$cat->findAll();
+        $form=$this->createForm(ResetPassType::class);
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            $data=$form->getData();
+            
+            $user=$repuser->findOneBy(["email"=> $data["Email"]]);
+            if(!$user){
+                $this->addFlash("danger","Veillez vous souscrire dans un autre packs! ");
+
+                return $this->redirectToRoute('incription');
+            }
+            $token=$tk->generateToken();
+    
+
+            // On essaie d'écrire le token en base de données
+            try{
+                $user->setResetToken($token);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+            } catch (\Exception $e) {
+                $this->addFlash('danger', $e->getMessage());
+                return $this->redirectToRoute('login');
+            }
+
+            // On génère l'URL de réinitialisation de mot de passe
+            $url = $this->generateUrl('modipasse', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
+            $message= new \Swift_Message(" MOTS DE PASSE OUBLIÉ");
+                    $message->setFrom(["admin@nasrulex.com" => "NASRULEX"])
+                    ->setTo($user->getEmail())
+                    ->setBody($this->renderView("email/resetpass.html.twig",[ "url"=> $url])
+                        ,"text/html");
+                        $mailer->send($message);
+                        $this->addFlash('success', 'E-mail de réinitialisation du mot de passe envoyé !');
+                        return $this->redirectToRoute('login');
+        }
+        return $this->render('home/reset.html.twig', [
+            'form' => $form->createView(),
+             'categories'=>$categories,
+             "date"=>date_format(new \DateTime(),"Y")            
+        ]);
+    }
+    /**
+     * @Route("modipasse/{token}", name="modipasse")
+     */
+    public function mp($token,Request $request,UserPasswordEncoderInterface $encoder){
+        
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['resetToken' => $token]);
+
+        // Si l'utilisateur n'existe pas
+        if ($user === null) {
+            // On affiche une erreur
+            $this->addFlash('danger', 'Token Inconnu');
+            return $this->redirectToRoute('login');
+        }
+
+        // Si le formulaire est envoyé en méthode post
+        if ($request->isMethod('POST')) {
+            // On supprime le token
+            
+            $p=$request->request->get('password');
+            $rp=$request->request->get('rpassword');
+           
+                // On chiffre le mot de passe
+
+           
+           $user->setPassword($encoder->encodePassword($user, $request->request->get('password')));
+           $user->setResetToken(null);
+            // On stocke
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            // On crée le message flash
+            $this->addFlash('success', 'Mot de passe mis à jour');
+
+            // On redirige vers la page de connexion
+            return $this->redirectToRoute('login');
+        }else {
+            // Si on n'a pas reçu les données, on affiche le formulaire
+            return $this->render('home/reset_password.html.twig', ['token' => $token,"categories"=>$this->categories,"date"=>$this->date ]);
+        }
+
     }
      /**
      * @Route("renderpdf/{id}", name="render")

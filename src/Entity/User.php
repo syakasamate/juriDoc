@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -17,7 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     message=" Email est deja utiliser.")
  */
 
-class User implements UserInterface
+class User implements AdvancedUserInterface
 {
     /**
      * @ORM\Id()
@@ -100,6 +101,16 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Subscription", mappedBy="user")
      */
     private $subscriptions;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resetToken;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ActivationToken;
 
     public function __construct()
     {
@@ -329,6 +340,44 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+
+        return $this;
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->ActivationToken;
+    }
+
+    public function setActivationToken(?string $ActivationToken): self
+    {
+        $this->ActivationToken = $ActivationToken;
+
+        return $this;
+    }
+    public function isAccountNonExpired(){
+        return true ;
+    }
+    public function isAccountNonLocked(){
+        return true ;
+    }
+    public function isCredentialsNonExpired(){
+        return true ;
+    }
+    public function isEnabled(){
+        if($this->ActivationToken == null ){
+            return true ;
+        }
+        
+    }
    
 
   

@@ -17,6 +17,16 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils,CategorieRepository $cat){
         $categories=$cat->findAll();
         $error = $authenticationUtils->getLastAuthenticationError();
+        if($error!= null){
+            if($error->getMessage()=="User account is disabled."){
+                
+                $error=" Compte non validé . Veillez regarder sur vos mails ou spams pour le validé ";
+            }else{
+                
+                $error="Mot de Pass ou Email non valide";
+            }
+        }
+       
         return $this->render('security/login.html.twig',[
             'error' => $error,
             'login' => true,

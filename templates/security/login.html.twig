@@ -4,50 +4,57 @@
     <i class="text-white ls"></i>
 </div>
 <div class="log ">
-<div class="container col-lg-6 " style="margin-top: 10%;">
-    {% for message in app.flashes("success") %}
-    <div class="alert alert-success">
-        {{ message }}
-    </div>
-    {% endfor %}
-    <div>
-                <h4 class="text-white text-center txt"> Veuillez vous connecter!
-!</h4>
+    <div class="container col-lg-6 " style="margin-top: 10%;">
+        {% for message in app.flashes("success") %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %} {% for message in app.flashes("danger") %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% endfor %}
+        <div>
+            <h4 class="text-white text-center txt"> Veuillez vous connecter! !
+            </h4>
 
-        <div class="card shadow p-3 mb-5  rounded">
+            <div class="card shadow p-3 mb-5  rounded">
+                {% if error %}
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled mb-0">
+                        <li><span class="initialism form-error-icon badge badge-danger">{{ error }}</span>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+                <div class="card-body  ">
+                    <form class="container  " action="{{ path('login') }}" method="post">
+                        <div class="form-group  mb-2 ">
+                            <label for=""></label>
+                            <input type="text" name="_username" class="form-control" placeholder="Adresse Email....">
+                        </div>
+                        <div class="form-group ">
+                            <label for=""></label>
+                            <input type="password" name="_password" id="" class="form-control" placeholder="password...">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success"> connection</button>
+                        </div>
+                    </form>
+                    <p class="text-center">Vous n'avez pas encore de compte?<a href="registre"> Cliquez-ici</a></p>
+                    <p class="text-center">Vous avez oublié votre mots de passe ? <a href="{{path( 'resetpass' )}}"> Cliquez-ici </a></p>
 
-            <div class="card-body  ">
-                <form class="container  " action="{{ path('login') }}" method="post">
-                    <div class="form-group  mb-2 ">
-                        <label for=""></label>
-                        <input type="text" name="_username" class="form-control" placeholder="Adresse Email....">
-                    </div>
-                    <div class="form-group ">
-                        <label for=""></label>
-                        <input type="password" name="_password" id="" class="form-control" placeholder="password...">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success"> connection</button>
-                    </div>
-                </form>
+                </div>
+
             </div>
-            {% if error %}
-            <div class="alert alert-danger">
-                <ul class="list-unstyled mb-0">
-                    <li><span class="initialism form-error-icon badge badge-danger">Mot de Pass ou Email non valide</span>
-                    </li>
-                </ul>
-            </div>
-            {% endif %}
         </div>
     </div>
-</div>
-<div>
-</div>
-<div class="text-light">
-    <p class="text-center">vous n'avez pas encore de conpte?<a href="registre"> Veillez-Vous Inscrire</a></p>
-</div>
+    <div>
+    </div>
+    <div class="text-light">
+
+    </div>
 </div>
 
 
-{% endblock %} 
+{% endblock %}
